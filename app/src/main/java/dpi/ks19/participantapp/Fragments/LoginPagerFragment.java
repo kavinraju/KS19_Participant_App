@@ -47,6 +47,7 @@ public class LoginPagerFragment extends Fragment {
 
     @OnClick(R.id.btn_login)
     public void onClickLogin(View  view){
+        startActivity(new Intent(getActivity(),EventListActivity.class));
         if (et_login_email.getText().toString().isEmpty() || et_login_password.getText().toString().isEmpty()){
             Snackbar.make(view, "Both the fields are required", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
