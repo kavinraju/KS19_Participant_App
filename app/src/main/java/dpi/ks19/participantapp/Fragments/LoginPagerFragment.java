@@ -1,5 +1,6 @@
 package dpi.ks19.participantapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dpi.ks19.participantapp.Activities.EventListActivity;
 import dpi.ks19.participantapp.R;
 
 public class LoginPagerFragment extends Fragment {
