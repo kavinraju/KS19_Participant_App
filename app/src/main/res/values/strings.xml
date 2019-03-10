@@ -921,5 +921,7 @@ satisfied</item>
     <string name="ambassador_id">Ambassador ID</string>
     <string name="college_name">College Name</string>
     <string name="register">Register</string>
+    <string name="otp">OTP</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

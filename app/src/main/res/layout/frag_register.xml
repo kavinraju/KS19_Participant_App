@@ -104,6 +104,7 @@
                         android:fontFamily="monospace"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
+                        android:maxLength="10"
                         android:textColor="@color/colorSecondaryDark" />
 
                 </android.support.design.widget.TextInputLayout>

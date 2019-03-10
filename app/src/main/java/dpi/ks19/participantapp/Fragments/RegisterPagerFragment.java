@@ -47,17 +47,24 @@ public class RegisterPagerFragment extends Fragment {
     @OnClick(R.id.btn_register)
     public void onClickRegister(View  view){
 
+        createOTPDialog();
+
         if (et_register_name.getText().toString().isEmpty() || et__register_phoneNumber.getText().toString().isEmpty() ||
         et_register_email.getText().toString().isEmpty() || et_register_password.getText().toString().isEmpty() ||
-        et_register_college_name.getText().toString().isEmpty() || et_register_ambassador_id.getText().toString().isEmpty()){
+        et_register_college_name.getText().toString().isEmpty()){
 
             Snackbar.make(view, "All the fields are required", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
 
         }else {
-            //Call the endpoint here
+            //create a OTP dialog, send the details to the OtpCustomDialog
 
         }
+    }
 
+    private void createOTPDialog(){
+        OtpCustomDialog customDialog = new OtpCustomDialog();
+        customDialog.setCancelable(false);
+        customDialog.show(getFragmentManager(),"CustomDialog");
     }
 }
