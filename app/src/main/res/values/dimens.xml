@@ -1,3 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_36dp">36dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="card_view_height_register">450dp</dimen>
 </resources>

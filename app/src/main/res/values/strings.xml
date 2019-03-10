@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">KS19 Participant App</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="kuruksastra_19">Kuruksastra\'19</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="ambassador_id">Ambassador ID</string>
+    <string name="college_name">College Name</string>
+    <string name="register">Register</string>
 </resources>
