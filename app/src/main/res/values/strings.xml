@@ -914,4 +914,18 @@ heading or mail body.\n
 • Winner is picked based on the creativity,originality and how much the given theme is
 satisfied</item>
     </string-array>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="kuruksastra_19">Kuruksastra\'19</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="ambassador_id">Ambassador ID</string>
+    <string name="college_name">College Name</string>
+    <string name="register">Register</string>
+    <string name="otp">OTP</string>
+    <string name="cancel">Cancel</string>
+
 </resources>
