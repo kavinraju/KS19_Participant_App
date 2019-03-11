@@ -1,6 +1,5 @@
 package dpi.ks19.participantapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,22 +10,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.Volley;
+import dpi.ks19.participantapp.Networking.ApiHelper;
+import dpi.ks19.participantapp.CallbackInterface.GenerateOTPInterface;
 
-import org.json.JSONObject;
-
-import java.util.HashMap;
-
-import dpi.ks19.participantapp.Activities.ClusterCardsActivity;
-import dpi.ks19.participantapp.Adapter.ClusterCardAdapter;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GenerateOTPInterface {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,37 +26,14 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //testApi();
-                startActivity(new Intent(MainActivity.this,ClusterCardsActivity.class));
+                //ApiHelper.getInstance(MainActivity.this).generateOTP("sibinehru99@gmail.com",MainActivity.this);
+                ApiHelper.getInstance(MainActivity.this).verifyOTP("4727",MainActivity.this);
+                //startActivity(new Intent(MainActivity.this,ClusterCardsActivity.class));
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
     }
-
-    public void testApi(){
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String URL="http://45.251.34.245:7167/ks/participants/verifyOTP.php";
-        HashMap<String, Integer> params = new HashMap<>();
-        params.put("otp",7824);
-        JSONObject json = new JSONObject(params);
-
-        Log.d("JSON OBJECT",json.toString());
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST,URL,json, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d("JSON_RESPONSE", response.toString());
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("JSON ERROR",error.toString());
-            }
-        });
-
-        queue.add(jsonRequest);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,5 +55,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void isEmailVerified(boolean isVerified) {
+        if(isVerified){
+            Log.d("EMAIL","VALID");
+        }else{
+            Log.d("EMAIL","INVALID");
+        }
+    }
+
+    @Override
+    public void isOTPVerified(boolean isVerified) {
+        if(isVerified){
+            Log.d("OTP","VALID");
+        }else{
+            Log.d("OTP","INVALID");
+        }
     }
 }

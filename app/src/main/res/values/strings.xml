@@ -2,6 +2,10 @@
     <string name="app_name">KS19 Participant App</string>
     <string name="action_settings">Settings</string>
 
+
+    <string name="cookie_shared">COOKIE_SHARED_PREF</string>
+    <string name="cookie_key">COOKIE_KEY</string>
+
     <!--clusters-->
     <string-array name="cluster_list">
         <item>FlagShip Event</item>
