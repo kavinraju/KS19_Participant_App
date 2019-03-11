@@ -11,9 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import dpi.ks19.participantapp.Networking.ApiHelper;
-import dpi.ks19.participantapp.CallbackInterface.GenerateOTPInterface;
+import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 
-public class MainActivity extends AppCompatActivity implements GenerateOTPInterface {
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity implements GenerateOTPInterf
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //ApiHelper.getInstance(MainActivity.this).generateOTP("sibinehru99@gmail.com",MainActivity.this);
-                ApiHelper.getInstance(MainActivity.this).verifyOTP("4727",MainActivity.this);
-                //startActivity(new Intent(MainActivity.this,ClusterCardsActivity.class));
+
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -57,21 +55,4 @@ public class MainActivity extends AppCompatActivity implements GenerateOTPInterf
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void isEmailVerified(boolean isVerified) {
-        if(isVerified){
-            Log.d("EMAIL","VALID");
-        }else{
-            Log.d("EMAIL","INVALID");
-        }
-    }
-
-    @Override
-    public void isOTPVerified(boolean isVerified) {
-        if(isVerified){
-            Log.d("OTP","VALID");
-        }else{
-            Log.d("OTP","INVALID");
-        }
-    }
 }

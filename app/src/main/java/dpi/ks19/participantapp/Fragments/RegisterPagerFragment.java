@@ -13,9 +13,12 @@ import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dpi.ks19.participantapp.CallbackInterface.CustomDialogInterface;
+import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
-public class RegisterPagerFragment extends Fragment {
+public class RegisterPagerFragment extends Fragment implements OTPInterface, CustomDialogInterface {
 
     @BindView(R.id.et_register_name)
     EditText et_register_name;
@@ -47,8 +50,6 @@ public class RegisterPagerFragment extends Fragment {
     @OnClick(R.id.btn_register)
     public void onClickRegister(View  view){
 
-        createOTPDialog();
-
         if (et_register_name.getText().toString().isEmpty() || et__register_phoneNumber.getText().toString().isEmpty() ||
         et_register_email.getText().toString().isEmpty() || et_register_password.getText().toString().isEmpty() ||
         et_register_college_name.getText().toString().isEmpty()){
@@ -57,8 +58,11 @@ public class RegisterPagerFragment extends Fragment {
                     .setAction("Action", null).show();
 
         }else {
-            //create a OTP dialog, send the details to the OtpCustomDialog
+            //calling the endpoints for sending OTP to email
+            ApiHelper.getInstance(getActivity()).generateOTP(et_register_email.getText().toString().trim());
 
+            //create a OTP dialog, send the details to the OtpCustomDialog
+            createOTPDialog();
         }
     }
 
@@ -66,5 +70,23 @@ public class RegisterPagerFragment extends Fragment {
         OtpCustomDialog customDialog = new OtpCustomDialog();
         customDialog.setCancelable(false);
         customDialog.show(getFragmentManager(),"CustomDialog");
+    }
+
+    @Override
+    public void isOTPVerified(boolean isVerified) {
+        if(isVerified){
+            //OTP is verified proceed to user registration
+            ApiHelper.getInstance(getActivity()).registerUser(et_register_name.getText().toString().trim(),
+                    et__register_phoneNumber.getText().toString().trim(),
+                    et_register_college_name.getText().toString().trim(),
+                    et_register_ambassador_id.getText().toString().trim(),
+                    "TEST_VALUE");
+        }
+    }
+
+    //callback from the otp dialog
+    @Override
+    public void getOtp(String otp) {
+        ApiHelper.getInstance(getActivity()).verifyOTP(otp,this);
     }
 }
