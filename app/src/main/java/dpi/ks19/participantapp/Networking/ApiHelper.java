@@ -23,6 +23,7 @@ import java.net.CookieManager;
 import java.util.HashMap;
 import java.util.Map;
 
+import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.R;
 
@@ -60,19 +61,20 @@ public class ApiHelper {
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST,URL,json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("JSON_RESPONSE", response.toString());
+                Log.d("GENERATE_JSON_RESPONSE", response.toString());
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("JSON ERROR",error.toString());
+                Log.d("GENERATE_JSON_ERROR",error.toString());
             }
-        }){
+        }){//save the cookie session locally
+            //clear when the user logs out
             @Override
             protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                 Map<String,String> responseHeader = response.headers;
                 String cookies = responseHeader.get("Set-Cookie");
-                Log.d("COOKIE",cookies);
+                Log.d("SET_COOKIE",cookies);
                 //saving the cookie
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(ctx.getString(R.string.cookie_key),cookies);
@@ -86,6 +88,7 @@ public class ApiHelper {
                 0,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
         CustomRequestQueue.getInstance(ctx).setRequest(jsonRequest);
     }
 
@@ -119,6 +122,7 @@ public class ApiHelper {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String,String>headers = new HashMap<>();
                 String cookie = sharedPreferences.getString(ctx.getString(R.string.cookie_key),"NOT_FOUND");
+                Log.d("GET_COOKIE",cookie);
                 headers.put("cookie",cookie);
                 return headers;
             }
@@ -169,17 +173,14 @@ public class ApiHelper {
     }
 
 
-    public void getColleges(){
+    public void getColleges(final CollegeInterface callback){
         String url = baseUrl+"getColleges.php";
 
         JsonArrayRequest collegeListRequest = new JsonArrayRequest(url,  new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 Log.d("JSON_RESPONSE", response.toString());
-                //check whether otp is verified
-                try{
-                    Log.d("COLLEGE",response.getString(0));
-                }catch(JSONException e){}
+                callback.getCollegeList(response);
 
             }
         }, new Response.ErrorListener() {

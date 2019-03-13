@@ -4,14 +4,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <android.support.v7.widget.CardView
+    <android.support.constraint.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/cardView_login"
-        app:cardElevation="28dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardUseCompatPadding="true"
-        app:cardCornerRadius="4dp"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,11 +29,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
 
-                    android:fontFamily="sans-serif-smallcaps"
+                    android:fontFamily="@font/sniglet_regular"
                     style="@style/Base.TextAppearance.AppCompat.Headline"
                     android:id="@+id/tv_head"
 
-                    android:textColor="@color/colorSecondaryDark"
+                    android:textColor="@android:color/white"
                     android:text="@string/kuruksastra_19"
                     android:gravity="center"
                     android:textStyle="bold"
@@ -53,11 +49,11 @@
                     android:layout_height="wrap_content"
 
                     android:visibility="gone"
-                    android:fontFamily="sans-serif-smallcaps"
+                    android:fontFamily="@font/sniglet_regular"
 
                     android:id="@+id/tv_login"
 
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@android:color/white"
                     android:text="@string/login"
                     android:textSize="24sp"
                     android:padding="4dp"
@@ -73,12 +69,14 @@
 
                 <View
                     android:id="@+id/view_above_btn_create_account"
-                    app:layout_constraintTop_toBottomOf="@id/tv_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:background="@android:color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:layout_width="match_parent"
-                    android:layout_height="4dp"
-                    android:background="@color/colorPrimary"/>
+                    app:layout_constraintTop_toBottomOf="@id/tv_head" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/input_txt_layout_login_email"
@@ -89,7 +87,9 @@
                     android:layout_marginStart="@dimen/margin_16dp"
                     android:layout_marginTop="@dimen/margin_36dp"
                     android:hint="@string/email"
-                    android:textColorHint="@color/colorSecondaryLight"
+                    android:fontFamily="@font/sniglet_regular"
+                    android:backgroundTint="@android:color/white"
+                    android:textColorHint="@android:color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_login">
@@ -97,10 +97,11 @@
                     <EditText
                         android:id="@+id/et_login_email"
                         android:layout_width="match_parent"
-                        android:fontFamily="monospace"
+                        android:fontFamily="@font/sniglet_regular"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
-                        android:textColor="@color/colorSecondaryDark" />
+                        android:textColor="@android:color/white"
+                        android:backgroundTint="@android:color/white"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -115,7 +116,9 @@
                     android:layout_marginTop="@dimen/margin_16dp"
                     android:baselineAligned="true"
                     android:hint="@string/password"
-                    android:textColorHint="@color/colorSecondaryLight"
+                    android:fontFamily="@font/sniglet_regular"
+                    android:textColorHint="@android:color/white"
+                    android:backgroundTint="@android:color/white"
                     app:passwordToggleEnabled="true"
                     app:layout_constraintTop_toBottomOf="@+id/input_txt_layout_login_email"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -125,37 +128,37 @@
                         android:id="@+id/et_login_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
+                        android:fontFamily="@font/sniglet_regular"
                         android:inputType="textPassword"
-                        android:textColor="@color/colorSecondaryDark" />
+                        android:textColor="@android:color/white"
+                        android:backgroundTint="@android:color/white"/>
 
                 </android.support.design.widget.TextInputLayout>
 
                 <Button
                     android:id="@+id/btn_login"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:background="@drawable/ripple_effect"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="@string/login"
-                    android:textSize="28sp"
-                    android:textColor="@color/colorSecondaryDark"
-
                     android:layout_marginTop="36dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:background="@drawable/white_border"
                     android:elevation="@dimen/cardview_compat_inset_shadow"
+                    android:fontFamily="@font/sniglet_regular"
                     android:onClick="onClickLogin"
 
-                    app:layout_constraintTop_toBottomOf="@id/input_txt_layout_login_et_login_password"
+                    android:padding="8dp"
+                    android:text="@string/login"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/input_txt_layout_login_et_login_password" />
 
             </android.support.constraint.ConstraintLayout>
 
         </android.support.v4.widget.NestedScrollView>
 
-    </android.support.v7.widget.CardView>
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
