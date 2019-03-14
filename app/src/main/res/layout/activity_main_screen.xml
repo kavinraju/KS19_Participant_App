@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/red_bk"
+    android:weightSum="10"
+    android:layout_height="match_parent"
+    tools:context=".MainScreen">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:src="@drawable/kslogo"/>
+    </RelativeLayout>
+    
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_weight="10"
+        android:columnCount="2"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:padding="10dp"
+        android:rowCount="3"
+        android:layout_height="0dp">
+
+        <!-- Row 1 Column1 -->
+        <android.support.v7.widget.CardView
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_rowWeight="1"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+
+            <!--android:backgroundTintMode="src_over"
+            android:backgroundTint="#5900c853" -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/profile"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#e91e63"
+                    android:text="PROFILE"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- Row 1 Column2 -->
+        <android.support.v7.widget.CardView
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:onClick="eventsclicked"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_rowWeight="1"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/events"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#e91e63"
+                    android:textStyle="bold"
+                    android:text="EVENTS"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- Row 2 Column1 -->
+        <android.support.v7.widget.CardView
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_rowWeight="1"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/schedule"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#e91e63"
+                    android:textStyle="bold"
+                    android:text="SCHEDULE"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- Row 2 Column 2 -->
+        <android.support.v7.widget.CardView
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_rowWeight="1"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/proshows"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#e91e63"
+                    android:textStyle="bold"
+                    android:text="PROSHOWS"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- Row 3 Column 1 -->
+        <android.support.v7.widget.CardView
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_rowWeight="1"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/sponsors"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#e91e63"
+                    android:textStyle="bold"
+                    android:text="SPONSORS"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!-- Row 3 Column 2 -->
+        <android.support.v7.widget.CardView
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_rowWeight="1"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/about"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#e91e63"
+                    android:textStyle="bold"
+                    android:text="ABOUT US"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </GridLayout>
+
+</LinearLayout>
