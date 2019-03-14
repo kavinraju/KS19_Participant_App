@@ -117,7 +117,7 @@ public class ApiHelper {
             public void onErrorResponse(VolleyError error) {
                 Log.d("JSON ERROR",error.toString());
             }
-        }){
+        })/*{
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String,String>headers = new HashMap<>();
@@ -126,7 +126,7 @@ public class ApiHelper {
                 headers.put("cookie",cookie);
                 return headers;
             }
-        };
+        }*/;
 
         jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
