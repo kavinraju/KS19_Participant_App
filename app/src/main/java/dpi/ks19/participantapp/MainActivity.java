@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //testApi();
-                startActivity(new Intent(MainActivity.this,ClusterCardsActivity.class));
+//                startActivity(new Intent(MainActivity.this,ClusterCardsActivity.class));
+                startActivity(new Intent(MainActivity.this,AboutActivity.class));
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }

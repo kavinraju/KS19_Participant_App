@@ -809,7 +809,7 @@ THIS GLORIOUS TITLE.</item>
 IN OUR EVENT TO CELEBRATE THE ENCHANTING RENDITIONS IN THIS RICH CULTURAL HERITAGE. LET’S
 COME TOGETHER IN THE SPIRIT OF MUSIC!</item>
 
-        <item>DO YOU THINK THAT YOU ARE THE NEXT ADELE, CHRIS MARTIN, RIHANNA OR JOHN MAyER?
+        <item>DO YOU THINK THAT YOU ARE THE NEXT ADELE, CHRIS MARTIN, RIHANNA OR JOHN MAYER?
 DO YOU WANT TO BREAK AWAY FROM THE CROWD AND GO SOLO? LOOK NO FURTHER! THIS IS YOUR
 TICKET TO TAKE US ACROSS THE GLOBE AND ENTHRAL US WITH THE MAGIC OF YOUR VOICE.</item>
 
@@ -910,4 +910,38 @@ heading or mail body.\n
 • Winner is picked based on the creativity,originality and how much the given theme is
 satisfied</item>
     </string-array>
+
+    <!--About-->
+    <string name="about_ks">
+        \tIf Kurukshetra was the greatest battle in Hindu mythology, Kuruksastra is the greatest battle of Southern India to establish proven talent and bring to the fore previously unheralded ones.<br/><br/>
+        A sublime melange of style and substance, glamour and colour, Kuruksastra, SASTRA\'s cultural bonanza consists of arts, music, literary events(English, Tamil and Hindi) and dance.<br/><br/>
+        Top Institutes from all over India turn up to give fierce competition to each other in the race to win the ultimate prize- the title of overall championship at Kuruksastra.<br/><br/>
+        The Pro show is the highlight of KS. Eminent artistes who can really set the stage on fire have been a permanent feature of our pro-nights.<br/><br/> Stars like Shankar Mahadevan, Benny Dayal, Crazy Mohan and Naresh Iyer,among others, have always left enthusiastic crowds asking for more.
+        In a short span of 4 years, KS has shown phenomenal response and is only going to get bigger this year.<br/><br/>With the student group and support staff we have and going by the response that the fest has received, there is no looking back.
+        It offers unlimited opportunities to talented students who are given the limelight to enthral the buzzing crowds with mind blowing performances.<br/><br/>Enough reason for all of you to turn up in numbers and show the world what you are made of!
+    </string>
+
+    <string name="about_sastra">
+        \tThe dreams of its founding fathers took shape in 1984 in the form of Shanmugha College of Engineering, which is now renamed, SHANMUGHA ARTS, SCIENCE, TECHNOLOGY and RESEARCH ACADEMY (SASTRA).
+        Our programmes, infrastructure, teaching-learning, etc., are among the country\'s finest.<br/><br/>
+        SASTRA has always been proactive in its academic planning and believes in gaining the first-mover advantage.<br/><br/>
+        As a testimony to this, the Government of India has conferred the Deemed University status to SASTRA on April 26, 2001 under section 3 of the UGC Act, 1956.<br/><br/>
+        SASTRA offers various undergraduate and post graduate courses in Engineering, Science, Education, Management, Law and Arts besides various Doctoral programmes and has state-of-the-art laboratories, a well stocked library and one of the best computing facilities.<br/><br/>
+        With a sprawling campus having a built-up area of 2,22,129.02 square metre spread over 232 acres and a vibrant population of over 10,000 students and over 700 teaching faculty have made SASTRA a landmark in the educational map of India.<br/><br/>
+        With an ideal teacher-taught ratio, we strive for academic excellence through personalized attention. The mechanisms established to support and monitor the student\’s progress assure success and satisfaction.<br/><br/>
+        Since its inception SASTRA has achieved national standing in terms of academic performance, co-curricular and extra-curricular activities and also in its growth and commitment to social service.<br/><br/>
+        The standards of excellence of our programmes are reflected in the grades awarded to us by the National Assessment and Accreditation Council and in the success of our students in industry and academia, both in India and abroad.<br/><br/>
+        SASTRA has also been re-accredited with Grade ‘A’ (maximum) by the National Accreditation and Assessment Council (NAAC) a statutory body of U.G.C.<br/><br/>
+        SASTRA shapes its students\' future by fostering a teamwork approach to instruction, encouraging interaction with faculty, providing access to high tech information, motivating them to develop new ideas and concepts, taking personal interest in students\' career development and preparing them for success.
+    </string>
+
+    <string name="about_uphar">
+        Ever since the first edition of Kuruksastra, it has been getting more action packed and fun filled with assimilation of spanking new ideas. <br/><br/>Kuruksastra XI promises not only these, but also a chance which can give you the happiness-contentment in the truest sense.<br/><br/>
+        Most of us have been lucky to get all that we have ever needed, good schooling, as many clothes as we want, and needless to say, food, healthy and nourishing.<br/><br/> But there are millions out there, who are not as fortunate as us, who do not have these amenities, which are the primary requisites of life. <br/><br/>For them, our most humble contribution can ameliorate their lives.
+        KS Uphaar is an earnest initiative to raise funds that can directly be utilized in providing education essentials in schools in and around Trichy and Thanjavur.<br/><br/>
+        Kuruksastra Upahaar team has envisaged accomplishing this non-profit fundraising by having collection boxes in all the clusters and other popular hangouts in the campus. <br/><br/>The idea behind this fund-raising is to let the poor and needy children gain something useful when we have fun. <br/><br/>Hence, the team has decided to conduct a few fun events and the money collected will be slided to KSU.<br/><br/> The contribution, how much ever modest can be made, with a complete idea of how every penny of it is eventually going to be put to use.<br/><br/>
+        If foregoing a burger or cold coffee can bring a smile on a thousand faces, is it not worth it?<br/><br/> As they say, children are our future, let us be a small ray of hope in the beam of light that they need to establish a bright tomorrow. Join KS Upahaar!!
+
+    </string>
+
 </resources>
