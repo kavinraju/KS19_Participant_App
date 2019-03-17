@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/red_bk">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="22dp">
+
+        <ImageButton
+            android:id="@+id/about_kuruksastra"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ks_logo"
+            android:transitionName="image"
+            app:layout_constraintBottom_toTopOf="@+id/about_uphar"
+            app:layout_constraintEnd_toStartOf="@+id/about_uphar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textKuruksastra"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:fontFamily="@font/sniglet_regular"
+            android:text="About KURUKSASTRA"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:transitionName="text"
+            app:layout_constraintEnd_toEndOf="@id/about_kuruksastra"
+            app:layout_constraintStart_toStartOf="@id/about_kuruksastra"
+            app:layout_constraintTop_toBottomOf="@+id/about_kuruksastra" />
+
+        <ImageButton
+            android:id="@+id/about_sastra"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/sastra_circle"
+            android:transitionName="image"
+            app:layout_constraintBottom_toTopOf="@+id/about_us"
+            app:layout_constraintEnd_toStartOf="@+id/about_us"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@+id/about_kuruksastra" />
+
+        <TextView
+            android:id="@+id/textSastra"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="About SASTRA"
+            android:textAlignment="center"
+            android:fontFamily="@font/sniglet_regular"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:transitionName="text"
+            app:layout_constraintEnd_toEndOf="@id/about_sastra"
+            app:layout_constraintStart_toStartOf="@id/about_sastra"
+            app:layout_constraintTop_toBottomOf="@+id/about_sastra" />
+
+        <ImageButton
+            android:id="@+id/about_uphar"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/uphar_circle"
+            android:transitionName="image"
+            app:layout_constraintBottom_toTopOf="@+id/about_sastra"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/about_kuruksastra"
+            app:layout_constraintTop_toTopOf="@+id/textKuruksastra"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textUphar"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="About UPHAAR"
+            android:fontFamily="@font/sniglet_regular"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:transitionName="text"
+            app:layout_constraintEnd_toEndOf="@id/about_uphar"
+            app:layout_constraintStart_toStartOf="@id/about_uphar"
+            app:layout_constraintTop_toBottomOf="@+id/about_uphar" />
+
+        <ImageButton
+            android:id="@+id/about_us"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/dpi_circle"
+            android:transitionName="image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/about_uphar"
+            app:layout_constraintStart_toEndOf="@id/about_sastra" />
+
+        <TextView
+            android:id="@+id/textUs"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="About Us"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/sniglet_regular"
+            android:textSize="20sp"
+            android:transitionName="text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/about_us"
+            app:layout_constraintStart_toStartOf="@id/about_us"
+            app:layout_constraintTop_toBottomOf="@+id/about_us"
+            app:layout_constraintVertical_bias="0.0" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>

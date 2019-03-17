@@ -11,30 +11,62 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".Activities.CollegeListActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.EventListActivity" />
+
+        <activity android:name=".Activities.EventListActivity"></activity>
+
         <activity
             android:name=".Activities.ClusterCardsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainScreen"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
+        </activity>
+
+        <activity
+            android:name=".MainScreen"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
+        </activity>
+
+        <activity
+            android:name=".AboutKS"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
+        </activity>
+
+        <activity
+            android:name=".AboutUs"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
+        </activity>
+
+        <activity
+            android:name=".AboutUsApp"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
+        </activity>
     </application>
 
 </manifest>
