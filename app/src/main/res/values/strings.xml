@@ -6,6 +6,25 @@
     <string name="cookie_shared">COOKIE_SHARED_PREF</string>
     <string name="cookie_key">COOKIE_KEY</string>
 
+    <string name="shared_pref">SHARED_PREF</string>
+    <string name="login_or_not">LOGIN_OR_NOT</string>
+
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="kuruksastra_19">Kuruksastra\'19</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="ambassador_id">Ambassador ID</string>
+    <string name="college_name">College Name</string>
+    <string name="register">Register</string>
+    <string name="otp">OTP</string>
+    <string name="cancel">Cancel</string>
+
+
     <!--clusters-->
     <string-array name="cluster_list">
         <item>FlagShip Event</item>
@@ -14,6 +33,7 @@
         <item>English Lits</item>
         <item>Hindi Lits</item>
         <item>SASTRA Eastern Dance Team</item>
+        <item>SASTRA Western Dance Team</item>
         <item>Telugu Lits</item>
         <item>SASTRA FotoHub</item>
         <item>சாஸ்த்ரா தமிழ்ச் சங்கம்</item>
@@ -363,9 +383,6 @@ against the writings of the same category.\n
     <string-array name="eastern_dance_list">
         <item>Nrithya Madhuryam- Classical Solo</item>
         <item>Choreo Night-Eastern Category(Theme/Non-Theme)</item>
-        <item>Dual-Trio</item>
-        <item>Solo Dance</item>
-        <item>Choreo Night</item>
     </string-array>
 
     <!--eastern dance desc list-->
@@ -378,18 +395,6 @@ classical event.</item>
         <item>Dance is a platform of expression. Powerful statements, intriguing stories or just graceful, rhythm catching beats can be what you perform on
 this arena. Get your feet tapping and music playing to stun everyone with your vibrance. Get your crew out there and show the world what your
 passionate lot has got!</item>
-
-        <item>If you are a lover of dance and yet find it challenging to go solo on stage, find a partner or two, sync your mind and moves to your favourite tunes
-and grab this opportunity to showcase your treasure of talent, in the Dual-Trio dance event of Kuruksastra ‘19. Enchant us with your moves ,
-overcome your hitches and create an identity with your partner(s)!</item>
-
-        <item>Dance is music made visible to eyes. Have you got the flair to make this happen and dance the night out in parties? Here’s your chance to dance
-to some of the most famous tunes, on the spot, right out of your head and turn it into the viewer’s delight! Participate in the solo dance event of
-Kuruksastra ‘19, express yourself on stage as you would in your shower and spread the music to the world as a visual treat!</item>
-
-        <item>Dancers are said to be God’s own athletes, sweating out hard just to experience the unison between the rhythm of the heartbeat, music and the feet. Are you one of those
-crazy souls with a passionate crew? Then sweat out a bit more and show us your best routines. Set the stage and your heart alight with your most comfortable styles
-of dance. Battle it out on the Choreo Night, against some of the best dance crews, showing the world why your crew is the best combo of God’s most favorite athletes!</item>
     </string-array>
 
     <!--eastern dance rules list-->
@@ -415,6 +420,35 @@ music played on spot, putting their creativity and spontaneity to test</item>
 • Only one team per category is allowed from each college.
 • Powder, water, fire, sharp metal objects and other harmful props are not allowed.</item>
 
+
+
+    </string-array>
+
+
+    <!--western dance team event list -->
+    <string-array name="western_dance_list">
+        <item>Dual-Trio</item>
+        <item>Solo Dance</item>
+        <item>Choreo Night-Western Category</item>
+    </string-array>
+
+    <!-- western dance desc list-->
+    <string-array name="western_dance_desc_list">
+        <item>If you are a lover of dance and yet find it challenging to go solo on stage, find a partner or two, sync your mind and moves to your favourite tunes
+and grab this opportunity to showcase your treasure of talent, in the Dual-Trio dance event of Kuruksastra ‘19. Enchant us with your moves ,
+overcome your hitches and create an identity with your partner(s)!</item>
+
+        <item>Dance is music made visible to eyes. Have you got the flair to make this happen and dance the night out in parties? Here’s your chance to dance
+to some of the most famous tunes, on the spot, right out of your head and turn it into the viewer’s delight! Participate in the solo dance event of
+Kuruksastra ‘19, express yourself on stage as you would in your shower and spread the music to the world as a visual treat!</item>
+
+        <item>Dancers are said to be God’s own athletes, sweating out hard just to experience the unison between the rhythm of the heartbeat, music and the feet. Are you one of those
+crazy souls with a passionate crew? Then sweat out a bit more and show us your best routines. Set the stage and your heart alight with your most comfortable styles
+of dance. Battle it out on the Choreo Night, against some of the best dance crews, showing the world why your crew is the best combo of God’s most favorite athletes!</item>
+    </string-array>
+
+    <!-- western dance rules list-->
+    <string-array name="western_dance_rules_list">
         <item>Date: 24th March,2019\n
         • 2 (or) 3 participants in a team.\n
 • Time limit: 2 to 3 mins.\n
@@ -451,7 +485,6 @@ by the head of their institute and All team members should have their college ID
 • Fire, water and other properties that can damage the stage are strictly not allowed. No
 indecency during performance.\n
 • Copied routines will not be entertained and Judges decision is final.</item>
-
     </string-array>
 
 
@@ -658,131 +691,143 @@ submitted post the specified date will be disqualified.\n
     <!-- tamil sangam rules list-->
     <string-array name="tamil_sangam_rules_list">
 
-        <item>• தனி நபர ்பங்கே ற்கும் ப�ோடடி் .
-• எழுதும் கதை ச�ொ ந்தப் படை ப்பாக இருத்தல் அவசியம்.
-• கதை நயம், கற்பனை த ் திறன், தமிழ் ஆளுமை – இவற்றை ச ் சாரந் ்து ஒரே சுற்றாய் அமை ந்திருக்கும்.
-• சூழல்/தலைப்பு ப�ோட்டி நாளன்று வழங்கப்படும்.
-• நடுவரின் தீரப் ்பே இறுதியானது.</item>
+        <item>விதிமுறைகள் :
+    • தனிநபர் பேச்சுப்போட்டி.
+    • போட்டிக்கானத் தலைப்பு போட்டி நாளன்று தரப்படும்.
+    • முதல் சுற்று தனிப்பேச்சாகவும் இரண்டாம் சுற்று கருத்தரங்கு வடிவிலும் அமையும்.
+    • வன்மமும் ஈனதன்மையும் இல்லாதிருக்க வேண்டும்.
+    • பிறமொழி கலவாத எளிய தமிழ் நடை போதுமானது.
+    • நடுவரின் தீர்ப்பே இறுதியானது.</item>
 
-        <item>• அணியாகப் பங்கே ற்கும் தமிழ்ப் ப�ோட்டி.
-• அணிக்கு இருவர.்
-• தகுதிசசு் ற்று தமிழ் சாரந் ்த ப�ொ து வினாக்கள் க�ொ ண் ட எழுதது் சசு் ற்று.
-• இறுதிசசு் ற்று வினாடி வினா வடிவில் அமை யும்.
-• நடுவரின் தீரப் ்பே இறுதியானது.
-• அணியாகப் பங்கே ற்கும் தமிழ்ப் ப�ோட்டி.
-• அணிக்கு இருவர.்
-• தகுதிசசு் ற்று தமிழ் சாரந் ்த ப�ொ து வினாக்கள் க�ொ ண் ட எழுதது் சசு் ற்று.
-• இறுதிசசு் ற்று வினாடி வினா வடிவில் அமை யும்.
-• நடுவரின் தீரப் ்பே இறுதியானது.</item>
+        <item>விதிமுறைகள் :
+    • அணியாகப் பங்கேற்கும் தமிழ்ப் போட்டி.
+    • அணிக்கு இருவர்.
+    • தகுதிச்சுற்று தமிழ் சார்ந்த பொது வினாக்கள் கொண்ட எழுத்துச்சுற்று.
+    • இறுதிச்சுற்று வினாடி வினா வடிவில் அமையும்.
+    • நடுவரின் தீர்ப்பே இறுதியானது.</item>
 
-        <item>• தனி நபர ்பங்கே ற்கும் ப�ோடடி் .
-• எழுதும் கதை ச�ொ ந்தப் படை ப்பாக இருத்தல் அவசியம்.
-• கதை நயம், கற்பனை த ் திறன், தமிழ் ஆளுமை – இவற்றை ச ் சாரந் ்து ஒரே சுற்றாய் அமை ந்திருக்கும்.
-• சூழல்/தலைப்பு ப�ோட்டி நாளன்று வழங்கப்படும்.
-• நடுவரின் தீரப் ்பே இறுதியானது.</item>
+        <item> விதிமுறைகள் :
+    • தனி நபர் பங்கேற்கும் போட்டி.
+    • எழுதும் கதை சொந்தப் படைப்பாக இருத்தல் அவசியம்.
+    • கதை நயம், கற்பனைத் திறன், தமிழ் ஆளுமை – இவற்றைச் சார்ந்து ஒரே சுற்றாய் அமைந்திருக்கும்.
+    • சூழல்/தலைப்பு போட்டி நாளன்று வழங்கப்படும்.
+    • நடுவரின் தீர்ப்பே இறுதியானது.</item>
 
-        <item>• ப�ோட்டி நாளன்று தலைப்புகள் க�ொ டுக்கப்படும்.
-• படை ப்பின் தாக்கம், நடை , அமை ப்பு ஆகியவை மதிப்பிடப்படும்.
-• நடுவரக் ளின் முடிவே இறுதியானது.</item>
+        <item> விதிமுறைகள் :
+    • போட்டி நாளன்று தலைப்புகள் கொடுக்கப்படும்.
+    • படைப்பின் தாக்கம், நடை, அமைப்பு ஆகியவை மதிப்பிடப்படும்.
+    • நடுவர்களின் முடிவே இறுதியானது.</item>
 
-        <item>• அணிக்கு மூவர.்
-• தகுதிசசு் ற்றில் தே ரந் ்தெ டுக்கப்படும் அணிகள் மடடு் ம் இறுதி ப�ோடடி் யில் பங்கே ற்க அனுமதி.
-• பிறம�ொ ழி படங்கள் மற்றும் ம�ொ ழி மாற்றம் செ ய்த படங்களில் இருந்து கே ள்விகள் கே ட்கப்படமாட்டாது</item>
+        <item>விதிமுறைகள் :
+    • அணிக்கு மூவர்.
+    • தகுதிச்சுற்றில் தேர்ந்தெடுக்கப்படும் அணிகள் மட்டும் இறுதி போட்டியில் பங்கேற்க அனுமதி.
+    • பிறமொழி படங்கள் மற்றும் மொழி மாற்றம் செய்த படங்களில் இருந்து கேள்விகள் கேட்கப்படமாட்டாது.</item>
 
-        <item>• அணிக்கு மூவர.்
-• தகுதிசசு் ற்றில் தே ரந் ்தெ டுக்கப்படும் அணிகள் மடடு் ம் இறுதி ப�ோடடி் யில் பங்கே ற்க அனுமதி.
-• தமிழ் சினிமாவில் இடம்பெ ற்றப் பாடல்களில் இருந்து மட்டுமே கே ள்விகள் கே ட்கப்படும்.</item>
+        <item>விதிமுறைகள் :
+    • அணிக்கு மூவர்.
+    • தகுதிச்சுற்றில் தேர்ந்தெடுக்கப்படும் அணிகள் மட்டும் இறுதி போட்டியில் பங்கேற்க அனுமதி.
+    • தமிழ் சினிமாவில் இடம்பெற்றப் பாடல்களில் இருந்து மட்டுமே கேள்விகள் கேட்கப்படும்.</item>
 
-        <item>• அணிக்கு மூவர.்
-• தகுதி சுற்றில் தே ரந் ்தெ டுக்கப்படும் அணிகள் மடடு் மே இறுதிப் ப�ோடடி் யில் கலந்து க�ொ ள்ள அனுமதிக்கப்படுவாரக் ள்
-• நடிப்பவரக் ள் வாய் அசை தத் ல் கூடாது.
-• வாரத் தை் களை அரத் த் ம் இல்லா மல் பிரிதத் ல் கூடாது.
-• நடுவரின் தீரப் ்பே இறுதியானது</item>
+        <item>விதிமுறைகள் :
+    • அணிக்கு மூவர்.
+    • தகுதி சுற்றில் தேர்ந்தெடுக்கப்படும் அணிகள் மட்டுமே இறுதிப் போட்டியில் கலந்து கொள்ள அனுமதிக்கப்படுவார்கள்.
+    • நடிப்பவர்கள் வாய் அசைத்தல் கூடாது.
+    • வார்த்தைகளை அர்த்தம் இல்லாமல் பிரித்தல் கூடாது.
+    • நடுவரின் தீர்ப்பே இறுதியானது.</item>
 
-        <item>• அணிக்கு மூவர.்
-• தகுதிசசு் ற்றில் தே ரந் ்தெ டுக்கப்படும் அணிகளே இறுதிசசு் ற்றுக்கு அனுமதிக்கப்படுவாரக் ள் .
-• சினிமா,தமிழ்,ப�ொ து அறிவு,பேசசு் ததி் றன் அனை தது் ம் ச� ோதிக்கப்படும்.
-• நடுவரின் தீரப் ்பே இறுதியானது .</item>
+        <item>விதிமுறைகள் :
+    • அணிக்கு மூவர்.
+    • தகுதிச்சுற்றில் தேர்ந்தெடுக்கப்படும் அணிகளே இறுதிச்சுற்றுக்கு அனுமதிக்கப்படுவார்கள் .
+    • சினிமா,தமிழ்,பொது அறிவு,பேச்சுத்திறன் அனைத்தும் சோதிக்கப்படும்.
+    • நடுவரின் தீர்ப்பே இறுதியானது .</item>
 
-        <item>• அணிக்கு இருவர ்மடடு் ம்.
-• நகை சசு் வை யில் ஆபாசம் இருதத் ல் கூடாது.(No vulgarity.No
-profanity)
-• ப�ோட்டியின் சுற்றுகள்:\n
-        • பங்கே ற்பாளரின் விருப்பம் (Either Mimicry,Stand-up,Variety)
-• க�ொ டுக்கப்படும் அவகாசம்: 5 நிமிடங்கள்.
-• இரண் டாம் சுற்று
-• ஒலி மாற்று நகை சசு் வை (Video Spoof)\n
-        • ப�ோட்டியின் விரிவாக்கம்:\n
-        முதலில் தகுதிச ்சுற்று நடைபெ றும். அதில் பங்கே ற்பாளரக் ள் அவரக் ள் விருப்பததி் ற்கு ஏற்ப நகை சசு் வை த ் திறனை வெ ளிப்படுதத்
-வே ண் டும்(Either mimicry, stand-up, variety or video spoof). அதில் தகுதி பெ றுபவரக் ள் இறுதிச ்சுற்றில் பங்கே ற்கலா ம்.
-இறுதிச ்சுற்றின் இரண் டாவது சுற்றுக்கான ஒளிதது் ணுக்கு(video) ப�ோடடி் க்கு ஒரு நாள் முன் தரப்படும்.</item>
+        <item>விதிமுறைகள்:
+    • அணிக்கு இருவர் மட்டும்.
+    • நகைச்சுவையில் ஆபாசம் இருத்தல் கூடாது.(No vulgarity.No profanity)
+    • போட்டியின் சுற்றுகள்:
 
-        <item>• குழுவில் நடிப்பு, இசை மற்றும் மேடை அமை ப்பிற்கான உதவியாளரக் ள் உடப் ட ம�ொ தத் ம் 12 நபர ்வரை இருக்கலா ம்.
-• திரை யிசை அல்லா த பதிவுசெ ய்யப்பட்ட அல்லது வாத்திய இசையை ப் பயன்படுத்தலா ம்.
-• மேடை அமை ப்பிற்கான நே ரம் உட்பட ம�ொ த்தம் 25 நிமிடங்கள் மட்டுமே அளிக்கப்படும்.
-• அதிகமாக எடுத்துக�் கொள்ளப்படும் ஒவ�் வொரு நிமிடத்திற்கும் மதிப்பெ ண்கள் குறை க்கப்படும்.
-• குழுக்கள் தங்கள் நாடகத்தை விளம்பரப்படுத்த சுவர�ொ ட்டிகள் க�ொ ண் டுவரலா ம்.
-• நெ ருப்பு, தண்ணீர ்மற்றும் எவ்வகை திறவங்களை யும் பயன்படுதத் க்கூடாது.
-• தமிழல்லா த பிற ம�ொ ழிகள் 10% மேல ் உபய� ோகிக்கக் கூடாது.
-• வன்மமும், ஈனதத் ன்மை யும் முற்றிலுமாகத ் தவிரக் ்கப்பட வே ண் டும்.
-• தங்களின் கதை வசனத்தை (script) 12/03/2019 ஆம் தே திக்குள் ststamizhsangam@gmail.com என்ற மின்னஞ்சல் முகவரிக்கு
-அனுப்பவும்.
-• நடுவரக் ளின் தீரப் ்பே இறுதியானது.</item>
+முதல் சுற்று
 
-        <item>•கால அவகாசம்: 6-8 நிமிடங்கள்
-•தனி ம�ொ ழியாக இருக்கலா ம் அல்லது தனி நடிப்பாக இருக்கலா ம்.( Monologue or Monoact)
-•ஆபாச ம�ொ ழிய� ோ க�ொ சசை் ப் படுதது் ம்படியான ச�ொ ற்களைய� ோ பயன்படுதத் க் கூடாது.
-•தமிழை த ் தவிரத் து் பிற ம�ொ ழிகளை 10 % மேல ் உபய� ோகிக்காமல் இருக்கவே ண் டும்.
-•மேடை யிலிருந்து நீங்கள் உபய� ோகித்த ப�ொ ருட்களையெல ்லா ம் இறக்கிவிடவே ண் டும்.
-•பின்னணி இசைய� ோ இசை க்கருவிகள� ோ பயன் படுத்தக்கூடாது.
-•நெ ருப்பு, தண்ணீர ்மற்றும் எவ்வகை திறவங்களை யும் பயன்படுதத் க்கூடாது.
-•எவ்வகை இசை யும் தவிரக் ்கப்பட வே ண் டும்.
-•நடுவரக் ளின் தீரப் ்பே இறுதியானது.</item>
+பங்கேற்பாளரின் விருப்பம் (Either Mimicry,Stand-up,Variety)
+கொடுக்கப்படும் அவகாசம்:  5 நிமிடங்கள்.
 
-        <item>• உங்கள் நாடகம் 25 நிமிடங்களுக்குள் முடியுமாறு இருத்தல் வே ண் டும்(30 பக்கங்களுக்குள் எழுதுவது சிறந்தது).
-• அதிகபட்சமாக 10 கதாப்பாத்திரங்களை மட்டுமே கதை வசனம் க�ொ ண் டிருக்க வே ண் டும்.
-• ஆபாச ம�ொ ழிய� ோ க�ொ சசை் ப் படுதது் ம்படியான ச�ொ ற்களைய� ோ பயன்படுதத் க் கூடாது.
-• தமிழை த ் தவிரத் து் பிற ம�ொ ழிகளை ப் 10 % மேல ் உபய� ோகிக்கக் கூடாது.
-• உங்கள் கதை வசனத்தை ststamizhsangam@gmail.com என்ற மின்னஞ்சல் முகவரிக�் கோ அல்லது நே ரில� ோ 22/03/2019 அன்று
-க�ொ டுக்கலா ம்.
-• நடுவரின் தீரப் ்பே இறுதியானது</item>
+இரண்டாம் சுற்று
 
-        <item>•ஓர ்அணிக்கு 6 - 8 நபரக் ள் இருக்கலா ம்.
-•அணிக்கு 6-8 மணித்துளிகள் க�ொ டுக்கப்படும்.
-•இசை , பதிவு செ ய்யப்பட்டதாகவ� ோ வாத்திய இசை யாகவ� ோ இருக்கலா ம்.
-•அணியினர ்அனை வரும் ஒரே விதமான உடை மற்றும் முகசச் ாயததி் ல் இருக்க வே ண் டும்.
-•அணியின் முகசச் ாயல் முகம�ொ ழியின் மை யக்கருததை் வெ ளிப்படுதத் ா வண்ணம் அமை தல் வே ண் டும்.
-•அணியினர ்அனை வரும் கை யுறை களும் காலுறை களும் அணிந்திருக்க வே ண் டும்.
-•சிறப்புப் ப�ொ ருட்களை மேடை யில் பயன்படுத்த அனுமதி இல்லை.
-•விளக்கப் படங்கள் பயன்படுத்தக் கூடாது.
-•எவ்விதக் குரல் ஒலியை யும் பயன்படுத்த அனுமதி இல்லை.
-•அவை க்குப் ப�ொ ருந்தாத செ ய்கை கள் கடட் ாயமாகத ் தவிரக் ்கப்பட வே ண் டும்.
-நடுவரக் ளின் முடிவே இறுதியானது.</item>
+ஒலி மாற்று நகைச்சுவை (Video Spoof)
 
-        <item>• தனி நபர ்பங்கே ற்கும் ப�ோடடி் .
-• தகுதிசசு் ற்றுக்கு 2 நிமிடங்கள் வழங்கப்படும்.
-• இரு பகுதிகளாகத ் தகுதிசசு் ற்று அமை யும்.
-• முதல் பகுதியில் ப�ோடடி் யளரக் ள் தாம் தயார ்செ ய்த நாடகததை் நடிதது் க் காடட் வே ண் டும்.
-• இரண் டாம் பகுதி பற்றிய விவரம் நிகழ்விடத்தில் அறிவுறுத்தப்படும்.
-• தகுதிசசு் ற்றின் மூலம் ப�ோடடி் யாளரக் ள் தே ரவு் செ ய்யப்படுவாரக் ள்.
-• விளக்கப் படங்கள் பயன்படுத்தக்கூடாது.
-• குரல�ொ லி கலவாத இசையை ப் பயன்படுத்த மட்டுமே அனுமதி உண் டு.
-• சீரான உடை , முகசச் ாயம், கை யுறை , காலுறை அணிந்திருதத் ல் அவசியம்.
-• அவை க்குப் ப�ொ ருந்தாதச ் செ ய்கை கள் ஏற்றுக�் கொள்ளப்படமாடட் ா.
-• நடுவரின் தீரப் ்பே இறுதியானது.</item>
+போட்டியின் விரிவாக்கம்:
 
-        <item>தலை ப்பு- “இறை(ரை ) நீ ர்”\n
-        •ஒவ�் வொரு அணிக்கும் தலா 15 நிமிடங்கள் வழங்கப்படும்.
-•அணிக்கு குறை ந்தது 9 முதல் அதிகபடச் மாக 12 நபர ்வரை இருக்கலா ம்.
-•மின் இசை க்கருவிகள் அனுமதிக்கப்படமாட்டாது.
-•திரை ப்படப் பாடல் சாயலில் கூதது் ப்பாடல் இருப்பதை த ் தவிரக் ்கவும்.
-•கருததி் ன் தெ ளிவு, சமுதாயப் பிரசச் னை களுக்கானத ் தீரவு் , அணியின் ஒததி் யக்கம், தனிதத் ன்மை , குழுவினரின் பங்களிப்பு
-ப�ோன்றவற்றின் அடிப்படை யில் தீரப் ்பு அமை யும்.
-•அணியினர ்அனை வரும் ஒரே விதமான உடை யில் இருக்க வே ண் டும் - தேவை ப்படட் ால ், கதை ச�ொல ்பவர/் காடசி் யை வழி
-நடததி் ச ் செல ்பவர ்வே று உடை அணியலா ம்.
-•வன்மமும், ஈனதத் ன்மை யும் முற்றிலுமாகத ் தவிரக் ்கப்பட வே ண் டும்.
-•தண்ணீர ்மற்றும் நெ ருப்பு மேடை யில் பயன்படுதத் க் கூடாது.
-•நடுவரக் ளின் தீரப் ்பே இறுதியானது.</item>
+முதலில் தகுதிச் சுற்று நடைபெறும். அதில் பங்கேற்பாளர்கள் அவர்கள் விருப்பத்திற்கு ஏற்ப நகைச்சுவைத் திறனை வெளிப்படுத்த வேண்டும்(Either mimicry, stand-up, variety or video spoof). அதில் தகுதி பெறுபவர்கள் இறுதிச் சுற்றில் பங்கேற்கலாம்.
+
+இறுதிச் சுற்றின் இரண்டாவது சுற்றுக்கான ஒளித்துணுக்கு(video) போட்டிக்கு ஒரு நாள் முன் தரப்படும்.</item>
+
+        <item>விதிமுறைகள்:
+    • குழுவில் நடிப்பு, இசை மற்றும் மேடை அமைப்பிற்கான உதவியாளர்கள் உட்பட மொத்தம் 12 நபர் வரை இருக்கலாம்.
+    • திரையிசை அல்லாத பதிவுசெய்யப்பட்ட அல்லது வாத்திய இசையைப் பயன்படுத்தலாம்.
+    • மேடை அமைப்பிற்கான நேரம் உட்பட மொத்தம் 25 நிமிடங்கள் மட்டுமே அளிக்கப்படும்.
+    • அதிகமாக எடுத்துக்கொள்ளப்படும் ஒவ்வொரு நிமிடத்திற்கும் மதிப்பெண்கள் குறைக்கப்படும்.
+    • குழுக்கள் தங்கள் நாடகத்தை விளம்பரப்படுத்த சுவரொட்டிகள் கொண்டுவரலாம்.
+    • நெருப்பு, தண்ணீர் மற்றும் எவ்வகை திறவங்களையும் பயன்படுத்தக்கூடாது.
+    • தமிழல்லாத பிற மொழிகள் 10% மேல் உபயோகிக்கக் கூடாது.
+    • வன்மமும், ஈனத்தன்மையும் முற்றிலுமாகத் தவிர்க்கப்பட வேண்டும்.
+    • தங்களின்  கதைவசனத்தை (script) 12/03/2019 ஆம் தேதிக்குள்   ststamizhsangam@gmail.com என்ற மின்னஞ்சல் முகவரிக்கு அனுப்பவும்.
+    • நடுவர்களின் தீர்ப்பே இறுதியானது.</item>
+
+        <item>விதிமுறைகள்:
+    • கால அவகாசம்: 6-8 நிமிடங்கள்
+    • தனி மொழியாக இருக்கலாம் அல்லது தனி நடிப்பாக இருக்கலாம்.( Monologue or Monoact)
+    • ஆபாச மொழியோ கொச்சைப் படுத்தும்படியான சொற்களையோ பயன்படுத்தக் கூடாது.
+    • தமிழைத் தவிர்த்து பிற மொழிகளை 10 % மேல் உபயோகிக்காமல் இருக்கவேண்டும்.
+    • மேடையிலிருந்து  நீங்கள் உபயோகித்த பொருட்களையெல்லாம் இறக்கிவிடவேண்டும்.
+    • பின்னணி இசையோ இசைக்கருவிகளோ பயன் படுத்தக்கூடாது.
+    • நெருப்பு, தண்ணீர் மற்றும் எவ்வகை திறவங்களையும் பயன்படுத்தக்கூடாது.
+    • எவ்வகை இசையும் தவிர்க்கப்பட வேண்டும்.
+    • நடுவர்களின் தீர்ப்பே இறுதியானது.</item>
+
+        <item>விதிமுறைகள்:
+    • உங்கள் நாடகம் 25 நிமிடங்களுக்குள் முடியுமாறு இருத்தல் வேண்டும்(30 பக்கங்களுக்குள் எழுதுவது சிறந்தது).
+    • அதிகபட்சமாக 10 கதாப்பாத்திரங்களை மட்டுமே கதைவசனம் கொண்டிருக்க வேண்டும்.
+    • ஆபாச மொழியோ கொச்சைப் படுத்தும்படியான சொற்களையோ பயன்படுத்தக் கூடாது.
+    • தமிழைத் தவிர்த்து பிற மொழிகளைப் 10 % மேல் உபயோகிக்கக் கூடாது.
+    • உங்கள் கதைவசனத்தை ststamizhsangam@gmail.com  என்ற மின்னஞ்சல் முகவரிக்கோ அல்லது நேரிலோ 22/03/2019 அன்று கொடுக்கலாம்.
+    • நடுவரின் தீர்ப்பே இறுதியானது.</item>
+
+        <item>விதிமுறைகள் :
+    • ஓர் அணிக்கு 6 - 8 நபர்கள் இருக்கலாம்.
+    • அணிக்கு 6-8 மணித்துளிகள் கொடுக்கப்படும்.
+    • இசை, பதிவு செய்யப்பட்டதாகவோ வாத்திய இசையாகவோ இருக்கலாம்.
+    • அணியினர் அனைவரும் ஒரே விதமான உடை மற்றும் முகச்சாயத்தில் இருக்க வேண்டும்.
+    • அணியின் முகச்சாயல் முகமொழியின் மையக்கருத்தை வெளிப்படுத்தா வண்ணம் அமைதல் வேண்டும்.
+    • அணியினர் அனைவரும் கையுறைகளும் காலுறைகளும் அணிந்திருக்க வேண்டும்.
+    • சிறப்புப் பொருட்களை மேடையில் பயன்படுத்த அனுமதி இல்லை.
+    • விளக்கப் படங்கள் பயன்படுத்தக் கூடாது.
+    • எவ்விதக் குரல் ஒலியையும் பயன்படுத்த அனுமதி இல்லை.
+    • அவைக்குப் பொருந்தாத செய்கைகள் கட்டாயமாகத் தவிர்க்கப்பட வேண்டும்.
+    • நடுவர்களின் முடிவே இறுதியானது.</item>
+
+        <item>விதிமுறைகள்:
+    • தனி நபர் பங்கேற்கும் போட்டி.
+    • தகுதிச்சுற்றுக்கு 2 நிமிடங்கள் வழங்கப்படும்.
+    • இரு பகுதிகளாகத் தகுதிச்சுற்று அமையும்.
+    • முதல் பகுதியில் போட்டியளர்கள் தாம் தயார் செய்த நாடகத்தை நடித்துக் காட்ட வேண்டும்.
+    • இரண்டாம் பகுதி பற்றிய விவரம் நிகழ்விடத்தில் அறிவுறுத்தப்படும்.
+    • தகுதிச்சுற்றின் மூலம் போட்டியாளர்கள் தேர்வுசெய்யப்படுவார்கள்.
+    • விளக்கப் படங்கள் பயன்படுத்தக்கூடாது.
+    • குரலொலி கலவாத இசையைப் பயன்படுத்த மட்டுமே அனுமதி உண்டு.
+    • சீரான உடை, முகச்சாயம், கையுறை, காலுறை அணிந்திருத்தல் அவசியம்.
+    • அவைக்குப் பொருந்தாதச் செய்கைகள் ஏற்றுக்கொள்ளப்படமாட்டா.
+    • நடுவரின் தீர்ப்பே இறுதியானது.</item>
+
+        <item>விதிமுறைகள்:
+    • ஒவ்வொரு அணிக்கும் தலா 15 நிமிடங்கள் வழங்கப்படும்.
+    • அணிக்கு குறைந்தது 9 முதல் அதிகபட்சமாக 12 நபர் வரை இருக்கலாம்.
+    • மின் இசைக்கருவிகள் அனுமதிக்கப்படமாட்டாது.
+    • திரைப்படப் பாடல் சாயலில் கூத்துப்பாடல் இருப்பதைத் தவிர்க்கவும்.
+    • கருத்தின் தெளிவு, சமுதாயப் பிரச்சனைகளுக்கானத் தீர்வு, அணியின் ஒத்தியக்கம், தனித்தன்மை, குழுவினரின் பங்களிப்பு போன்றவற்றின் அடிப்படையில் தீர்ப்பு அமையும்.
+    • அணியினர் அனைவரும் ஒரே விதமான உடையில் இருக்க வேண்டும் - தேவைப்பட்டால், கதை சொல்பவர்/ காட்சியை வழி நடத்திச் செல்பவர் வேறு உடை அணியலாம்.
+    • வன்மமும், ஈனத்தன்மையும் முற்றிலுமாகத் தவிர்க்கப்பட வேண்டும்.
+    • தண்ணீர் மற்றும் நெருப்பு மேடையில் பயன்படுத்தக் கூடாது.
+    • நடுவர்களின் தீர்ப்பே இறுதியானது.</item>
     </string-array>
 
 
@@ -945,18 +990,5 @@ satisfied</item>
 
     </string>
 
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="kuruksastra_19">Kuruksastra\'19</string>
-    <string name="name">Name</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="ambassador_id">Ambassador ID</string>
-    <string name="college_name">College Name</string>
-    <string name="register">Register</string>
-    <string name="otp">OTP</string>
-    <string name="cancel">Cancel</string>
 
 </resources>

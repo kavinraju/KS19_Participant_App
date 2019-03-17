@@ -107,7 +107,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
 
         @SuppressLint("ResourceAsColor")
         public void bind(int position, NumberViewHolder holder) {
-//                icon_img = itemView.findViewById(R.id.imageView_profilePic_recyl);
+
             if(title.equals("android")) {
                 name.setText(android[position]);
                 posi.setText("APP DEVELOPER");
@@ -122,33 +122,10 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
             }
         }
 
-    };
+    }
 
-//        @Override
-//        public void onClick(View v) {
-//            int position = getAdapterPosition();
-//            Intent i = new Intent(context, EventRules.class);
-//            i.putExtra("pos", (int) position);
-//            Log.d(TAG, "onClick: id is="+ position);
-//            context.startActivity(i);
-//        }
+
 }
-
-//    private void loadImage(int id, ImageView imageView){
-//        RequestOptions options = new RequestOptions()
-//                .error(R.drawable.logo)
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .priority(Priority.HIGH);
-//
-//        Glide.with(context)
-//                .load(id)
-//                .apply(options)
-//                .into(imageView);
-//
-//        Animation a1 = AnimationUtils.loadAnimation(context, R.anim.slide_from_left_items);
-//        imageView.setAnimation(a1);
-//
-//    }
 
 
 
