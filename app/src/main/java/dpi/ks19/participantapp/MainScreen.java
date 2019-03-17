@@ -40,6 +40,10 @@ public class MainScreen extends AppCompatActivity {
         }
     }
 
+    public void proshowsclicked(View view) {
+        startActivity(new Intent(this, proshows.class));
+    }
+
     public void aboutusclicked(View view) {
         startActivity(new Intent(this, AboutActivity.class));
     }
