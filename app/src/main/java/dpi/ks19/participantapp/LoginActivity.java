@@ -1,5 +1,8 @@
 package dpi.ks19.participantapp;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -31,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btn_register_head)
     Button btn_register_head;
 
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +62,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        //check whether already logged in
+        //if yes direct to MainScreen else stay in current screen
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
+        if(sharedPreferences.getBoolean(getString(R.string.login_or_not),false)){
+            startActivity(new Intent(this, MainScreen.class));
+        }
     }
 
     @OnClick(R.id.btn_login_head)
@@ -76,13 +87,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setButtonBackground() {
         if(currentPage == 0){
-            btn_login_head.setBackground(getDrawable(R.drawable.btn_rect_round_register_selected));
-            btn_register_head.setBackground(getDrawable(R.drawable.btn_rect_round_login));
+            btn_login_head.setBackground(getDrawable(R.drawable.btn_rect_round_login_selected));
+            btn_register_head.setBackground(getDrawable(R.drawable.btn_rect_round_register));
             Log.d("setButtonBackground", "0");
         }else{
             if(currentPage == 1){
-                btn_login_head.setBackground(getDrawable(R.drawable.btn_rect_round_register));
-                btn_register_head.setBackground(getDrawable(R.drawable.btn_rect_round_login_selected));
+                btn_login_head.setBackground(getDrawable(R.drawable.btn_rect_round_login));
+                btn_register_head.setBackground(getDrawable(R.drawable.btn_rect_round_register_selected));
                 Log.d("setButtonBackground", "1");
             }
         }

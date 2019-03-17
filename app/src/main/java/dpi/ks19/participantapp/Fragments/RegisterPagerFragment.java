@@ -18,6 +18,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dpi.ks19.participantapp.Activities.CollegeListActivity;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.MainActivity;
+import dpi.ks19.participantapp.MainScreen;
 import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
@@ -92,10 +94,12 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
         if(isVerified){
             //OTP is verified proceed to user registration
             ApiHelper.getInstance(getActivity()).registerUser(et_register_name.getText().toString().trim(),
+                    et_register_password.getText().toString().trim(),
                     et__register_phoneNumber.getText().toString().trim(),
                     et_register_college_name.getText().toString().trim(),
                     et_register_ambassador_id.getText().toString().trim(),
-                    "TEST_VALUE");
+                    true);
+            startActivity(new Intent(getActivity(), MainScreen.class));
         }else{
             Snackbar.make(v, "Incorrect Otp", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();

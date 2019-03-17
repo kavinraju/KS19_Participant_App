@@ -6,6 +6,25 @@
     <string name="cookie_shared">COOKIE_SHARED_PREF</string>
     <string name="cookie_key">COOKIE_KEY</string>
 
+    <string name="shared_pref">SHARED_PREF</string>
+    <string name="login_or_not">LOGIN_OR_NOT</string>
+
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="kuruksastra_19">Kuruksastra\'19</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="ambassador_id">Ambassador ID</string>
+    <string name="college_name">College Name</string>
+    <string name="register">Register</string>
+    <string name="otp">OTP</string>
+    <string name="cancel">Cancel</string>
+
+
     <!--clusters-->
     <string-array name="cluster_list">
         <item>FlagShip Event</item>
@@ -14,6 +33,7 @@
         <item>English Lits</item>
         <item>Hindi Lits</item>
         <item>SASTRA Eastern Dance Team</item>
+        <item>SASTRA Western Dance Team</item>
         <item>Telugu Lits</item>
         <item>SASTRA FotoHub</item>
         <item>சாஸ்த்ரா தமிழ்ச் சங்கம்</item>
@@ -363,9 +383,6 @@ against the writings of the same category.\n
     <string-array name="eastern_dance_list">
         <item>Nrithya Madhuryam- Classical Solo</item>
         <item>Choreo Night-Eastern Category(Theme/Non-Theme)</item>
-        <item>Dual-Trio</item>
-        <item>Solo Dance</item>
-        <item>Choreo Night</item>
     </string-array>
 
     <!--eastern dance desc list-->
@@ -378,18 +395,6 @@ classical event.</item>
         <item>Dance is a platform of expression. Powerful statements, intriguing stories or just graceful, rhythm catching beats can be what you perform on
 this arena. Get your feet tapping and music playing to stun everyone with your vibrance. Get your crew out there and show the world what your
 passionate lot has got!</item>
-
-        <item>If you are a lover of dance and yet find it challenging to go solo on stage, find a partner or two, sync your mind and moves to your favourite tunes
-and grab this opportunity to showcase your treasure of talent, in the Dual-Trio dance event of Kuruksastra ‘19. Enchant us with your moves ,
-overcome your hitches and create an identity with your partner(s)!</item>
-
-        <item>Dance is music made visible to eyes. Have you got the flair to make this happen and dance the night out in parties? Here’s your chance to dance
-to some of the most famous tunes, on the spot, right out of your head and turn it into the viewer’s delight! Participate in the solo dance event of
-Kuruksastra ‘19, express yourself on stage as you would in your shower and spread the music to the world as a visual treat!</item>
-
-        <item>Dancers are said to be God’s own athletes, sweating out hard just to experience the unison between the rhythm of the heartbeat, music and the feet. Are you one of those
-crazy souls with a passionate crew? Then sweat out a bit more and show us your best routines. Set the stage and your heart alight with your most comfortable styles
-of dance. Battle it out on the Choreo Night, against some of the best dance crews, showing the world why your crew is the best combo of God’s most favorite athletes!</item>
     </string-array>
 
     <!--eastern dance rules list-->
@@ -415,6 +420,35 @@ music played on spot, putting their creativity and spontaneity to test</item>
 • Only one team per category is allowed from each college.
 • Powder, water, fire, sharp metal objects and other harmful props are not allowed.</item>
 
+
+
+    </string-array>
+
+
+    <!--western dance team event list -->
+    <string-array name="western_dance_list">
+        <item>Dual-Trio</item>
+        <item>Solo Dance</item>
+        <item>Choreo Night-Western Category</item>
+    </string-array>
+
+    <!-- western dance desc list-->
+    <string-array name="western_dance_desc_list">
+        <item>If you are a lover of dance and yet find it challenging to go solo on stage, find a partner or two, sync your mind and moves to your favourite tunes
+and grab this opportunity to showcase your treasure of talent, in the Dual-Trio dance event of Kuruksastra ‘19. Enchant us with your moves ,
+overcome your hitches and create an identity with your partner(s)!</item>
+
+        <item>Dance is music made visible to eyes. Have you got the flair to make this happen and dance the night out in parties? Here’s your chance to dance
+to some of the most famous tunes, on the spot, right out of your head and turn it into the viewer’s delight! Participate in the solo dance event of
+Kuruksastra ‘19, express yourself on stage as you would in your shower and spread the music to the world as a visual treat!</item>
+
+        <item>Dancers are said to be God’s own athletes, sweating out hard just to experience the unison between the rhythm of the heartbeat, music and the feet. Are you one of those
+crazy souls with a passionate crew? Then sweat out a bit more and show us your best routines. Set the stage and your heart alight with your most comfortable styles
+of dance. Battle it out on the Choreo Night, against some of the best dance crews, showing the world why your crew is the best combo of God’s most favorite athletes!</item>
+    </string-array>
+
+    <!-- western dance rules list-->
+    <string-array name="western_dance_rules_list">
         <item>Date: 24th March,2019\n
         • 2 (or) 3 participants in a team.\n
 • Time limit: 2 to 3 mins.\n
@@ -451,7 +485,6 @@ by the head of their institute and All team members should have their college ID
 • Fire, water and other properties that can damage the stage are strictly not allowed. No
 indecency during performance.\n
 • Copied routines will not be entertained and Judges decision is final.</item>
-
     </string-array>
 
 
@@ -926,18 +959,5 @@ heading or mail body.\n
 • Winner is picked based on the creativity,originality and how much the given theme is
 satisfied</item>
     </string-array>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="kuruksastra_19">Kuruksastra\'19</string>
-    <string name="name">Name</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="ambassador_id">Ambassador ID</string>
-    <string name="college_name">College Name</string>
-    <string name="register">Register</string>
-    <string name="otp">OTP</string>
-    <string name="cancel">Cancel</string>
 
 </resources>

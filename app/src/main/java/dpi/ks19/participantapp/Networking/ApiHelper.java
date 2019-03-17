@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
@@ -20,14 +21,20 @@ import org.json.JSONObject;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
+import java.net.CookiePolicy;
+import java.net.CookieStore;
+import java.net.HttpCookie;
+import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
+import dpi.ks19.participantapp.CallbackInterface.LoginCallback;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.R;
 
-public class ApiHelper {
+public class ApiHelper{
 
     Context ctx;
     private static ApiHelper instance;
@@ -38,8 +45,10 @@ public class ApiHelper {
         CookieManager manager = new CookieManager();
         CookieHandler.setDefault(manager);
         this.ctx = ctx;
+        //baseUrl = "http://www.kuruksastra.in/participants/";
         baseUrl = "https://protocolfest.co.in/ks/participants/";
         sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.cookie_shared), Context.MODE_PRIVATE);
+
     }
 
     public static ApiHelper getInstance(Context ctx){
@@ -68,12 +77,12 @@ public class ApiHelper {
             public void onErrorResponse(VolleyError error) {
                 Log.d("GENERATE_JSON_ERROR",error.toString());
             }
-        }){//save the cookie session locally
+        })/*{//save the cookie session locally
             //clear when the user logs out
             @Override
             protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                 Map<String,String> responseHeader = response.headers;
-                String cookies = responseHeader.get("Set-Cookie");
+                String cookies = responseHeader.get("set-cookie");
                 Log.d("SET_COOKIE",cookies);
                 //saving the cookie
                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -82,7 +91,7 @@ public class ApiHelper {
                 editor.commit();
                 return super.parseNetworkResponse(response);
             }
-        };
+        }*/;
 
         jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
@@ -105,7 +114,7 @@ public class ApiHelper {
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST,URL,json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("JSON_RESPONSE", response.toString());
+                Log.d("VERIFY_JSON_RESPONSE", response.toString());
                 //check whether otp is verified
                 try{
                     callback.isOTPVerified(response.getBoolean("valid"));
@@ -115,7 +124,7 @@ public class ApiHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("JSON ERROR",error.toString());
+                Log.d("VERIFY_JSON ERROR",error.toString());
             }
         })/*{
             @Override
@@ -136,17 +145,27 @@ public class ApiHelper {
     }
 
 
-    public void registerUser(String name, String phone, String college, String aid, String accomadation){
+    public void registerUser(String name, String password, String phone, String college, String aid, boolean accomadation){
 
-        HashMap<String, String>params = new HashMap<>();
-        params.put("name",name);
-        params.put("phone",phone);
-        params.put("college",college);
-        params.put("accomadation",accomadation);
+        String newAid = aid.replace("KSCA19","");
+        JSONObject params = new JSONObject();
+        try{
+
+            params.put("name",name);
+            params.put("password",password);
+            Log.d("NEW_AID",newAid);
+            params.put("aid",newAid);//format KSCA19+ three digit
+            params.put("phone",phone);
+            params.put("college",college);
+            params.put("hostel",accomadation);
+        }catch (Exception e){
+            Log.d("AID_ERROR",newAid);
+        }
+
 
         String url = baseUrl+"addParticipant.php";
 
-        JsonObjectRequest registerRequest = new JsonObjectRequest(url, new JSONObject(params), new Response.Listener<JSONObject>() {
+        JsonObjectRequest registerRequest = new JsonObjectRequest(url, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("REGISTER_USER",response.toString());
@@ -156,20 +175,76 @@ public class ApiHelper {
             public void onErrorResponse(VolleyError error) {
                 Log.d("REGISTER_USER_ERROR",error.toString());
             }
-        }){
+        })/*{
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String,String>headers = new HashMap<>();
                 String cookie = sharedPreferences.getString(ctx.getString(R.string.cookie_key),"NOT_FOUND");
-                headers.put("cookie",cookie);
+                headers.put("Cookie",cookie);
                 return headers;
             }
-        };
+        }*/;
         registerRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         CustomRequestQueue.getInstance(ctx).setRequest(registerRequest);
+    }
+
+
+    public void loginUser(String email){
+        String URL = baseUrl+"Mlogin.php";
+        JSONObject params= new JSONObject();
+
+        try{
+            params.put("email",email);
+        }catch (Exception e){}
+
+        JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("LOGIN_RESPONSE",response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("LOGIN_ERROR",error.toString());
+            }
+        });
+
+        loginRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        CustomRequestQueue.getInstance(ctx).setRequest(loginRequest);
+    }
+
+
+    public void loginVerify(String otp, final OTPInterface callback){
+        String URL = baseUrl+"MverifyOTP.php";
+
+        JSONObject params= new JSONObject();
+        try{
+            params.put("otp",otp);
+        }catch (Exception e){}
+
+        JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("LOGIN_VERIFY_RESPONSE",response.toString());
+                try{
+                    callback.isOTPVerified(response.getBoolean("valid"));
+                }catch(JSONException e){}
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("LOGIN_VERIFY_ERROR",error.toString());
+            }
+        });
+
+        CustomRequestQueue.getInstance(ctx).setRequest(loginRequest);
     }
 
 
@@ -179,16 +254,17 @@ public class ApiHelper {
         JsonArrayRequest collegeListRequest = new JsonArrayRequest(url,  new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.d("JSON_RESPONSE", response.toString());
+                Log.d("CLG_JSON_RESPONSE", response.toString());
                 callback.getCollegeList(response);
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("JSON ERROR",error.toString());
+                Log.d("CLG_JSON_ERROR",error.toString());
             }
         });
         CustomRequestQueue.getInstance(ctx).setRequest(collegeListRequest);
     }
+
 }
