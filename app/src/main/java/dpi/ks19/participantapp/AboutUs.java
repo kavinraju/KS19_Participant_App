@@ -27,14 +27,30 @@ public class AboutUs extends AppCompatActivity {
         imageView_app_dev = findViewById(R.id.imageView_app_dev);
         imageView_web_dev = findViewById(R.id.imageView_web_dev);
 
-//        imageView_graphic_designer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getApplicationContext() , AboutUs.class);
-//                i.putExtra("title" ,"GRAPHIC DESIGNER");
-//                startActivity(i);
-//            }
-//        });
+        imageView_app_dev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext() , AboutUsApp.class);
+                i.putExtra("title" ,"APP DEVELOPER");
+                startActivity(i);
+            }
+        });
+        imageView_web_dev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext() , AboutUsApp.class);
+                i.putExtra("title" ,"WEB DEVELOPER");
+                startActivity(i);
+            }
+        });
+        imageView_graphic_designer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext() , AboutUsApp.class);
+                i.putExtra("title" ,"GRAPHIC DESIGNER");
+                startActivity(i);
+            }
+        });
     }
 
 }

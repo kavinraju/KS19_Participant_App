@@ -18,4 +18,8 @@ public class MainScreen extends AppCompatActivity {
     public void eventsclicked(View v){
         startActivity(new Intent(this, ClusterCardsActivity.class));
     }
+
+    public void aboutusclicked(View view) {
+        startActivity(new Intent(this, AboutActivity.class));
+    }
 }

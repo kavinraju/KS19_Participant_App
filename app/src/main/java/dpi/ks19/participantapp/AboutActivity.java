@@ -2,15 +2,11 @@ package dpi.ks19.participantapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-import dpi.ks19.participantapp.Activities.ClusterCardsActivity;
+import static dpi.ks19.participantapp.R.id.about_uphar;
 
 public class AboutActivity extends AppCompatActivity {
     @Override
@@ -22,8 +18,8 @@ public class AboutActivity extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
 
         ImageButton sastra = findViewById(R.id.about_sastra);
-        ImageButton ks = findViewById(R.id.about_ks);
-        ImageButton uphar = findViewById(R.id.about_uphar);
+        ImageButton ks = findViewById(R.id.about_kuruksastra);
+        ImageButton uphar = findViewById(about_uphar);
         ImageButton us = findViewById(R.id.about_us);
 
         ;
@@ -33,6 +29,8 @@ public class AboutActivity extends AppCompatActivity {
                 Intent i = new Intent(getBaseContext(), AboutKS.class);
                 i.putExtra("heading", "KURUKSASTRA");
 //                i.putExtra("content",getText(R.string.about_ks));
+//                ActivityOptionsCompat options = ActivityOptionsCompat.
+//                        makeSceneTransitionAnimation(this, (View)ivProfile, "profile");
                 getBaseContext().startActivity(i);
 
             }
@@ -43,6 +41,8 @@ public class AboutActivity extends AppCompatActivity {
                 Intent i = new Intent(getBaseContext(), AboutKS.class);
                 i.putExtra("heading", "SASTRA");
 //                i.putExtra("content",getText(R.string.about_sastra));
+//                ActivityOptionsCompat options = ActivityOptionsCompat.
+//                        makeSceneTransitionAnimation(this, v, "profile");
                 getBaseContext().startActivity(i);
             }
         });
@@ -52,6 +52,8 @@ public class AboutActivity extends AppCompatActivity {
                 Intent i = new Intent(getBaseContext(), AboutKS.class);
                 i.putExtra("heading", "UPHAAR");
 //                i.putExtra("content",getText(R.string.about_ks));
+//                ActivityOptionsCompat options = ActivityOptionsCompat.
+//                        makeSceneTransitionAnimation(this, v, "profile");
                 getBaseContext().startActivity(i);
 
             }
@@ -61,8 +63,8 @@ public class AboutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), AboutUs.class);
 //                i.putExtra("content",getText(R.string.about_ks));
+                final View androidRobotView = findViewById(R.id.about_us);
                 getBaseContext().startActivity(i);
-
             }
         });
     }
