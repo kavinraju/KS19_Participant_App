@@ -2,6 +2,10 @@
     <string name="app_name">KS19 Participant App</string>
     <string name="action_settings">Settings</string>
 
+
+    <string name="cookie_shared">COOKIE_SHARED_PREF</string>
+    <string name="cookie_key">COOKIE_KEY</string>
+
     <!--clusters-->
     <string-array name="cluster_list">
         <item>FlagShip Event</item>
@@ -809,7 +813,7 @@ THIS GLORIOUS TITLE.</item>
 IN OUR EVENT TO CELEBRATE THE ENCHANTING RENDITIONS IN THIS RICH CULTURAL HERITAGE. LET’S
 COME TOGETHER IN THE SPIRIT OF MUSIC!</item>
 
-        <item>DO YOU THINK THAT YOU ARE THE NEXT ADELE, CHRIS MARTIN, RIHANNA OR JOHN MAYER?
+        <item>DO YOU THINK THAT YOU ARE THE NEXT ADELE, CHRIS MARTIN, RIHANNA OR JOHN MAyER?
 DO YOU WANT TO BREAK AWAY FROM THE CROWD AND GO SOLO? LOOK NO FURTHER! THIS IS YOUR
 TICKET TO TAKE US ACROSS THE GLOBE AND ENTHRAL US WITH THE MAGIC OF YOUR VOICE.</item>
 
@@ -943,5 +947,19 @@ satisfied</item>
         If foregoing a burger or cold coffee can bring a smile on a thousand faces, is it not worth it?<br/><br/> As they say, children are our future, let us be a small ray of hope in the beam of light that they need to establish a bright tomorrow. Join KS Upahaar!!
 
     </string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="kuruksastra_19">Kuruksastra\'19</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="ambassador_id">Ambassador ID</string>
+    <string name="college_name">College Name</string>
+    <string name="register">Register</string>
+    <string name="otp">OTP</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

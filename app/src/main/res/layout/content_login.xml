@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/red_bk"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".LoginActivity"
+    tools:showIn="@layout/activity_login">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_vertical_0.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_horizontal_0.2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35"/>
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gl_horizontal_0.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"/>
+
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mandala_1"
+
+        android:visibility="visible"
+        android:scaleType="fitCenter"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/gl_horizontal_0.5"/>
+
+    <Button
+        android:id="@+id/btn_login_head"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_rect_round_register"
+
+        android:text="@string/login"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="24sp"
+        android:onClick="onClickLoginHead"
+
+        android:layout_marginStart="@dimen/margin_16dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/gl_vertical_0.5"
+        app:layout_constraintTop_toTopOf="@id/gl_horizontal_0.2"
+        app:layout_constraintBottom_toBottomOf="@id/gl_horizontal_0.2"/>
+
+    <Button
+        android:id="@+id/btn_register_head"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_rect_round_login"
+
+        android:text="@string/register"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="24sp"
+        android:onClick="onClickRegisterHead"
+
+        android:layout_marginEnd="@dimen/margin_16dp"
+
+        app:layout_constraintStart_toStartOf="@id/gl_vertical_0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gl_horizontal_0.2"
+        app:layout_constraintBottom_toBottomOf="@id/gl_horizontal_0.2"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#0000"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_register_head" />
+
+</android.support.constraint.ConstraintLayout>
