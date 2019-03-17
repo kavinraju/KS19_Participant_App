@@ -31,8 +31,12 @@ public class AboutUsApp extends AppCompatActivity {
 
         ImageView ks = findViewById(R.id.imageView);
         TextView heading = findViewById(R.id.heading);
+
         //commented because 'content' is not use and has duplicate id
         //TextView content = findViewById(R.id.content);
+
+        TextView content = findViewById(R.id.content);
+
         heading.setText(this.heading);
 
         NameList = (RecyclerView) findViewById(R.id.content);
