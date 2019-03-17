@@ -15,13 +15,11 @@ import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import dpi.ks19.participantapp.CallbackInterface.LoginCallback;
-import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.Activities.ClusterCardsActivity;
 import dpi.ks19.participantapp.MainScreen;
-import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
-public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCustomDialog.CustomDialogInterface{
+public class LoginPagerFragment extends Fragment {
 
     @BindView(R.id.et_login_email)
     EditText et_login_email;
@@ -30,7 +28,6 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
     @BindView(R.id.btn_login)
     Button btn_login;
 
-    View view;
     public LoginPagerFragment() {
     }
 
@@ -43,7 +40,7 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_login,container, false);
+        View view = view = inflater.inflate(R.layout.frag_login,container, false);
         ButterKnife.bind(this,view);
         return view;
 
@@ -52,35 +49,21 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
     @OnClick(R.id.btn_login)
     public void onClickLogin(View  view){
         startActivity(new Intent(getActivity(), MainScreen.class));
-
-        if (et_login_email.getText().toString().isEmpty()){
-            Snackbar.make(view, "Both the fields are required", Snackbar.LENGTH_SHORT)
+        if (et_login_email.getText().toString().isEmpty() || et_login_password.getText().toString().isEmpty()){
+            Snackbar.make(view, "Both the fields are required", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }else {
-            ApiHelper.getInstance(getActivity()).loginUser(et_login_email.getText().toString());
-            showOTPDialog();
+            //Call the end point here
         }
     }
 
-    private void showOTPDialog(){
-        OtpCustomDialog customDialog = new OtpCustomDialog();
-        customDialog.setCancelable(false);
-        customDialog.setTargetFragment(this,0);
-        customDialog.show(getFragmentManager(),"CustomDialog");
+    @OnClick(R.id.guest)
+    public void onClickGuest(View  view){
+
+        Boolean value=true;
+        Intent i = new Intent(getActivity(), MainScreen.class);
+        i.putExtra("key",value);
+        startActivity(i);
     }
 
-    @Override
-    public void isOTPVerified(boolean isVerified) {
-        if(isVerified){
-            Intent intent = new Intent(getActivity(), MainScreen.class);
-            startActivity(intent);
-        }
-    }
-
-    @Override
-    public void getOTP(String otp) {
-        if(otp != null){
-            ApiHelper.getInstance(getActivity()).loginVerify(otp,this);
-        }
-    }
 }
