@@ -20,18 +20,16 @@ public class AboutKS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         heading=getIntent().getStringExtra("heading");
-//        content=getIntent().getStringExtra("content");
+
 
         setContentView(R.layout.activity_about_ks);
-//        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         ImageView ks = findViewById(R.id.imageView);
         TextView heading = findViewById(R.id.heading);
         TextView content = findViewById(R.id.content);
 
         heading.setText(this.heading);
-//        content.setText(this.content);
+
         if(this.heading.equals("SASTRA")) {
             ks.setImageDrawable(getDrawable(R.drawable.sastra_circle));
             content.setText(getText(R.string.about_sastra));

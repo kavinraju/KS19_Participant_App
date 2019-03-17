@@ -14,8 +14,6 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-//        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         ImageButton sastra = findViewById(R.id.about_sastra);
         ImageButton ks = findViewById(R.id.about_kuruksastra);
@@ -28,10 +26,7 @@ public class AboutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), AboutKS.class);
                 i.putExtra("heading", "KURUKSASTRA");
-//                i.putExtra("content",getText(R.string.about_ks));
-//                ActivityOptionsCompat options = ActivityOptionsCompat.
-//                        makeSceneTransitionAnimation(this, (View)ivProfile, "profile");
-                getBaseContext().startActivity(i);
+                startActivity(i);
 
             }
         });
@@ -40,10 +35,8 @@ public class AboutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), AboutKS.class);
                 i.putExtra("heading", "SASTRA");
-//                i.putExtra("content",getText(R.string.about_sastra));
-//                ActivityOptionsCompat options = ActivityOptionsCompat.
-//                        makeSceneTransitionAnimation(this, v, "profile");
-                getBaseContext().startActivity(i);
+                startActivity(i);
+
             }
         });
         uphar.setOnClickListener(new View.OnClickListener() {
@@ -51,10 +44,7 @@ public class AboutActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), AboutKS.class);
                 i.putExtra("heading", "UPHAAR");
-//                i.putExtra("content",getText(R.string.about_ks));
-//                ActivityOptionsCompat options = ActivityOptionsCompat.
-//                        makeSceneTransitionAnimation(this, v, "profile");
-                getBaseContext().startActivity(i);
+                startActivity(i);
 
             }
         });
@@ -62,9 +52,7 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), AboutUs.class);
-//                i.putExtra("content",getText(R.string.about_ks));
-                final View androidRobotView = findViewById(R.id.about_us);
-                getBaseContext().startActivity(i);
+                startActivity(i);
             }
         });
     }
