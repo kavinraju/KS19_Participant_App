@@ -57,4 +57,13 @@ public class LoginPagerFragment extends Fragment {
         }
     }
 
+    @OnClick(R.id.guest)
+    public void onClickGuest(View  view){
+
+        Boolean value=true;
+        Intent i = new Intent(getActivity(), MainScreen.class);
+        i.putExtra("key",value);
+        startActivity(i);
+    }
+
 }
