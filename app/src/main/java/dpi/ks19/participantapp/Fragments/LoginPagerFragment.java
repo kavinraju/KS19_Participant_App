@@ -51,8 +51,8 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
 
     @OnClick(R.id.btn_login)
     public void onClickLogin(View  view){
-        
-        if (et_login_email.getText().toString().isEmpty() || et_login_password.getText().toString().isEmpty()){
+
+        if (et_login_email.getText().toString().isEmpty()){
             Snackbar.make(view, "Both the fields are required", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }else {

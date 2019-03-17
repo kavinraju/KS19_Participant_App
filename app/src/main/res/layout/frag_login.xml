@@ -117,6 +117,7 @@
                     android:layout_marginTop="@dimen/margin_16dp"
                     android:baselineAligned="true"
                     android:hint="@string/password"
+                    android:visibility="gone"
                     android:fontFamily="@font/sniglet_regular"
                     android:textColorHint="@android:color/white"
                     android:backgroundTint="@android:color/white"
@@ -132,7 +133,7 @@
                         android:fontFamily="@font/sniglet_regular"
                         android:inputType="textPassword"
                         android:textColor="@android:color/white"
-                        android:backgroundTint="@android:color/white"/>
+                        android:backgroundTint="@android:color/white" />
 
                 </android.support.design.widget.TextInputLayout>
 

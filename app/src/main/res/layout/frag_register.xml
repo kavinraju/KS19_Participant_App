@@ -148,6 +148,7 @@
                 android:backgroundTint="@android:color/white"
                 android:fontFamily="@font/sniglet_regular"
                 android:hint="@string/password"
+                android:visibility="gone"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
