@@ -37,6 +37,19 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        //check whether already logged in
+        //if yes direct to MainScreen else stay in current screen
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
+        if(sharedPreferences.getBoolean(getString(R.string.login_or_not),false)){
+            Intent intent = new Intent(this, MainScreen.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -62,13 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-        //check whether already logged in
-        //if yes direct to MainScreen else stay in current screen
-        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
-        if(sharedPreferences.getBoolean(getString(R.string.login_or_not),false)){
-            startActivity(new Intent(this, MainScreen.class));
-        }
+        
     }
 
     @OnClick(R.id.btn_login_head)

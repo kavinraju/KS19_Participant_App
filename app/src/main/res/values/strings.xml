@@ -8,12 +8,14 @@
 
     <string name="shared_pref">SHARED_PREF</string>
     <string name="login_or_not">LOGIN_OR_NOT</string>
-
+    <string name="login_register_action">FROM_LOGIN_OR_REGISTER</string>
+    <string name="is_qr_saved">IS_QR_SAVED</string>
 
     <string name="title_activity_login">LoginActivity</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="logout">Log out</string>
     <string name="kuruksastra_19">Kuruksastra\'19</string>
     <string name="name">Name</string>
     <string name="phone_number">Phone Number</string>

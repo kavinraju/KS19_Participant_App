@@ -75,7 +75,9 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
     @Override
     public void isOTPVerified(boolean isVerified) {
         if(isVerified){
-            startActivity(new Intent(getActivity(), MainScreen.class));
+            Intent intent = new Intent(getActivity(), MainScreen.class);
+            intent.putExtra(getString(R.string.login_register_action),true);
+            startActivity(intent);
         }else{
             Snackbar.make(view, "Incorrect otp", Snackbar.LENGTH_SHORT);
         }
@@ -88,11 +90,9 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
 
     @OnClick(R.id.guest)
     public void onClickGuest(View  view){
-
-        Boolean value=true;
-        Intent i = new Intent(getActivity(), MainScreen.class);
-        i.putExtra("key",value);
-        startActivity(i);
+        Intent intent = new Intent(getActivity(), MainScreen.class);
+        intent.putExtra(getString(R.string.login_register_action),false);
+        startActivity(intent);
     }
 
 }

@@ -8,7 +8,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -18,7 +17,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dpi.ks19.participantapp.Activities.CollegeListActivity;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
-import dpi.ks19.participantapp.MainActivity;
 import dpi.ks19.participantapp.MainScreen;
 import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
@@ -66,7 +64,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     public void onClickRegister(View  view){
 
         if (et_register_name.getText().toString().isEmpty() || et__register_phoneNumber.getText().toString().isEmpty() ||
-        et_register_email.getText().toString().isEmpty() || et_register_password.getText().toString().isEmpty() ||
+        et_register_email.getText().toString().isEmpty() ||
         et_register_college_name.getText().toString().isEmpty()){
 
             Snackbar.make(view, "All the fields are required", Snackbar.LENGTH_LONG)
@@ -99,7 +97,9 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
                     et_register_college_name.getText().toString().trim(),
                     et_register_ambassador_id.getText().toString().trim(),
                     true);
-            startActivity(new Intent(getActivity(), MainScreen.class));
+            Intent intent = new Intent(getActivity(), MainScreen.class);
+            intent.putExtra(getString(R.string.login_register_action),true);
+            startActivity(intent);
         }else{
             Snackbar.make(v, "Incorrect Otp", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();

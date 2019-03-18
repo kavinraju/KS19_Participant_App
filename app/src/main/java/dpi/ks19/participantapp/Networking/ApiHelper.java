@@ -2,7 +2,10 @@ package dpi.ks19.participantapp.Networking;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.util.Base64;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -10,6 +13,7 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonRequest;
@@ -32,6 +36,8 @@ import java.util.Map;
 import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
 import dpi.ks19.participantapp.CallbackInterface.LoginCallback;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.CallbackInterface.QrResponse;
+import dpi.ks19.participantapp.CallbackInterface.RegisterInterface;
 import dpi.ks19.participantapp.R;
 
 public class ApiHelper{
@@ -41,6 +47,7 @@ public class ApiHelper{
     SharedPreferences sharedPreferences;
 
     String baseUrl;
+
     public ApiHelper(Context ctx){
         CookieManager manager = new CookieManager();
         CookieHandler.setDefault(manager);
@@ -77,21 +84,7 @@ public class ApiHelper{
             public void onErrorResponse(VolleyError error) {
                 Log.d("GENERATE_JSON_ERROR",error.toString());
             }
-        })/*{//save the cookie session locally
-            //clear when the user logs out
-            @Override
-            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-                Map<String,String> responseHeader = response.headers;
-                String cookies = responseHeader.get("set-cookie");
-                Log.d("SET_COOKIE",cookies);
-                //saving the cookie
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(ctx.getString(R.string.cookie_key),cookies);
-                editor.apply();
-                editor.commit();
-                return super.parseNetworkResponse(response);
-            }
-        }*/;
+        });
 
         jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
@@ -154,7 +147,7 @@ public class ApiHelper{
             params.put("name",name);
             params.put("password",password);
             Log.d("NEW_AID",newAid);
-            params.put("aid",newAid);//format KSCA19+ three digit
+            params.put("aid",newAid);//format KSCA19+ three digit // default zero
             params.put("phone",phone);
             params.put("college",college);
             params.put("hostel",accomadation);
@@ -162,28 +155,22 @@ public class ApiHelper{
             Log.d("AID_ERROR",newAid);
         }
 
-
         String url = baseUrl+"addParticipant.php";
 
         JsonObjectRequest registerRequest = new JsonObjectRequest(url, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("REGISTER_USER",response.toString());
+                //callback.registerStatus(true);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("REGISTER_USER_ERROR",error.toString());
+                //callback.registerStatus(false);
             }
-        })/*{
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String,String>headers = new HashMap<>();
-                String cookie = sharedPreferences.getString(ctx.getString(R.string.cookie_key),"NOT_FOUND");
-                headers.put("Cookie",cookie);
-                return headers;
-            }
-        }*/;
+        });
+
         registerRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -248,6 +235,26 @@ public class ApiHelper{
     }
 
 
+    public void getQrCode(final QrResponse callback){
+        String URL = baseUrl+"getQR.php";
+
+        ImageRequest qrRequest = new ImageRequest(URL, new Response.Listener<Bitmap>() {
+            @Override
+            public void onResponse(Bitmap response) {
+                callback.getQRCode(true, response);
+            }
+        }, 180, 180, ImageView.ScaleType.FIT_XY, Bitmap.Config.RGB_565, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("QR_RESPONSE_ERROR",error.toString());
+                callback.getQRCode(false, null);
+            }
+        });
+
+        CustomRequestQueue.getInstance(ctx).setRequest(qrRequest);
+    }
+
+
     public void getColleges(final CollegeInterface callback){
         String url = baseUrl+"getColleges.php";
 
@@ -266,5 +273,6 @@ public class ApiHelper{
         });
         CustomRequestQueue.getInstance(ctx).setRequest(collegeListRequest);
     }
+
 
 }

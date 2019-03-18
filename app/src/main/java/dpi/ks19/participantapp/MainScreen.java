@@ -1,29 +1,44 @@
 package dpi.ks19.participantapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import dpi.ks19.participantapp.Activities.ClusterCardsActivity;
+import dpi.ks19.participantapp.Activities.ProfileActivity;
 
 
 public class MainScreen extends AppCompatActivity {
 
-    boolean YourtransferredData = false;
+    SharedPreferences sharedPreferences;
+
+    boolean guestUser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            YourtransferredData = extras.getBoolean("key");
-            //The key argument here must match that used in the other activity
-        }
 
+        Intent intent = getIntent();
+        if(intent.getExtras() != null){
+            if(intent.getExtras().getBoolean(getString(R.string.login_register_action))){
+                //user through login
+                guestUser = false;
+                sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(getString(R.string.login_or_not), true);
+                editor.apply();
+                editor.commit();
+            }else{
+                //guest user
+                guestUser = true;
+            }
+        }
 
     }
 
@@ -32,11 +47,13 @@ public class MainScreen extends AppCompatActivity {
     }
 
     public void profileclicked(View v){
-        if(YourtransferredData) {
+        if(guestUser) {
             Toast toast = Toast.makeText(getApplicationContext(),
                     "You are a guest user . Please Login to view profile",
                     Toast.LENGTH_SHORT);
             toast.show();
+        }else{
+            startActivity(new Intent(this, ProfileActivity.class));
         }
     }
 
@@ -47,4 +64,5 @@ public class MainScreen extends AppCompatActivity {
     public void aboutusclicked(View view) {
         startActivity(new Intent(this, AboutActivity.class));
     }
+
 }
