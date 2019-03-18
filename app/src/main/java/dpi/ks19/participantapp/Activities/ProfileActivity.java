@@ -42,13 +42,15 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
             }
         });
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+
 
         sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
-        if(sharedPreferences.getBoolean(getString(R.string.is_qr_saved),false)){
+
+        if(!sharedPreferences.getBoolean(getString(R.string.is_qr_saved),false)){
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Loading...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
             ApiHelper.getInstance(this).getQrCode(this);
         }
 

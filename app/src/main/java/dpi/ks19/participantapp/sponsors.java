@@ -12,6 +12,6 @@ public class sponsors extends AppCompatActivity {
         setContentView(R.layout.activity_sponsors);
 
         WebView browser = (WebView) findViewById(R.id.webview);
-        browser.loadUrl("http://www.kuruksastra.in/sponsors.php/");
+        browser.loadUrl("http://www.kuruksastra.in/sponsors.php");
     }
 }

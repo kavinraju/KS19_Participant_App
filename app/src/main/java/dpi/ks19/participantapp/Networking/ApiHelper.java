@@ -251,6 +251,10 @@ public class ApiHelper{
             }
         });
 
+        qrRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         CustomRequestQueue.getInstance(ctx).setRequest(qrRequest);
     }
 
@@ -274,5 +278,9 @@ public class ApiHelper{
         CustomRequestQueue.getInstance(ctx).setRequest(collegeListRequest);
     }
 
+
+    public void getEventsForCluster(int day, String cluster){
+
+    }
 
 }
