@@ -47,4 +47,8 @@ public class MainScreen extends AppCompatActivity {
     public void aboutusclicked(View view) {
         startActivity(new Intent(this, AboutActivity.class));
     }
+
+    public void sponsorsclicked(View view) {
+        startActivity(new Intent(this, sponsors.class));
+    }
 }
