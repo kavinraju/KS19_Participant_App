@@ -281,6 +281,29 @@ public class ApiHelper{
 
     public void getEventsForCluster(int day, String cluster){
 
+        String URL = baseUrl+"getEventsByCluster.php";
+
+        HashMap<String,String>params = new HashMap<>();
+        params.put("cluster",cluster);
+
+        JsonObjectRequest eventsRequest = new JsonObjectRequest(Request.Method.POST, URL, new JSONObject(params), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        eventsRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        CustomRequestQueue.getInstance(ctx).setRequest(eventsRequest);
     }
 
 }
