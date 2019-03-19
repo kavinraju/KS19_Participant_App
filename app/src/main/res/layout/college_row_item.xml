@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     app:cardCornerRadius="5dp"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:elevation="4dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:fontFamily="@font/sniglet_regular"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"

@@ -1,5 +1,6 @@
 package dpi.ks19.participantapp.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +39,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     EditText et_register_ambassador_id;
 
     View v;
+    ProgressDialog progressDialog;
     int COLLEGE_NAME =120;
 
     public RegisterPagerFragment() {
@@ -89,6 +92,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
 
     @Override
     public void isOTPVerified(boolean isVerified) {
+        progressDialog.cancel();
         if(isVerified){
             //OTP is verified proceed to user registration
             ApiHelper.getInstance(getActivity()).registerUser(et_register_name.getText().toString().trim(),
@@ -97,9 +101,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
                     et_register_college_name.getText().toString().trim(),
                     et_register_ambassador_id.getText().toString().trim(),
                     true);
-            Intent intent = new Intent(getActivity(), MainScreen.class);
-            intent.putExtra(getString(R.string.login_register_action),true);
-            startActivity(intent);
+            Toast.makeText(getActivity(), "Registered Successfully Please Login to proceed.", Toast.LENGTH_SHORT).show();
         }else{
             Snackbar.make(v, "Incorrect Otp", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
@@ -110,6 +112,10 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     @Override
     public void getOTP(String otp) {
         Log.d("GOT OTP",otp);
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         //verify the OTP entered
         ApiHelper.getInstance(getActivity()).verifyOTP(otp,this);
     }

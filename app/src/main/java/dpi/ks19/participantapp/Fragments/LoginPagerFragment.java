@@ -77,15 +77,14 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
 
     @Override
     public void isOTPVerified(boolean isVerified) {
+        progressDialog.cancel();
         if(isVerified){
-            progressDialog.cancel();
             //customDialog.getDialog().cancel();
             Intent intent = new Intent(getActivity(), MainScreen.class);
             intent.putExtra(getString(R.string.login_register_action),true);
             startActivity(intent);
             getActivity().finish();
         }else{
-            progressDialog.cancel();
             Toast.makeText(getActivity(), "Incorrect otp", Toast.LENGTH_SHORT).show();
             //Snackbar.make(view, "Incorrect otp", Snackbar.LENGTH_SHORT);
         }
