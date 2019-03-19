@@ -55,7 +55,8 @@
             android:name=".AboutUsApp"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
-        <activity android:name=".proshows" />
+        <activity android:name=".proshows"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
         <activity
             android:name=".Activities.CollegeListActivity"
             android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
