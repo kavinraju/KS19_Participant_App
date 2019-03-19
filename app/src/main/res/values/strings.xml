@@ -25,6 +25,7 @@
     <string name="register">Register</string>
     <string name="otp">OTP</string>
     <string name="cancel">Cancel</string>
+    <string name="sent_to_email">OTP is sent to email</string>
 
 
     <!--clusters-->

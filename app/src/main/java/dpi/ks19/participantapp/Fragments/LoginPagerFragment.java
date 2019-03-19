@@ -1,5 +1,6 @@
 package dpi.ks19.participantapp.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +32,8 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
     @BindView(R.id.btn_login)
     Button btn_login;
 
+    OtpCustomDialog customDialog;
+    ProgressDialog progressDialog;
     View view;
     public LoginPagerFragment() {
     }
@@ -65,26 +69,35 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
     }
 
     private void createOTPDialog(){
-        OtpCustomDialog customDialog = new OtpCustomDialog();
+        customDialog = new OtpCustomDialog();
         customDialog.setCancelable(false);
         customDialog.setTargetFragment(this,1);
         customDialog.show(getFragmentManager(),"CustomDialog");
-
     }
 
     @Override
     public void isOTPVerified(boolean isVerified) {
         if(isVerified){
+            progressDialog.cancel();
+            //customDialog.getDialog().cancel();
             Intent intent = new Intent(getActivity(), MainScreen.class);
             intent.putExtra(getString(R.string.login_register_action),true);
             startActivity(intent);
+            getActivity().finish();
         }else{
-            Snackbar.make(view, "Incorrect otp", Snackbar.LENGTH_SHORT);
+            progressDialog.cancel();
+            Toast.makeText(getActivity(), "Incorrect otp", Toast.LENGTH_SHORT).show();
+            //Snackbar.make(view, "Incorrect otp", Snackbar.LENGTH_SHORT);
         }
     }
 
     @Override
     public void getOTP(String otp) {
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         ApiHelper.getInstance(getActivity()).loginVerify(otp,this);
     }
 

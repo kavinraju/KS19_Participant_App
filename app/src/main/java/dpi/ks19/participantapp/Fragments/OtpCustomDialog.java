@@ -1,5 +1,6 @@
 package dpi.ks19.participantapp.Fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -38,7 +39,7 @@ public class OtpCustomDialog extends DialogFragment {
         if (et_otp.getText().toString().trim().length() > 0) {
             callbackInterface = (CustomDialogInterface)getTargetFragment();
             callbackInterface.getOTP(et_otp.getText().toString().trim());
-            getDialog().cancel();
+
         } else {
             Toast.makeText(getActivity(), "Cannot be empty", Toast.LENGTH_SHORT).show();
         }
