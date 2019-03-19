@@ -8,14 +8,16 @@
     <application
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ks_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ks_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <activity android:name=".Activities.SplashScreen"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,45 +26,69 @@
         </activity>
 
         <activity android:name=".Activities.ProfileActivity"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"/>
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity android:name=".Activities.EventListActivity"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"/>
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".Activities.ClusterCardsActivity"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden">
         </activity>
         <activity
             android:name=".AboutActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".MainScreen"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".AboutKS"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".AboutUs"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".AboutUsApp"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity android:name=".proshows"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".Activities.CollegeListActivity"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
 
         <activity android:name=".sponsors"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"/>
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
 
     </application>
 
