@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -43,10 +44,9 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
         });
 
 
-
         sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
 
-        if(!sharedPreferences.getBoolean(getString(R.string.is_qr_saved),false)){
+        if (!sharedPreferences.getBoolean(getString(R.string.is_qr_saved), false)) {
             progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("Loading...");
             progressDialog.setCancelable(false);
@@ -58,31 +58,34 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
 
     @Override
     public void getQRCode(boolean success, Bitmap qr) {
-        if(success){
+        if (success) {
             progressDialog.cancel();
             saveQrCode(qr);
             qrCode.setImageBitmap(qr);
-        }else{
+        } else {
             progressDialog.cancel();
             Toast.makeText(this, "Please try again", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void saveQrCode(Bitmap bitmap){
-        try{
-            FileOutputStream  fout = new FileOutputStream("qrcode.png");
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fout);
+    private void saveQrCode(Bitmap bitmap) {
+        try {
+            String fileName = "qr.png";
+            FileOutputStream fileOutputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100,fileOutputStream);
+
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(getString(R.string.is_qr_saved),true);
+            editor.putBoolean(getString(R.string.is_qr_saved), true);
             editor.apply();
-            Log.d("SAVING_BITMAP","SUCCESS");
-        }catch (IOException e){
+            Log.d("SAVING_BITMAP", "SUCCESS");
+        } catch (IOException e) {
             Toast.makeText(this, "QR not saved please try again later", Toast.LENGTH_SHORT).show();
-            Log.d("SAVING_BITMAP",e.toString());
+            Log.d("SAVING_BITMAP", e.toString());
         }
     }
 
-    private void logOut(){
+    private void logOut() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putBoolean(getString(R.string.login_or_not), false);
