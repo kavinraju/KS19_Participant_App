@@ -43,32 +43,36 @@
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
 
-            <!--android:backgroundTintMode="src_over"
-            android:backgroundTint="#5900c853" -->
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_effect">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/profile"/>
+                    app:srcCompat="@drawable/profile"
+                    app:layout_constraintStart_toStartOf="@id/tv_profile"
+                    app:layout_constraintEnd_toEndOf="@id/tv_profile"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_profile"/>
 
                 <TextView
+                    android:id="@+id/tv_profile"
                     android:layout_width="wrap_content"
                     android:textSize="18sp"
                     android:textColor="#e91e63"
                     android:text="PROFILE"
                     android:textStyle="bold"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
 
-            </LinearLayout>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -85,29 +89,36 @@
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_effect">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/events"/>
+                    app:srcCompat="@drawable/events"
+                    app:layout_constraintStart_toStartOf="@id/tv_events"
+                    app:layout_constraintEnd_toEndOf="@id/tv_events"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_events"/>
 
                 <TextView
+                    android:id="@+id/tv_events"
                     android:layout_width="wrap_content"
                     android:textSize="18sp"
                     android:textColor="#e91e63"
                     android:textStyle="bold"
                     android:text="EVENTS"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
 
-            </LinearLayout>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -123,29 +134,37 @@
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_effect">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/schedule"/>
+                    app:srcCompat="@drawable/schedule"
+
+                    app:layout_constraintStart_toStartOf="@id/tv_schedule"
+                    app:layout_constraintEnd_toEndOf="@id/tv_schedule"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_schedule"/>
 
                 <TextView
+                    android:id="@+id/tv_schedule"
                     android:layout_width="wrap_content"
                     android:textSize="18sp"
                     android:textColor="#e91e63"
                     android:textStyle="bold"
                     android:text="SCHEDULE"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
 
-            </LinearLayout>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -162,29 +181,37 @@
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_effect">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/proshows"/>
+                    app:srcCompat="@drawable/proshows"
+
+                    app:layout_constraintStart_toStartOf="@id/tv_proshows"
+                    app:layout_constraintEnd_toEndOf="@id/tv_proshows"
+                    app:layout_constraintBottom_toTopOf="@id/tv_proshows"/>
 
                 <TextView
+                    android:id="@+id/tv_proshows"
                     android:layout_width="wrap_content"
                     android:textSize="18sp"
                     android:textColor="#e91e63"
                     android:textStyle="bold"
                     android:text="PROSHOWS"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
 
-            </LinearLayout>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -201,29 +228,36 @@
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_effect">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/sponsors"/>
+                    app:srcCompat="@drawable/sponsors"
+
+                    app:layout_constraintStart_toStartOf="@id/tv_sponsors"
+                    app:layout_constraintEnd_toEndOf="@id/tv_sponsors"
+                    app:layout_constraintBottom_toTopOf="@id/tv_sponsors"/>
 
                 <TextView
+                    android:id="@+id/tv_sponsors"
                     android:layout_width="wrap_content"
                     android:textSize="18sp"
                     android:textColor="#e91e63"
                     android:textStyle="bold"
                     android:text="SPONSORS"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
-            </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
 
@@ -240,29 +274,36 @@
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_effect">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/about"/>
+                    app:srcCompat="@drawable/about"
+                    app:layout_constraintStart_toStartOf="@id/tv_about"
+                    app:layout_constraintEnd_toEndOf="@id/tv_about"
+                    app:layout_constraintBottom_toTopOf="@id/tv_about" />
 
                 <TextView
+                    android:id="@+id/tv_about"
                     android:layout_width="wrap_content"
                     android:textSize="18sp"
                     android:textColor="#e91e63"
                     android:textStyle="bold"
                     android:text="ABOUT"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
 
-            </LinearLayout>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
 
