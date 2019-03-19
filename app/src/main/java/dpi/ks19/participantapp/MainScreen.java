@@ -3,6 +3,7 @@ package dpi.ks19.participantapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -67,8 +68,10 @@ public class MainScreen extends AppCompatActivity {
 
     public void sponsorsclicked(View view) {
 
-        startActivity(new Intent(this, sponsors.class)
-        );
+        String url = "http://www.kuruksastra.in/sponsors.php/";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 
 }
