@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInput_otp"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
 
+        android:layout_marginStart="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_16dp"
+
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:fontFamily="@font/sniglet_regular"
         android:hint="@string/otp"
         android:textColorHint="@color/colorSecondary"
-
-        android:layout_marginTop="@dimen/margin_16dp"
-        android:layout_marginStart="@dimen/margin_16dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,43 +25,59 @@
             android:id="@+id/et_otp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
+            android:fontFamily="@font/sniglet_regular"
             android:inputType="phone"
+
             android:textColor="@color/colorSecondaryDark" />
 
     </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/email_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/sniglet_regular"
+        android:text="@string/sent_to_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textInput_otp"
+        app:layout_constraintTop_toBottomOf="@+id/textInput_otp" />
 
     <Button
         android:id="@+id/btn_otp_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:text="Next"
-        android:textAllCaps="false"
+        android:layout_marginTop="8dp"
         android:background="@drawable/ripple_effect"
+        android:fontFamily="@font/sniglet_regular"
         android:onClick="onClickOtpNext"
-        android:textStyle="bold"
+        android:text="Next"
 
-        android:layout_marginTop="@dimen/margin_16dp"
-        app:layout_constraintTop_toBottomOf="@id/textInput_otp"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_otp_cancel"
+        app:layout_constraintTop_toBottomOf="@+id/email_text" />
 
     <Button
         android:id="@+id/btn_otp_cancel"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="8dp"
         android:background="@drawable/ripple_effect"
+        android:fontFamily="@font/sniglet_regular"
         android:onClick="onClickOtpCancel"
         android:text="@string/cancel"
         android:textAllCaps="false"
+
         android:textStyle="bold"
-
-        android:layout_marginTop="@dimen/margin_16dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_otp_next"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInput_otp" />
+        app:layout_constraintTop_toBottomOf="@+id/email_text"
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>

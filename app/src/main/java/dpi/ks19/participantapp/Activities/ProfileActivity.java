@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,8 +15,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import dpi.ks19.participantapp.CallbackInterface.QrResponse;
 import dpi.ks19.participantapp.LoginActivity;
@@ -29,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
     SharedPreferences sharedPreferences;
     Button logOutBtn;
 
+    String fileName = "qr.png";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +48,7 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
             }
         });
 
-
+        Log.d("FILE_PATH", getFilesDir().toString());
         sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
 
         if (!sharedPreferences.getBoolean(getString(R.string.is_qr_saved), false)) {
@@ -52,6 +57,8 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
             progressDialog.setCancelable(false);
             progressDialog.show();
             ApiHelper.getInstance(this).getQrCode(this);
+        }else{
+            readQRCode();
         }
 
     }
@@ -70,10 +77,15 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
 
     private void saveQrCode(Bitmap bitmap) {
         try {
-            String fileName = "qr.png";
-            FileOutputStream fileOutputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+            //convert bitmap to byte array
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100,fileOutputStream);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100,byteArrayOutputStream);
+            byte[] bitmapInArray = byteArrayOutputStream.toByteArray();
+
+            //writing file to disk
+            FileOutputStream fileOutputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+            fileOutputStream.write(bitmapInArray);
+            fileOutputStream.close();
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(getString(R.string.is_qr_saved), true);
@@ -85,12 +97,25 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
         }
     }
 
+    private void readQRCode(){
+        try{
+            //read from storage
+            FileInputStream inputStream = openFileInput(fileName);
+            //decode and display onto imageview
+            qrCode.setImageBitmap(BitmapFactory.decodeStream(inputStream));
+            Log.d("READ_BITMAP","SUCCESS");
+        }catch (Exception e){
+            Toast.makeText(this, "Error occured please try again later", Toast.LENGTH_SHORT).show();
+            Log.d("READ_BITMAP","FAILED");
+        }
+    }
     private void logOut() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putBoolean(getString(R.string.login_or_not), false);
         editor.putBoolean(getString(R.string.is_qr_saved), false);
         editor.apply();
+        deleteFile(fileName);
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
