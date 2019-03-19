@@ -25,6 +25,7 @@ public class CollegeListAdapter extends RecyclerView.Adapter<CollegeViewHolder> 
     public CollegeListAdapter(Context ctx){
         data = new JSONArray();
         progressDialog = new ProgressDialog(ctx);
+        progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading...");
         progressDialog.show();
 
