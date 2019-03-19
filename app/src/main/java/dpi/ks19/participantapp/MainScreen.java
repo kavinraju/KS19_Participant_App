@@ -65,10 +65,10 @@ public class MainScreen extends AppCompatActivity {
         startActivity(new Intent(this, AboutActivity.class));
     }
 
-<<<<<<< HEAD
-=======
     public void sponsorsclicked(View view) {
-        startActivity(new Intent(this, sponsors.class));
+
+        startActivity(new Intent(this, sponsors.class)
+        );
     }
->>>>>>> a9d4f2f68153accd66a53330bef6d78cf45ef7d2
+
 }
