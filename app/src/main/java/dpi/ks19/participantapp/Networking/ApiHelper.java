@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -302,18 +303,19 @@ public class ApiHelper{
 
     private ArrayList<EventClass> parseData(int day, JSONObject eventListObject){
         ArrayList<EventClass>data = new ArrayList<>();
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSSSS");
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
         Date startDate, endDate;
 
         try{
-            JSONArray eventList = eventListObject.getJSONArray("eventList");
-            for(int i=0; i<=eventList.length(); i++){
+            JSONArray eventList = eventListObject.getJSONArray("events");
+            Log.d("NO_OF_EVENTS",eventList.length()+"");
+            for(int i=0; i<eventList.length(); i++){
                 EventClass temp = new EventClass();
                 JSONObject singleEvent = eventList.getJSONObject(i);
 
                 startDate = dateformat.parse(singleEvent.getString("fromTime"));
-                endDate = dateformat.parse(singleEvent.getString(singleEvent.getString("endTime")));
-
+                endDate = dateformat.parse(singleEvent.getString("toTime"));
+                Log.d("DATE",startDate.getDate()+"");
                 if(startDate.getDate() == day){
                     temp.eventName = singleEvent.getString("ename");
                     temp.startTime = startDate.getDate()+"";
@@ -323,8 +325,11 @@ public class ApiHelper{
                 }
 
             }
-        }catch (Exception e){}
 
+        }catch (Exception e){
+            Log.d("ERROR_EVENTS",e.toString());
+
+        }
         return data;
     }
 
