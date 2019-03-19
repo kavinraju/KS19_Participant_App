@@ -2,19 +2,20 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_layout"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:layout_marginBottom="8dp"
     android:layout_marginTop="8dp"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
     app:cardUseCompatPadding="true"
-    app:cardBackgroundColor="@color/event_card_background">
+    app:cardBackgroundColor="@color/white">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/ripple_effect">
 
         <TextView
             android:id="@+id/event_name"
@@ -26,7 +27,8 @@
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/sniglet_regular"
             android:text="event_name"
-            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textColor="@color/red_text"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/event_desc"
@@ -44,7 +46,7 @@
             android:fontFamily="@font/sniglet_regular"
             android:text="event desc"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
+            android:textColor= "@color/black"
             android:textSize="20sp"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/event_rules"
@@ -60,7 +62,7 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/sniglet_regular"
             android:text="event_name"
-            android:textColor="@android:color/white"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
