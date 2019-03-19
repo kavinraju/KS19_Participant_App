@@ -3,21 +3,16 @@ package dpi.ks19.participantapp.Networking;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,19 +20,17 @@ import org.json.JSONObject;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
-import java.net.CookiePolicy;
-import java.net.CookieStore;
-import java.net.HttpCookie;
-import java.net.URI;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
-import dpi.ks19.participantapp.CallbackInterface.LoginCallback;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.CallbackInterface.QrResponse;
-import dpi.ks19.participantapp.CallbackInterface.RegisterInterface;
+import dpi.ks19.participantapp.CallbackInterface.EventsByCluster;
+import dpi.ks19.participantapp.Model.EventClass;
 import dpi.ks19.participantapp.R;
 
 public class ApiHelper{
@@ -279,7 +272,7 @@ public class ApiHelper{
     }
 
 
-    public void getEventsForCluster(int day, String cluster){
+    public void getEventsForCluster(final int day, String cluster, final EventsByCluster callback){
 
         String URL = baseUrl+"getEventsByCluster.php";
 
@@ -289,12 +282,12 @@ public class ApiHelper{
         JsonObjectRequest eventsRequest = new JsonObjectRequest(Request.Method.POST, URL, new JSONObject(params), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+                callback.getEventsByCluster(parseData(day, response),true);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                callback.getEventsByCluster(null,false);
             }
         });
 
@@ -306,4 +299,43 @@ public class ApiHelper{
         CustomRequestQueue.getInstance(ctx).setRequest(eventsRequest);
     }
 
+
+    private ArrayList<EventClass> parseData(int day, JSONObject eventListObject){
+        ArrayList<EventClass>data = new ArrayList<>();
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSSSS");
+        Date startDate, endDate;
+
+        try{
+            JSONArray eventList = eventListObject.getJSONArray("eventList");
+            for(int i=0; i<=eventList.length(); i++){
+                EventClass temp = new EventClass();
+                JSONObject singleEvent = eventList.getJSONObject(i);
+
+                startDate = dateformat.parse(singleEvent.getString("fromTime"));
+                endDate = dateformat.parse(singleEvent.getString(singleEvent.getString("endTime")));
+
+                if(startDate.getDate() == day){
+                    temp.eventName = singleEvent.getString("ename");
+                    temp.startTime = startDate.getDate()+"";
+                    temp.endTime = endDate.getDate()+"";
+                    temp.venue = singleEvent.getString("venue");
+                    data.add(temp);
+                }
+
+            }
+        }catch (Exception e){}
+
+        return data;
+    }
+
+
+     /*try{
+        Date startDate;
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+        String testDate = "2019-03-23T08:02:00";
+        startDate = dateformat.parse(testDate);
+        Log.d("DATE",startDate.getDate()+"");
+    }catch (Exception e){
+        Log.d("DATE",e.toString());
+    }*/
 }

@@ -131,6 +131,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_rowWeight="1"
+            android:onClick="scheduleclicked"
             app:cardElevation="8dp"
             app:cardCornerRadius="8dp">
 

@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +29,7 @@ public class CollegeListAdapter extends RecyclerView.Adapter<CollegeViewHolder> 
         progressDialog.show();
 
         ApiHelper.getInstance(ctx).getColleges(this);
-        callback = (RecyclerViewCallback)ctx;
+        callback = (RecyclerViewCallback) ctx;
     }
 
     @NonNull
