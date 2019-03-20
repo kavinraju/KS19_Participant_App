@@ -95,7 +95,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:text="/@ OPEN AIR THEATRE"
+                                android:text="@\ OPEN AIR THEATRE"
                                 android:textAllCaps="true"
                                 android:textSize="15sp"
                                 android:textStyle="bold"
@@ -184,7 +184,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:text="/@ OPEN AIR THEATRE"
+                                android:text="@\ OPEN AIR THEATRE"
                                 android:textAllCaps="true"
                                 android:textSize="15sp"
                                 android:textStyle="bold"
@@ -273,7 +273,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:text="/@ OPEN AIR THEATRE"
+                                android:text="@\ OPEN AIR THEATRE"
                                 android:textAllCaps="true"
                                 android:textSize="15sp"
                                 android:textStyle="bold"
@@ -362,7 +362,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:text="/@ OPEN AIR THEATRE"
+                                android:text="@\ OPEN AIR THEATRE"
                                 android:textAllCaps="true"
                                 android:textSize="15sp"
                                 android:textStyle="bold"
@@ -451,7 +451,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:text="/@ TBD"
+                                android:text="@\ TBD"
                                 android:textAllCaps="true"
                                 android:textSize="15sp"
                                 android:textStyle="bold"
@@ -540,7 +540,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:text="/@ TBD"
+                                android:text="@\ TBD"
                                 android:textAllCaps="true"
                                 android:textSize="15sp"
                                 android:textStyle="bold"

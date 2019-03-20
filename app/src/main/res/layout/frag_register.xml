@@ -218,7 +218,31 @@
                     android:inputType="text"
                     android:textColor="@android:color/white" />
 
+
             </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/hostel_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textInput_ambassador_id">
+
+            <CheckBox android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:fontFamily="@font/sniglet_regular"
+                android:text="Hostel accomodation needed" />
+        </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_register"
@@ -242,7 +266,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInput_ambassador_id" />
+                app:layout_constraintTop_toBottomOf="@+id/hostel_checkbox" />
 
         </android.support.constraint.ConstraintLayout>
 

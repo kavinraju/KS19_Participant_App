@@ -63,6 +63,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
         return v;
     }
 
+
     @OnClick(R.id.btn_register)
     public void onClickRegister(View  view){
 
