@@ -200,6 +200,95 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
+            <!-- Crazy Mohan -->
+            <android.support.v7.widget.CardView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="8dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/crazymohan_final"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="2dp"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center"
+                                android:textSize="25sp"
+                                android:text="22"
+                                android:textColor="#e91e63"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="MAR"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="6dp"
+                            android:layout_height="match_parent"
+                            />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="4dp"
+                            android:alpha="0.5"
+                            android:background="@color/grey" />
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:gravity="center"
+                            android:layout_marginTop="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="@\ CHANAKYA AUDI"
+                                android:textAllCaps="true"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:textColor="#da1c4a"
+                                android:paddingTop="2dp"
+                                android:layout_height="wrap_content" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
             <!-- ChoreNite -->
             <android.support.v7.widget.CardView
                 android:layout_gravity="center"
@@ -239,95 +328,6 @@
                                 android:layout_gravity="center"
                                 android:textSize="25sp"
                                 android:text="23"
-                                android:textColor="#e91e63"
-                                android:layout_height="wrap_content" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:text="MAR"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="6dp"
-                            android:layout_height="match_parent"
-                            />
-
-                        <View
-                            android:layout_width="2dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="4dp"
-                            android:alpha="0.5"
-                            android:background="@color/grey" />
-
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_marginLeft="20dp"
-                            android:gravity="center"
-                            android:layout_marginTop="15dp"
-
-                            android:orientation="horizontal"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:text="@\ OPEN AIR THEATRE"
-                                android:textAllCaps="true"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
-                                android:textAlignment="center"
-                                android:textColor="#da1c4a"
-                                android:paddingTop="2dp"
-                                android:layout_height="wrap_content" />
-
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <!-- Navin Chander -->
-            <android.support.v7.widget.CardView
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="16dp"
-                app:cardElevation="8dp"
-                app:cardCornerRadius="8dp"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="190dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/navin_final"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="2dp"
-                        android:layout_height="match_parent">
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginLeft="10dp"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_gravity="center"
-                                android:textSize="25sp"
-                                android:text="24"
                                 android:textColor="#e91e63"
                                 android:layout_height="wrap_content" />
                             <TextView
@@ -451,7 +451,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:text="@\ TBD"
+                                android:text="@\ CHANAKYA AUDI"
                                 android:textAllCaps="true"
                                 android:textSize="15sp"
                                 android:textStyle="bold"
@@ -467,7 +467,7 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-            <!-- Crazy Mohan -->
+            <!-- Navin Chander -->
             <android.support.v7.widget.CardView
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
@@ -488,7 +488,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="190dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/crazymohan_final"/>
+                        android:src="@drawable/navin_final"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -505,7 +505,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_gravity="center"
                                 android:textSize="25sp"
-                                android:text="22"
+                                android:text="24"
                                 android:textColor="#e91e63"
                                 android:layout_height="wrap_content" />
                             <TextView
@@ -540,7 +540,7 @@
                             android:layout_height="wrap_content">
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:text="@\ TBD"
+                                android:text="@\ OPEN AIR THEATRE"
                                 android:textAllCaps="true"
                                 android:textSize="15sp"
                                 android:textStyle="bold"
@@ -555,6 +555,10 @@
                     </LinearLayout>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
+
+
+
 
         </LinearLayout>
 
