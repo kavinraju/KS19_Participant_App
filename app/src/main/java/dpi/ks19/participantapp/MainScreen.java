@@ -6,11 +6,19 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import dpi.ks19.participantapp.Activities.ClusterCardsActivity;
 import dpi.ks19.participantapp.Activities.ProfileActivity;
+import dpi.ks19.participantapp.Activities.ScheduleActivity;
 
 public class MainScreen extends AppCompatActivity {
 
@@ -66,11 +74,14 @@ public class MainScreen extends AppCompatActivity {
     }
 
     public void sponsorsclicked(View view) {
-
         String url = "http://www.kuruksastra.in/sponsors.php/";
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
+    }
+
+    public void scheduleclicked(View view){
+        startActivity(new Intent(this, ScheduleActivity.class));
     }
 
 }

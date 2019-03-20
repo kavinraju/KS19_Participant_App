@@ -30,18 +30,18 @@
 
     <!--clusters-->
     <string-array name="cluster_list">
-        <item>FlagShip Event</item>
-        <item>Arts</item>
-        <item>Dramatics</item>
-        <item>English Lits</item>
-        <item>Hindi Lits</item>
-        <item>SASTRA Eastern Dance Team</item>
-        <item>SASTRA Western Dance Team</item>
-        <item>Telugu Lits</item>
-        <item>SASTRA FotoHub</item>
-        <item>சாஸ்த்ரா தமிழ்ச் சங்கம்</item>
-        <item>SASTRA Music Team</item>
-        <item>300 DPI</item>
+        <item>FlagShip Event</item>             <!--0-->
+        <item>Arts</item>                       <!--1-->
+        <item>Dramatics</item>                  <!--2-->
+        <item>English Lits</item>               <!--3-->
+        <item>Hindi Lits</item>                 <!--4-->
+        <item>SASTRA Eastern Dance Team</item>  <!--5-->
+        <item>SASTRA Western Dance Team</item>  <!--6-->
+        <item>Telugu Lits</item>                <!--7-->
+        <item>SASTRA FotoHub</item>             <!--8-->
+        <item>சாஸ்த்ரா தமிழ்ச் சங்கம்</item>         <!--9-->
+        <item>SASTRA Music Team</item>          <!--10-->
+        <item>300 DPI</item>                    <!--11-->
     </string-array>
 
     <!-- mr and mrs kiruk-->
@@ -991,6 +991,4 @@ satisfied</item>
         If foregoing a burger or cold coffee can bring a smile on a thousand faces, is it not worth it?<br /><br /> As they say, children are our future, let us be a small ray of hope in the beam of light that they need to establish a bright tomorrow. Join KS Upahaar!!
 
     </string>
-
-
 </resources>
