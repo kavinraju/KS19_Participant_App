@@ -2,7 +2,6 @@
 <android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
@@ -11,7 +10,6 @@
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="22dp">
@@ -113,7 +111,7 @@
             android:layout_marginBottom="40dp"
             android:background="@mipmap/dpi_logo"
             android:transitionName="image"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_dsc"
             app:layout_constraintEnd_toEndOf="@+id/about_uphar"
             app:layout_constraintStart_toEndOf="@id/about_sastra" />
 
@@ -121,18 +119,32 @@
             android:id="@+id/textUs"
             android:layout_width="155dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/sniglet_regular"
             android:padding="8dp"
             android:text="About Us"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:fontFamily="@font/sniglet_regular"
             android:textSize="20sp"
             android:transitionName="text"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_dsc"
             app:layout_constraintEnd_toEndOf="@id/about_us"
             app:layout_constraintStart_toStartOf="@id/about_us"
-            app:layout_constraintTop_toBottomOf="@+id/about_us"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/about_us" />
+
+        <TextView
+            android:id="@+id/tv_dsc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Powered By DSC SASTRA UNIVERSITY"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textUs"/>
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v4.widget.NestedScrollView>

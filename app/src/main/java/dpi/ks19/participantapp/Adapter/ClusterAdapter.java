@@ -48,17 +48,17 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setIndeterminate(true);
 
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#ffffff")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#ffff00")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#ff00ff")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#00ffff")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#ff0000")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#00ff00")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#0000ff")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#ccccff")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#000000")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#2cd84a")));
-        clusterIcon.add(new ColorDrawable(Color.parseColor("#c34af7")));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_ks));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_arts));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_studio));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_english_lits));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_hindi_lits));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_thandav));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_insiders));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_telugu_lits));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_sfh));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_tamil_sangam));
+        clusterIcon.add(mContext.getDrawable(R.drawable.logo_smt));
     }
 
     @NonNull
