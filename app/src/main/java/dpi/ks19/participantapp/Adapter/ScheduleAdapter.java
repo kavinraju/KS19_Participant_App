@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import dpi.ks19.participantapp.Model.Schedule;
+import dpi.ks19.participantapp.Model.EventClass;
 import dpi.ks19.participantapp.R;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {     //ScheduleAdapter for scheduleRecyclerView
-    ArrayList<Schedule> schedules = new ArrayList<>();
+    ArrayList<EventClass> schedules = new ArrayList<>();
     Context mContext;
 
     public ScheduleAdapter(Context mContext) {      //Constructor initializes mContext.
@@ -28,7 +28,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
 
     @Override
     public void onBindViewHolder(final ScheduleViewHolder holder, final int listPosition) {
-        Schedule schedule = schedules.get(listPosition);
+        EventClass schedule = schedules.get(listPosition);
         holder.setDetails(schedule);    //To set details of each individual item.
     }
 
@@ -41,7 +41,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     }
 
 
-    public void setData(ArrayList<Schedule> data) {     //Sets data of schedule and notifies the data change.
+    public void setData(ArrayList<EventClass> data) {     //Sets data of schedule and notifies the data change.
         this.schedules = data;
         notifyDataSetChanged();
     }
@@ -59,9 +59,9 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             eventTime = itemView.findViewById(R.id.eventTime);
         }
 
-        public void setDetails(Schedule schedule) {
-            eventName.setText(schedule.getEventName());
-            eventVenue.setText(schedule.getEventVenue());
+        public void setDetails(EventClass schedule) {
+            eventName.setText(schedule.eventName);
+            eventVenue.setText(schedule.venue);
             eventTime.setText(schedule.getEventTime());
         }
     }

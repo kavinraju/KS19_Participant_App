@@ -22,7 +22,7 @@ import dpi.ks19.participantapp.CallbackInterface.ScheduleInterface;
 import dpi.ks19.participantapp.Fragments.DayOneFrag;
 import dpi.ks19.participantapp.Fragments.DayThreeFrag;
 import dpi.ks19.participantapp.Fragments.DayTwoFrag;
-import dpi.ks19.participantapp.Model.Schedule;
+import dpi.ks19.participantapp.Model.EventClass;
 import dpi.ks19.participantapp.R;
 
 public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterHolder> implements ScheduleInterface {
@@ -32,11 +32,12 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
     ProgressDialog progressDialog;
     int day;
     private ClusterAdapter callback;
-    String cluster[] = mContext.getResources().getStringArray(R.array.cluster_list);
+    private String cluster[];
 
     public ClusterAdapter(Context mContext, int d) {        //Constructor initializes mContext, callback and data for clusters as it is Static.
         this.mContext = mContext;
         this.callback = this;
+        cluster = mContext.getResources().getStringArray(R.array.cluster_list);
         day = d;
 
         progressDialog = new ProgressDialog(mContext);      //Initializes progress Dialog When loading for data.
@@ -63,7 +64,7 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
     @NonNull
     @Override
     public ClusterHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cluster_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cluster_card_schedule, parent, false);
         return new ClusterHolder(view);
     }
 
@@ -77,9 +78,9 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
             @Override
             public void onClick(View v) {
                 progressDialog.show();
-                if (day == 1)
+                if (day == 22)
                     DayOneFrag.getInstance().getSchedule(getQueryWord(clusterName), callback, holder);
-                else if (day == 2)
+                else if (day == 23)
                     DayTwoFrag.getInstance().getSchedule(getQueryWord(clusterName), callback, holder);
                 else
                     DayThreeFrag.getInstance().getSchedule(getQueryWord(clusterName), callback, holder);
@@ -136,7 +137,7 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
     }
 
     @Override
-    public void setScheduleData(ArrayList<Schedule> data, ClusterHolder clusterHolder, boolean isEmpty) {   //To set Schedule data
+    public void setScheduleData(ArrayList<EventClass> data, ClusterHolder clusterHolder, boolean isEmpty) {   //To set Schedule data
         if (isEmpty) {
             progressDialog.dismiss();
             Toast.makeText(mContext, "Sorry! Unfortunate Error occurred.", Toast.LENGTH_SHORT).show();
@@ -163,7 +164,7 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
             scheduleRecyclerView.setAdapter(adapter);
         }
 
-        public void setRecyclerView(ArrayList<Schedule> data) {     //Sets the data, make the schedules visible and dismisses the AlertDialog.
+        public void setRecyclerView(ArrayList<EventClass> data) {     //Sets the data, make the schedules visible and dismisses the AlertDialog.
             scheduleRecyclerView.setVisibility(View.VISIBLE);
             adapter.setData(data);
             progressDialog.dismiss();

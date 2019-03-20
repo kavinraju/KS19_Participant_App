@@ -5,12 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 
 import dpi.ks19.participantapp.Adapter.DayAdapter;
 import dpi.ks19.participantapp.R;
@@ -29,15 +29,14 @@ public class ScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_schedule);
 
         builder = new AlertDialog.Builder(this);        //Builder to display AlertDialog.
-        builder.setTitle("Please check your network state!");
+        builder.setTitle("WARNING! No Internet Connection");
         builder.setIcon(R.drawable.no_internet_icon);
-        builder.setMessage("Please turn on internet connection to continue!");
-        builder.setCancelable(false);
+        builder.setMessage("Please check your internet connection!");
         builder.setNegativeButton("SETTINGS", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ScheduleActivity.this.startActivity(new Intent(Settings.ACTION_NETWORK_OPERATOR_SETTINGS));
                 dialog.dismiss();
+                ScheduleActivity.this.startActivity(new Intent(Settings.ACTION_NETWORK_OPERATOR_SETTINGS));
             }
         });
 
@@ -58,7 +57,6 @@ public class ScheduleActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        alertDialog.dismiss();      //To dismiss the previous AlertDialog.
         CheckNetworkConnection();   //To check again for internet connection.
         createFragment();           //To create fragment with view pager on resuming the activity.
     }
