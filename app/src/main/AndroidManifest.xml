@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,74 +13,77 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
+        <service android:name=".NotificationService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".Activities.ScheduleActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
 
-        <activity
-            android:name=".Activities.SplashScreen"
-            android:configChanges="orientation|keyboardHidden"
-            android:roundIcon="@drawable/ks_icon"
+        <activity android:name=".Activities.SplashScreen"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar">
+            android:configChanges="orientation|keyboardHidden">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".Activities.ProfileActivity"
-            android:configChanges="orientation|keyboardHidden"
+        <activity android:name=".Activities.ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
 
-        <activity
-            android:name=".Activities.EventListActivity"
-            android:configChanges="orientation|keyboardHidden"
+        <activity android:name=".Activities.EventListActivity"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".Activities.ClusterCardsActivity"
-            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".LoginActivity"
-            android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"></activity>
+            android:configChanges="orientation|keyboardHidden">
+        </activity>
 
         <activity
             android:name=".AboutActivity"
-            android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".MainScreen"
-            android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".AboutKS"
-            android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".AboutUs"
-            android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".AboutUsApp"
             android:label="@string/app_name"
@@ -90,20 +92,19 @@
 
         <activity
             android:name=".sponsors"
-            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
 
-        <activity
-            android:name=".proshows"
-            android:configChanges="orientation|keyboardHidden"
+        <activity android:name=".proshows"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".Activities.CollegeListActivity"
-            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
+            android:configChanges="orientation|keyboardHidden"/>
 
     </application>
 

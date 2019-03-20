@@ -2,6 +2,7 @@ package dpi.ks19.participantapp.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,14 +36,15 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     EditText et_register_email;
     @BindView(R.id.et_register_password)
     EditText et_register_password;
-    @BindView(R.id.et_register_college_name)
-    EditText et_register_college_name;
     @BindView(R.id.et_register_ambassador_id)
     EditText et_register_ambassador_id;
+    @BindView(R.id.autoCompleteTextView)
+    AutoCompleteTextView autoCompleteTextView;
 
     View v;
     ProgressDialog progressDialog;
     int COLLEGE_NAME =120;
+    String[] colleges ={"SASTRA","SRM","VIT","Saranathan","SRM TRP","SRM TRP","SRM TRP","SRM TRP","SRM TRP","SRM TRP","SRM TRP","SRM TRP"};
 
     public RegisterPagerFragment() {
     }
@@ -54,21 +58,25 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
         v = inflater.inflate(R.layout.frag_register, container, false);
         ButterKnife.bind(this,v);
 
-        et_register_college_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(getActivity(), CollegeListActivity.class),COLLEGE_NAME);
-            }
-        });
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (getActivity(),android.R.layout.select_dialog_item,colleges);
+        //Getting the instance of AutoCompleteTextView
+        AutoCompleteTextView actv =  (AutoCompleteTextView)autoCompleteTextView;
+        actv.setThreshold(1);//will start working from first character
+        actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
+        actv.setTextColor(Color.WHITE);
+
+
+
         return v;
     }
+
 
     @OnClick(R.id.btn_register)
     public void onClickRegister(View  view){
 
         if (et_register_name.getText().toString().isEmpty() || et__register_phoneNumber.getText().toString().isEmpty() ||
-        et_register_email.getText().toString().isEmpty() ||
-        et_register_college_name.getText().toString().isEmpty()){
+        autoCompleteTextView.getText().toString().isEmpty()){
 
             Snackbar.make(view, "All the fields are required", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
@@ -98,7 +106,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
             ApiHelper.getInstance(getActivity()).registerUser(et_register_name.getText().toString().trim(),
                     et_register_password.getText().toString().trim(),
                     et__register_phoneNumber.getText().toString().trim(),
-                    et_register_college_name.getText().toString().trim(),
+                    autoCompleteTextView.getText().toString().trim(),
                     et_register_ambassador_id.getText().toString().trim(),
                     true);
             Toast.makeText(getActivity(), "Registered Successfully Please Login to proceed.", Toast.LENGTH_SHORT).show();
@@ -124,7 +132,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == COLLEGE_NAME && data != null){
-            et_register_college_name.setText(data.getStringExtra(getString(R.string.college_name)));
+            autoCompleteTextView.setText(data.getStringExtra(getString(R.string.college_name)));
         }else{
             Snackbar.make(v, "Choose your College", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
