@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 
 public class AboutKS extends AppCompatActivity {
 
-    private String heading,content;
+    private String heading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

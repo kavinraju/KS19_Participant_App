@@ -27,8 +27,6 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
 
     @BindView(R.id.et_login_email)
     EditText et_login_email;
-    @BindView(R.id.et_login_password)
-    EditText et_login_password;
     @BindView(R.id.btn_login)
     Button btn_login;
 

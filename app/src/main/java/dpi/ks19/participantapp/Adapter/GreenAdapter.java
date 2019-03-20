@@ -42,7 +42,6 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
             "Naveen",
             "Sanjay Vasanth",
             "Manickavel",
-            "Arun Vignesh B",
             "Adithya Narayanan",
             "Yagaa Gowtham",
             "Gowtham K"};

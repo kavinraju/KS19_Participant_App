@@ -12,7 +12,6 @@ import android.widget.Toast;
 import dpi.ks19.participantapp.Activities.ClusterCardsActivity;
 import dpi.ks19.participantapp.Activities.ProfileActivity;
 
-
 public class MainScreen extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;

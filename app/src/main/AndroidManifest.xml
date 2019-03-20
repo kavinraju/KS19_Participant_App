@@ -8,9 +8,9 @@
     <application
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
-        android:icon="@drawable/ks_icon"
+        android:icon="@mipmap/ks_icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ks_icon"
+        android:roundIcon="@mipmap/ks_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
