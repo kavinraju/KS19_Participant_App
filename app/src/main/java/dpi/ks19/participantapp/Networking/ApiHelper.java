@@ -132,7 +132,7 @@ public class ApiHelper{
     }
 
 
-    public void registerUser(String name, String password, String phone, String college, String aid, boolean accomadation){
+    public void registerUser(String name, String password, String phone, String college, String aid, int accomadation){
 
         String newAid = aid.replace("KSCA19","");
         JSONObject params = new JSONObject();
@@ -214,6 +214,7 @@ public class ApiHelper{
             public void onResponse(JSONObject response) {
                 Log.d("LOGIN_VERIFY_RESPONSE",response.toString());
                 try{
+                    saveUserData(response);
                     callback.isOTPVerified(response.getBoolean("valid"));
                 }catch(JSONException e){}
 
@@ -318,8 +319,10 @@ public class ApiHelper{
                 Log.d("DATE",startDate.getDate()+"");
                 if(startDate.getDate() == day){
                     temp.eventName = singleEvent.getString("ename");
-                    temp.startTime = startDate.getDate()+"";
-                    temp.endTime = endDate.getDate()+"";
+                    temp.startTimeHours = startDate.getHours()+"";
+                    temp.startTimMin = startDate.getMinutes()+"";
+                    temp.endTimeMin = endDate.getMinutes()+"";
+                    temp.endTimeHours = endDate.getHours()+"";
                     temp.venue = singleEvent.getString("venue");
                     data.add(temp);
                 }
@@ -334,13 +337,21 @@ public class ApiHelper{
     }
 
 
-     /*try{
-        Date startDate;
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
-        String testDate = "2019-03-23T08:02:00";
-        startDate = dateformat.parse(testDate);
-        Log.d("DATE",startDate.getDate()+"");
-    }catch (Exception e){
-        Log.d("DATE",e.toString());
-    }*/
+    private void saveUserData(JSONObject object){
+        try{
+            sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.shared_pref), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+             editor.putString(ctx.getString(R.string.name), object.getString("name"));
+            editor.putString(ctx.getString(R.string.email), object.getString("email"));
+             editor.putString(ctx.getString(R.string.college_name), object.getString("college"));
+             editor.putString(ctx.getString(R.string.phone_number), object.getString("phone"));
+             editor.putString(ctx.getString(R.string.hostel_accomodation), object.getString("accomodation"));
+             editor.apply();
+            editor.commit();
+            Log.d("JSON_USER","SAVE_SUCCESS");
+        }catch (JSONException e){
+            Log.d("JSON_USER","ERROR");
+        }
+    }
+
 }

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -37,10 +38,13 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     EditText et_register_college_name;
     @BindView(R.id.et_register_ambassador_id)
     EditText et_register_ambassador_id;
+    @BindView(R.id.hostel_checkbox)
+    CheckBox hostelCheckbox;
 
     View v;
     ProgressDialog progressDialog;
     int COLLEGE_NAME =120;
+    int  isHostel = 0;
 
     public RegisterPagerFragment() {
     }
@@ -63,6 +67,17 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
         return v;
     }
 
+    @OnClick(R.id.hostel_checkbox)
+    public void onHostelClicked(View v){
+        hostelCheckbox = (CheckBox)v;
+        if(hostelCheckbox.isChecked()){
+            isHostel = 1;
+            Log.d("HOSTEL","YES");
+        }else{
+            isHostel = 0;
+            Log.d("HOSTEL","NO");
+        }
+    }
 
     @OnClick(R.id.btn_register)
     public void onClickRegister(View  view){
@@ -101,7 +116,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
                     et__register_phoneNumber.getText().toString().trim(),
                     et_register_college_name.getText().toString().trim(),
                     et_register_ambassador_id.getText().toString().trim(),
-                    true);
+                    isHostel);
             Toast.makeText(getActivity(), "Registered Successfully Please Login to proceed.", Toast.LENGTH_SHORT).show();
         }else{
             Snackbar.make(v, "Incorrect Otp", Snackbar.LENGTH_LONG)

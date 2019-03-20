@@ -26,7 +26,10 @@
     <string name="otp">OTP</string>
     <string name="cancel">Cancel</string>
     <string name="sent_to_email">OTP is sent to email</string>
-
+    <string name="hostel">Hostel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="hostel_accomodation">Hostel accomodation needed</string>
 
     <!--clusters-->
     <string-array name="cluster_list">

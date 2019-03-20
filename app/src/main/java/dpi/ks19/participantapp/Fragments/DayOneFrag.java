@@ -40,6 +40,6 @@ public class DayOneFrag extends Fragment implements EventsByCluster {
     @Override
     public void getEventsByCluster(ArrayList<EventClass> data, boolean success) {
         //data receiced from endpoint check sucess flag for errors
-        Log.d("RESULT_DATA",data.get(0).eventName);
+
     }
 }
