@@ -43,34 +43,36 @@ public class EventListActivity extends AppCompatActivity {
         if(cluster.equals(clusterNames[0])){
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.kuruk_event_list)));
 
-        }else if(cluster.equals(clusterNames[1])){//for arts cluster
+        }else if(cluster.equals(clusterNames[1])){
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.informals_event_list)));
+        }else if(cluster.equals(clusterNames[2])){//for arts cluster
 
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.arts_list)));
-        }else if(cluster.equals(clusterNames[2])){//for dramatics
+        }else if(cluster.equals(clusterNames[3])){//for dramatics
 
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.dramatic_list)));
-        }else if(cluster.equals(clusterNames[3])){
-
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.english_lits_list)));
         }else if(cluster.equals(clusterNames[4])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.hindi_lits_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.english_lits_list)));
         }else if(cluster.equals(clusterNames[5])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.eastern_dance_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.hindi_lits_list)));
         }else if(cluster.equals(clusterNames[6])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.western_dance_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.eastern_dance_list)));
         }else if(cluster.equals(clusterNames[7])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.telugu_lits_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.western_dance_list)));
         }else if(cluster.equals(clusterNames[8])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.fotohub_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.telugu_lits_list)));
         }else if(cluster.equals(clusterNames[9])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.tamil_sangam_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.fotohub_list)));
         }else if(cluster.equals(clusterNames[10])){
+
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.tamil_sangam_list)));
+        }else if(cluster.equals(clusterNames[11])){
 
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.music_team_list)));
         }else{
@@ -85,34 +87,37 @@ public class EventListActivity extends AppCompatActivity {
         if(cluster.equals(clusterNames[0])){
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.kuruk_desc_list)));
 
-        }else if(cluster.equals(clusterNames[1])){//for arts cluster
+        }else if(cluster.equals(clusterNames[1])){
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.informals_desc_list)));
+
+        }else if(cluster.equals(clusterNames[2])){//for arts cluster
 
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.arts_desc_list)));
-        }else if(cluster.equals(clusterNames[2])){//for dramatics
+        }else if(cluster.equals(clusterNames[3])){//for dramatics
 
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.dramatics_desc_list)));
-        }else if(cluster.equals(clusterNames[3])){
-
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.english_lits_desc_list)));
         }else if(cluster.equals(clusterNames[4])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.hindi_lits_desc_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.english_lits_desc_list)));
         }else if(cluster.equals(clusterNames[5])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.eastern_dance_desc_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.hindi_lits_desc_list)));
         }else if(cluster.equals(clusterNames[6])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.western_dance_desc_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.eastern_dance_desc_list)));
         }else if(cluster.equals(clusterNames[7])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.telugu_lits_desc_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.western_dance_desc_list)));
         }else if(cluster.equals(clusterNames[8])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.fotohub_desc_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.telugu_lits_desc_list)));
         }else if(cluster.equals(clusterNames[9])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.tamil_sangam_desc_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.fotohub_desc_list)));
         }else if(cluster.equals(clusterNames[10])){
+
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.tamil_sangam_desc_list)));
+        }else if(cluster.equals(clusterNames[11])){
 
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.music_team_desc_list)));
         }else{
@@ -125,34 +130,37 @@ public class EventListActivity extends AppCompatActivity {
         if(cluster.equals(clusterNames[0])){
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.kuruk_rules_list)));
 
-        }else if(cluster.equals(clusterNames[1])){//for arts cluster
+        }else if(cluster.equals(clusterNames[1])){
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.informals_rules_list)));
+
+        }else if(cluster.equals(clusterNames[2])){//for arts cluster
 
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.arts_rules_list)));
-        }else if(cluster.equals(clusterNames[2])){//for dramatics
+        }else if(cluster.equals(clusterNames[3])){//for dramatics
 
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.dramatics_rules_list)));
-        }else if(cluster.equals(clusterNames[3])){
-
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.english_lits_rules_list)));
         }else if(cluster.equals(clusterNames[4])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.hindi_lits_rules_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.english_lits_rules_list)));
         }else if(cluster.equals(clusterNames[5])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.eastern_dance_rules_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.hindi_lits_rules_list)));
         }else if(cluster.equals(clusterNames[6])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.western_dance_rules_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.eastern_dance_rules_list)));
         }else if(cluster.equals(clusterNames[7])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.telugu_lits_rules_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.western_dance_rules_list)));
         }else if(cluster.equals(clusterNames[8])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.fotohub_rules_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.telugu_lits_rules_list)));
         }else if(cluster.equals(clusterNames[9])){
 
-            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.tamil_sangam_rules_list)));
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.fotohub_rules_list)));
         }else if(cluster.equals(clusterNames[10])){
+
+            return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.tamil_sangam_rules_list)));
+        }else if(cluster.equals(clusterNames[11])){
 
             return new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.music_team_rules_list)));
         }else{

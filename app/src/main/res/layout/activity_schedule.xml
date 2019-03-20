@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/red_bk"
     tools:context=".Activities.ScheduleActivity">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/day_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/MyCustomTabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

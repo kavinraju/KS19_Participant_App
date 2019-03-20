@@ -35,17 +35,18 @@
     <!--clusters-->
     <string-array name="cluster_list">
         <item>FlagShip Event</item>
-        <item>Arts</item>
-        <item>Dramatics</item>
-        <item>English Lits</item>
-        <item>Hindi Lits</item>
-        <item>SASTRA Eastern Dance Team</item>
-        <item>SASTRA Western Dance Team</item>
-        <item>Telugu Lits</item>
-        <item>SASTRA FotoHub</item>
-        <item>சாஸ்த்ரா தமிழ்ச் சங்கம்</item>
-        <item>SASTRA Music Team</item>
-        <item>300 DPI</item>
+        <item>Informals</item>
+        <item>Arts</item>                       <!--1-->
+        <item>Dramatics</item>                  <!--2-->
+        <item>English Lits</item>               <!--3-->
+        <item>Hindi Lits</item>                 <!--4-->
+        <item>SASTRA Eastern Dance Team</item>  <!--5-->
+        <item>SASTRA Western Dance Team</item>  <!--6-->
+        <item>Telugu Lits</item>                <!--7-->
+        <item>SASTRA FotoHub</item>             <!--8-->
+        <item>சாஸ்த்ரா தமிழ்ச் சங்கம்</item>     <!--9-->
+        <item>SASTRA Music Team</item>          <!--10-->
+        <item>300 DPI</item>                    <!--11-->
     </string-array>
 
     <!-- mr and mrs kiruk-->
@@ -70,6 +71,30 @@ their own props.\n
 • judges decision will be final</item>
 
 
+    </string-array>
+
+
+    <!-- informals event list -->
+    <string-array name="informals_event_list">
+        <item>Master Chef</item>
+        <item>SHERLOCK</item>
+    </string-array>
+
+    <!-- informals desc list -->
+    <string-array name="informals_desc_list">
+        <item>Every apron might be a cape donned on backwards,  but history says not every white hat is a Gordon Ramsay,  there\'s only one coveted place,  only one crown. </item>
+        <item>Location : 221B Baker Street
+                "Knock! Knock!"
+                "Who\'s there?"
+                "This is Lestrade, Mr. Watson. It\'s been an year since you\'ve solved a case. Guess what, this time its not only Moriarty that\'d be stopping you. I know Sherlock will be delighted to solve it. </item>
+    </string-array>
+
+    <!-- informals rules list -->
+    <string-array name="informals_rules_list">
+        <item>1. Flameless cooking for rounds 1 and 2 and Induction stove will be provided for round 3.\n
+2. Two per team.\n
+3. Cutlery required must be brought by the participants.</item>
+        <item>2 per team</item>
     </string-array>
 
 
@@ -995,9 +1020,4 @@ satisfied</item>
         If foregoing a burger or cold coffee can bring a smile on a thousand faces, is it not worth it?<br /><br /> As they say, children are our future, let us be a small ray of hope in the beam of light that they need to establish a bright tomorrow. Join KS Upahaar!!
 
     </string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
 </resources>

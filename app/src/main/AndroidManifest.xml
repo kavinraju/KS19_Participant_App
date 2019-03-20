@@ -19,7 +19,11 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".Activities.ScheduleActivity"></activity>
+        <activity
+            android:name=".Activities.ScheduleActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar" />
 
         <activity android:name=".Activities.SplashScreen"
             android:theme="@style/AppTheme.NoActionBarWithTranslucentStatusBar"

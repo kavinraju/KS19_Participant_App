@@ -33,6 +33,7 @@ public class ClusterCardsActivity extends AppCompatActivity {
         //icons for clusters
         icons = new ArrayList<>();
         icons.add(R.drawable.logo_ks);
+        icons.add(R.drawable.logo_ks);
         icons.add(R.drawable.logo_arts);
         icons.add(R.drawable.logo_studio);
         icons.add(R.drawable.logo_english_lits);
@@ -81,17 +82,4 @@ public class ClusterCardsActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    * icons.add(getDrawable(R.drawable.logo_ks));
-        icons.add(getDrawable(R.drawable.logo_arts));
-        icons.add(getDrawable(R.drawable.logo_studio));
-        icons.add(getDrawable(R.drawable.logo_english_lits));
-        icons.add(getDrawable(R.drawable.logo_hindi_lits));
-        icons.add(getDrawable(R.drawable.logo_thandav));
-        icons.add(getDrawable(R.drawable.logo_insiders));
-        icons.add(getDrawable(R.drawable.logo_telugu_lits));
-        icons.add(getDrawable(R.drawable.logo_sfh));
-        icons.add(getDrawable(R.drawable.logo_tamil_sangam));
-        icons.add(getDrawable(R.drawable.logo_smt));
-        icons.add(getDrawable(R.drawable.logo_dpi));*/
 }
