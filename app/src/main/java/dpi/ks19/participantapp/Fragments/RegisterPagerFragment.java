@@ -29,11 +29,12 @@ import butterknife.OnClick;
 import dpi.ks19.participantapp.Activities.CollegeListActivity;
 import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.CallbackInterface.OTPSent;
 import dpi.ks19.participantapp.MainScreen;
 import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
-public class RegisterPagerFragment extends Fragment implements OTPInterface, OtpCustomDialog.CustomDialogInterface{
+public class RegisterPagerFragment extends Fragment implements OTPInterface, OtpCustomDialog.CustomDialogInterface, OTPSent {
 
     @BindView(R.id.et_register_name)
     EditText et_register_name;
@@ -51,7 +52,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     @BindView(R.id.hostel_checkbox)
     CheckBox hostelCheckbox;
 
-
+    String aId = "0";
     View v;
     ProgressDialog progressDialog;
     int COLLEGE_NAME =1200;
@@ -70,6 +71,9 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
         v = inflater.inflate(R.layout.frag_register, container, false);
         ButterKnife.bind(this,v);
 
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
         return v;
     }
 
@@ -100,13 +104,22 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
 
         }else {
             //calling the endpoints for sending OTP to email
-            ApiHelper.getInstance(getActivity()).generateOTP(et_register_email.getText().toString().trim());
-
-            //create a OTP dialog to enter the otp
-            createOTPDialog();
+            ApiHelper.getInstance(getActivity()).generateOTP(et_register_email.getText().toString().trim(), this);
+            progressDialog.show();
         }
     }
 
+    @Override
+    public void otpSent(boolean isSuccess) {
+        progressDialog.cancel();
+        //only show otp dialog is otp is sent
+        if(isSuccess){
+            //create a OTP dialog to enter the otp
+            createOTPDialog();
+        }else{
+            Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void createOTPDialog(){
         OtpCustomDialog customDialog = new OtpCustomDialog();
@@ -121,12 +134,14 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     public void isOTPVerified(boolean isVerified) {
         progressDialog.cancel();
         if(isVerified){
+
+            aId = (et_register_ambassador_id.getText().toString().trim().isEmpty())?"0": et_register_ambassador_id.getText().toString().trim();
             //OTP is verified proceed to user registration
             ApiHelper.getInstance(getActivity()).registerUser(et_register_name.getText().toString().trim(),
                     et_register_password.getText().toString().trim(),
                     et__register_phoneNumber.getText().toString().trim(),
                     et_register_clg.getText().toString().trim(),
-                    et_register_ambassador_id.getText().toString().trim(),
+                    aId,
                     isHostel);
             Toast.makeText(getActivity(), "Registered Successfully Please Login to proceed.", Toast.LENGTH_SHORT).show();
         }else{
@@ -140,9 +155,6 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     @Override
     public void getOTP(String otp) {
         Log.d("GOT OTP",otp);
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Loading...");
         progressDialog.show();
         //verify the OTP entered
         ApiHelper.getInstance(getActivity()).verifyOTP(otp,this);

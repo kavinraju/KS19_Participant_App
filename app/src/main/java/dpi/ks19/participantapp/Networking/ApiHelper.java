@@ -29,6 +29,7 @@ import java.util.HashMap;
 
 import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.CallbackInterface.OTPSent;
 import dpi.ks19.participantapp.CallbackInterface.QrResponse;
 import dpi.ks19.participantapp.CallbackInterface.EventsByCluster;
 import dpi.ks19.participantapp.Model.EventClass;
@@ -46,8 +47,8 @@ public class ApiHelper{
         CookieManager manager = new CookieManager();
         CookieHandler.setDefault(manager);
         this.ctx = ctx;
-        //baseUrl = "http://www.kuruksastra.in/participants/";
-        baseUrl = "https://protocolfest.co.in/ks/participants/";
+        baseUrl = "http://www.kuruksastra.in/participants/";
+        //baseUrl = "https://protocolfest.co.in/ks/participants/";
         sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.cookie_shared), Context.MODE_PRIVATE);
 
     }
@@ -60,7 +61,7 @@ public class ApiHelper{
     }
 
 
-    public void generateOTP(String email){
+    public void generateOTP(String email, final OTPSent callback){
         String URL = baseUrl+"generateOTP.php";
         Log.d("EMAIL:",email);
         //create json object
@@ -71,11 +72,13 @@ public class ApiHelper{
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST,URL,json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                callback.otpSent(true);
                 Log.d("GENERATE_JSON_RESPONSE", response.toString());
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                callback.otpSent(false);
                 Log.d("GENERATE_JSON_ERROR",error.toString());
             }
         });
@@ -133,18 +136,22 @@ public class ApiHelper{
 
 
     public void registerUser(String name, String password, String phone, String college, String aid, int accomadation){
-
-        String newAid = aid.replace("KSCA19","");
+        String newAid = "0";
+        if(!aid.equals("0")){
+            newAid = aid.replace("KSCA19","");
+        }
         JSONObject params = new JSONObject();
         try{
 
             params.put("name",name);
             params.put("password",password);
             Log.d("NEW_AID",newAid);
-            params.put("aid",newAid);//format KSCA19+ three digit // default zero
+            params.put("aid",newAid);//format KSCA19+ three digit // default 0
             params.put("phone",phone);
             params.put("college",college);
             params.put("hostel",accomadation);
+
+            Log.d("REGISTER_USER",params.toString());
         }catch (Exception e){
             Log.d("AID_ERROR",newAid);
         }
@@ -173,7 +180,7 @@ public class ApiHelper{
     }
 
 
-    public void loginUser(String email){
+    public void loginUser(String email, final OTPSent callback){
         String URL = baseUrl+"Mlogin.php";
         JSONObject params= new JSONObject();
 
@@ -184,11 +191,13 @@ public class ApiHelper{
         JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                callback.otpSent(true);
                 Log.d("LOGIN_RESPONSE",response.toString());
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                callback.otpSent(false);
                 Log.d("LOGIN_ERROR",error.toString());
             }
         });
@@ -261,12 +270,13 @@ public class ApiHelper{
             @Override
             public void onResponse(JSONArray response) {
                 Log.d("CLG_JSON_RESPONSE", response.toString());
-                callback.getCollegeList(response);
+                callback.getCollegeList(response, true);
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                callback.getCollegeList(null, false);
                 Log.d("CLG_JSON_ERROR",error.toString());
             }
         });

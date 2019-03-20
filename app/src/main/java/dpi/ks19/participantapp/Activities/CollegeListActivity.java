@@ -73,22 +73,28 @@ public class CollegeListActivity extends AppCompatActivity implements RecyclerVi
     }
 
     @Override
-    public void getCollegeList(JSONArray collegelist) {
+    public void getCollegeList(JSONArray collegelist, boolean isSuccess) {
         progressDialog.cancel();
-        clgList = new String[collegelist.length()];
-        try{
-            for(int i=0; i < collegelist.length(); i++){
-                clgList[i] = collegelist.getString(i);
-            }
-            adapter.setData(clgList);
-            arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_item,clgList);
-            actv = autoCompleteTextView;
+        if(isSuccess){
+            clgList = new String[collegelist.length()];
+            try{
+                for(int i=0; i < collegelist.length(); i++){
+                    clgList[i] = collegelist.getString(i);
+                }
+                adapter.setData(clgList);
+                arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_item,clgList);
+                actv = autoCompleteTextView;
 
-            actv.setAdapter(arrayAdapter);
-            actv.setTextColor(Color.WHITE);
-            actv.setThreshold(1);//will start working from first character
+                actv.setAdapter(arrayAdapter);
+                actv.setTextColor(Color.WHITE);
+                actv.setThreshold(1);//will start working from first character
 
-        }catch (JSONException e){}
+            }catch (JSONException e){}
+
+        }else{
+            Toast.makeText(this,"Check your internet connection", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @OnClick(R.id.clg_ok_btn)

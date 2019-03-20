@@ -4,5 +4,5 @@ import org.json.JSONArray;
 
 public interface CollegeInterface {
 
-    public void getCollegeList(JSONArray collegelist);
+    void getCollegeList(JSONArray collegelist, boolean isSuccess);
 }
