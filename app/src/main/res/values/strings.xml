@@ -29,6 +29,7 @@
     <string name="hostel">Hostel</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="ok">Ok</string>
     <string name="hostel_accomodation">Hostel accomodation needed</string>
 
     <!--clusters-->

@@ -136,7 +136,7 @@
 
             </android.support.design.widget.TextInputLayout>
 
-
+            <!-- this is hidden-->
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/textInput_password"
                 android:layout_width="match_parent"
@@ -148,9 +148,9 @@
                 android:backgroundTint="@android:color/white"
                 android:fontFamily="@font/sniglet_regular"
                 android:hint="@string/password"
-                android:visibility="gone"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInput_email"
@@ -168,28 +168,32 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/textInput_college_name"
+                android:id="@+id/text_input_college"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_16dp"
                 android:layout_marginTop="@dimen/margin_16dp"
                 android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="56dp"
                 android:backgroundTint="@android:color/white"
+                android:fontFamily="@font/sniglet_regular"
                 android:hint="@string/college_name"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textInput_password">
+                app:layout_constraintTop_toBottomOf="@+id/textInput_email"
+                app:passwordToggleEnabled="true">
 
                 <EditText
-                    android:id="@+id/et_register_college_name"
+                    android:id="@+id/et_register_clg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@android:color/white"
+                    android:onClick="onCollegeClicked"
                     android:focusableInTouchMode="false"
+                    android:backgroundTint="@android:color/white"
                     android:fontFamily="@font/sniglet_regular"
-                    android:inputType="textPersonName"
+                    android:inputType="text"
                     android:textColor="@android:color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -207,7 +211,7 @@
                 android:textColorHint="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textInput_college_name">
+                app:layout_constraintTop_toBottomOf="@id/text_input_college">
 
                 <EditText
                     android:id="@+id/et_register_ambassador_id"
@@ -235,15 +239,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textInput_ambassador_id">
 
-            <CheckBox android:id="@+id/hostel_checkbox"
-                android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/white"
-                android:onClick="onHostelClicked"
-                android:fontFamily="@font/sniglet_regular"
-                android:text="@string/hostel_accomodation" />
-        </android.support.design.widget.TextInputLayout>
+                <CheckBox
+                    android:id="@+id/hostel_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:fontFamily="@font/sniglet_regular"
+                    android:onClick="onHostelClicked"
+                    android:text="@string/hostel_accomodation"
+                    android:textColor="@color/white" />
+            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_register"

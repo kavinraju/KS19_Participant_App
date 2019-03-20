@@ -11,7 +11,7 @@ import dpi.ks19.participantapp.R;
 public class EventListViewHolder extends RecyclerView.ViewHolder {
     TextView eventName, eventRules, eventDesc;
     CardView rootLayout;
-
+    boolean isExpanded = false;
     public EventListViewHolder(@NonNull View itemView) {
         super(itemView);
 
