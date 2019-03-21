@@ -20,7 +20,6 @@ import dpi.ks19.participantapp.Activities.ClusterCardsActivity;
 import dpi.ks19.participantapp.Activities.ProfileActivity;
 import dpi.ks19.participantapp.Activities.ScheduleActivity;
 
-
 public class MainScreen extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;

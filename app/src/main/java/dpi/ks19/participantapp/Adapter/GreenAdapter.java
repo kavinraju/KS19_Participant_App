@@ -25,7 +25,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
     private Context context;
     private String title;
     private static final String[] android={"Aswin N",
-            "Kavin Raju",
+            "Kavin Raju S",
             "Tanveer Ahmad",
             "Kathir T",
             "Sibi N",
@@ -42,7 +42,6 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
             "Naveen",
             "Sanjay Vasanth",
             "Manickavel",
-            "Arun Vignesh B",
             "Adithya Narayanan",
             "Yagaa Gowtham",
             "Gowtham K"};

@@ -47,8 +47,23 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
 
+
         clusterIcon = new ArrayList<>();
 
+
+        clusterIcon.add(R.drawable.logo_ks);
+        clusterIcon.add(R.drawable.logo_ks);
+        clusterIcon.add(R.drawable.logo_arts);
+        clusterIcon.add(R.drawable.logo_studio);
+        clusterIcon.add(R.drawable.logo_english_lits);
+        clusterIcon.add(R.drawable.logo_hindi_lits);
+        clusterIcon.add(R.drawable.logo_thandav);
+        clusterIcon.add(R.drawable.logo_insiders);
+        clusterIcon.add(R.drawable.logo_telugu_lits);
+        clusterIcon.add(R.drawable.logo_sfh);
+        clusterIcon.add(R.drawable.logo_tamil_sangam);
+        clusterIcon.add(R.drawable.logo_smt);
+        clusterIcon.add(R.drawable.logo_dpi);
     }
 
     @NonNull
@@ -63,11 +78,13 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
         final String clusterName = cluster[listPosition];
 
         holder.clusterName.setText(clusterName);
+        holder.clusterIcon.setImageDrawable(mContext.getDrawable(clusterIcon.get(listPosition)));
         //Picasso.get().load(clusterIcon.get(listPosition)).into(holder.clusterIcon);
         holder.rootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!holder.isExpanded){
+                    holder.isExpanded = true;
                     progressDialog.show();
                     if(clusterName.equals(mContext.getString(R.string.tamil_sangam_display_text))){
                         ApiHelper.getInstance(mContext).getEventsForCluster(day, mContext.getString(R.string.tamil_sangam_query_text), holder, ClusterAdapter.this);
@@ -77,6 +94,7 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
                     }
 
                 }else{
+                    holder.isExpanded = false;
                     holder.hideRecyclerView();
                 }
 

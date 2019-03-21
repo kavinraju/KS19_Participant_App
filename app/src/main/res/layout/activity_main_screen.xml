@@ -47,28 +47,31 @@
                 android:background="@drawable/ripple_effect">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView2"
+                    android:layout_width="@dimen/margin_36dp"
+                    android:layout_height="@dimen/margin_36dp"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/profile"
-                    app:layout_constraintStart_toStartOf="@id/tv_profile"
-                    app:layout_constraintEnd_toEndOf="@id/tv_profile"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_profile"/>
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/profile" />
 
                 <TextView
                     android:id="@+id/tv_profile"
                     android:layout_width="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#e91e63"
-                    android:text="PROFILE"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="PROFILE"
+                    android:textAlignment="center"
+                    android:textColor="#830000"
+                    android:textSize="18sp"
 
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -91,28 +94,31 @@
                 android:background="@drawable/ripple_effect">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView3"
+                    android:layout_width="@dimen/margin_36dp"
+                    android:layout_height="@dimen/margin_36dp"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/events"
-                    app:layout_constraintStart_toStartOf="@id/tv_events"
-                    app:layout_constraintEnd_toEndOf="@id/tv_events"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_events"/>
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/events" />
 
                 <TextView
                     android:id="@+id/tv_events"
                     android:layout_width="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#e91e63"
-                    android:textStyle="bold"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="8dp"
                     android:text="EVENTS"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:textColor="#830000"
 
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                    app:layout_constraintStart_toStartOf="@+id/imageView3"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -135,29 +141,32 @@
                 android:background="@drawable/ripple_effect">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/schedule"
+                    android:id="@+id/imageView4"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
 
-                    app:layout_constraintStart_toStartOf="@id/tv_schedule"
-                    app:layout_constraintEnd_toEndOf="@id/tv_schedule"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_schedule"/>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/schedule" />
 
                 <TextView
                     android:id="@+id/tv_schedule"
                     android:layout_width="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#e91e63"
-                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="SCHEDULE"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:textColor="#830000"
+                    android:textSize="18sp"
 
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                    app:layout_constraintStart_toStartOf="@+id/imageView4"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -180,29 +189,32 @@
                 android:background="@drawable/ripple_effect">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/proshows"
+                    android:id="@+id/imageView5"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
 
-                    app:layout_constraintStart_toStartOf="@id/tv_proshows"
-                    app:layout_constraintEnd_toEndOf="@id/tv_proshows"
-                    app:layout_constraintBottom_toTopOf="@id/tv_proshows"/>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/proshows" />
 
                 <TextView
                     android:id="@+id/tv_proshows"
                     android:layout_width="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#e91e63"
-                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="PROSHOWS"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:textColor="#830000"
 
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                    app:layout_constraintStart_toStartOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -225,28 +237,32 @@
                 android:background="@drawable/ripple_effect">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/sponsors"
+                    android:id="@+id/imageView6"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
 
-                    app:layout_constraintStart_toStartOf="@id/tv_sponsors"
-                    app:layout_constraintEnd_toEndOf="@id/tv_sponsors"
-                    app:layout_constraintBottom_toTopOf="@id/tv_sponsors"/>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/sponsors" />
 
                 <TextView
                     android:id="@+id/tv_sponsors"
                     android:layout_width="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#e91e63"
-                    android:textStyle="bold"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
                     android:text="SPONSORS"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:textColor="#830000"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView6"
+                    app:layout_constraintHorizontal_bias="0.491"
+                    app:layout_constraintStart_toStartOf="@+id/imageView6"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -269,28 +285,31 @@
                 android:background="@drawable/ripple_effect">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView7"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/about"
-                    app:layout_constraintStart_toStartOf="@id/tv_about"
-                    app:layout_constraintEnd_toEndOf="@id/tv_about"
-                    app:layout_constraintBottom_toTopOf="@id/tv_about" />
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/about" />
 
                 <TextView
                     android:id="@+id/tv_about"
                     android:layout_width="wrap_content"
-                    android:textSize="18sp"
-                    android:textColor="#e91e63"
-                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="ABOUT"
                     android:textAlignment="center"
-                    android:layout_height="wrap_content"
+                    android:textColor="#830000"
+                    android:textSize="18sp"
 
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView7"
+                    app:layout_constraintStart_toStartOf="@+id/imageView7"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
             </android.support.constraint.ConstraintLayout>
 

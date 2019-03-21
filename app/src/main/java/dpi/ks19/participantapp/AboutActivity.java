@@ -43,7 +43,7 @@ public class AboutActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), AboutKS.class);
-                i.putExtra("heading", "UPHAAR");
+                i.putExtra("heading", "UPAHAAR");
                 startActivity(i);
 
             }
