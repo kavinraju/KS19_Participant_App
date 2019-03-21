@@ -60,9 +60,9 @@ public class EventClass {
         switch (eH) {
             case 0:
                 if (eM >= 1 && eM <= 9)
-                    time += "12" + "." + 0 + startTimeMin + " AM : ";
+                    time += "12" + "." + 0 + endTimeMin + " AM";
                 else
-                    time += "12" + "." + startTimeMin + " AM : ";
+                    time += "12" + "." + endTimeMin + " AM";
                 break;
             case 1:
             case 2:
@@ -74,16 +74,16 @@ public class EventClass {
             case 8:
             case 9:
                 if (sM >= 1 && sM <= 9)
-                    time += "0" + startTimeHours + "." + "0" + startTimeMin + " AM : ";
+                    time += "0" + endTimeHours + "." + "0" + endTimeMin + " AM";
                 else
-                    time += "0" + startTimeHours + "." + startTimeMin + " AM : ";
+                    time += "0" + endTimeHours + "." + endTimeMin + " AM";
                 break;
             case 10:
             case 11:
                 if (eM >= 1 && eM <= 9)
-                    time += endTimeHours + "." + 0 + endTimeMin + " AM : ";
+                    time += endTimeHours + "." + 0 + endTimeMin + " AM";
                 else
-                    time += endTimeHours + "." + endTimeMin + " AM : ";
+                    time += endTimeHours + "." + endTimeMin + " AM";
                 break;
             case 12:
             case 13:
@@ -98,9 +98,9 @@ public class EventClass {
             case 22:
             case 23:
                 if (eM >= 1 && eM <= 9)
-                    time += startTimeHours + "." + 0 + startTimeMin + " PM : ";
+                    time += endTimeHours + "." + 0 + endTimeMin + " PM";
                 else
-                    time += startTimeHours + "." + startTimeMin + " PM : ";
+                    time += endTimeHours + "." + endTimeMin + " PM";
                 break;
         }
         return time;

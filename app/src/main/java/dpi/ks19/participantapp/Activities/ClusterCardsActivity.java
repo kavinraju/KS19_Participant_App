@@ -33,7 +33,7 @@ public class ClusterCardsActivity extends AppCompatActivity {
         //icons for clusters
         icons = new ArrayList<>();
         icons.add(R.drawable.logo_ks);
-        icons.add(R.drawable.logo_ks);
+        icons.add(R.drawable.logo_informals);
         icons.add(R.drawable.logo_arts);
         icons.add(R.drawable.logo_studio);
         icons.add(R.drawable.logo_english_lits);

@@ -2,7 +2,6 @@ package dpi.ks19.participantapp.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,26 +14,20 @@ import android.view.ViewGroup;
 
 import android.widget.CheckBox;
 
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dpi.ks19.participantapp.Activities.CollegeListActivity;
-import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
-import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.CallbackInterface.OTPSent;
-import dpi.ks19.participantapp.MainScreen;
+import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.CallbackInterface.RegisterInterface;
 import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
-public class RegisterPagerFragment extends Fragment implements OTPInterface, OtpCustomDialog.CustomDialogInterface, OTPSent {
+public class RegisterPagerFragment extends Fragment implements OTPInterface, OtpCustomDialog.CustomDialogInterface, OTPSent, RegisterInterface {
 
     @BindView(R.id.et_register_name)
     EditText et_register_name;
@@ -104,20 +97,21 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
 
         }else {
             //calling the endpoints for sending OTP to email
-            ApiHelper.getInstance(getActivity()).generateOTP(et_register_email.getText().toString().trim(), this);
+            ApiHelper.getInstance(getActivity()).generateOTP(et_register_email.getText().toString().trim(),
+                    et__register_phoneNumber.getText().toString().trim(),
+                    this);
             progressDialog.show();
         }
     }
 
     @Override
-    public void otpSent(boolean isSuccess) {
+    public void otpSent(boolean isSuccess, String msg) {
         progressDialog.cancel();
-        //only show otp dialog is otp is sent
+        //only show otp dialog if otp is sent
         if(isSuccess){
-            //create a OTP dialog to enter the otp
             createOTPDialog();
         }else{
-            Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
         }
     }
 
@@ -142,14 +136,27 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
                     et__register_phoneNumber.getText().toString().trim(),
                     et_register_clg.getText().toString().trim(),
                     aId,
-                    isHostel);
-            Toast.makeText(getActivity(), "Registered Successfully Please Login to proceed.", Toast.LENGTH_SHORT).show();
+                    isHostel,
+                    this);
         }else{
             Snackbar.make(v, "Incorrect Otp", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }
     }
 
+    @Override
+    public void registerStatus(boolean successful) {
+        if(successful){
+            Toast.makeText(getActivity(), "Registered Successfully Please Login to proceed.", Toast.LENGTH_SHORT).show();
+            et_register_email.setText("");
+            et_register_clg.setText("");
+            et__register_phoneNumber.setText("");
+            et_register_ambassador_id.setText("");
+            et_register_name.setText("");
+        }else{
+            Toast.makeText(getActivity(), "Phone Number Exists Already", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     //callback from the otp dialog
     @Override

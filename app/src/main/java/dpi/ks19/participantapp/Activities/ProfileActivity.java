@@ -138,8 +138,15 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
 
         editor.putBoolean(getString(R.string.login_or_not), false);
         editor.putBoolean(getString(R.string.is_qr_saved), false);
-        editor.apply();
         deleteFile(fileName);
+        editor.putString(getString(R.string.name),null);
+        editor.putString(getString(R.string.phone_number),null);
+        editor.putString(getString(R.string.hostel_accomodation),null);
+        editor.putString(getString(R.string.email),null);
+        editor.putString(getString(R.string.college_name),null);
+        editor.clear();
+        editor.apply();
+
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
