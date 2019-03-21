@@ -22,8 +22,8 @@
             android:paddingTop="@dimen/margin_8dp"
             android:paddingEnd="@dimen/margin_8dp"
             android:text="NAME"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
+            android:textColor="@color/red_text"
+            android:textSize="16sp"
             android:textStyle="bold"
 
             card_view:layout_constraintEnd_toStartOf="@+id/eventTime"
@@ -35,6 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:paddingStart="@dimen/margin_8dp"
             android:paddingEnd="@dimen/margin_8dp"
@@ -42,7 +43,7 @@
             android:text="VENUE"
             android:textColor="@color/black"
 
-            android:textSize="16sp"
+            android:textSize="14sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="@+id/eventName"
             card_view:layout_constraintStart_toStartOf="parent"
