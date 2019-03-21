@@ -31,6 +31,7 @@ import dpi.ks19.participantapp.CallbackInterface.EventsByCluster;
 import dpi.ks19.participantapp.CallbackInterface.OTPSent;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.CallbackInterface.QrResponse;
+import dpi.ks19.participantapp.CallbackInterface.RegisterInterface;
 import dpi.ks19.participantapp.Model.EventClass;
 import dpi.ks19.participantapp.R;
 
@@ -60,13 +61,14 @@ public class ApiHelper {
     }
 
 
-    public void generateOTP(String email, final OTPSent callback){
+    public void generateOTP(String email, String phone, final OTPSent callback){
         String URL = baseUrl+"generateOTP.php";
         Log.d("EMAIL:",email);
 
         //create json object
         HashMap<String, String> params = new HashMap<>();
         params.put("email", email);
+        params.put("phone",phone);
         JSONObject json = new JSONObject(params);
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URL, json, new Response.Listener<JSONObject>() {
@@ -75,11 +77,9 @@ public class ApiHelper {
                 Log.d("GENERATE_JSON_RESPONSE", response.toString());
                 try{
                     String msg = response.getString("msg");
-                    if(msg.equals("Already Registered")){
-                        callback.otpSent(true, true);
-                    }
+                    callback.otpSent(false, msg);
                 }catch (Exception e){
-                    callback.otpSent(true, false);
+                    callback.otpSent(true,null);
                 }
 
             }
@@ -87,7 +87,7 @@ public class ApiHelper {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                callback.otpSent(false, false);
+                callback.otpSent(false, null);
                 Log.d("GENERATE_JSON_ERROR",error.toString());
             }
         });
@@ -137,14 +137,13 @@ public class ApiHelper {
 
 
 
-    public void registerUser(String name, String password, String phone, String college, String aid, int accomadation){
+    public void registerUser(String name, String password, String phone, String college, String aid, int accomadation, final RegisterInterface callback){
         String newAid = "0";
         if(!aid.equals("0")){
             newAid = aid.replace("KSCA19","");
         }
         JSONObject params = new JSONObject();
         try{
-
             params.put("name",name);
             params.put("password",password);
             Log.d("NEW_AID",newAid);
@@ -164,13 +163,21 @@ public class ApiHelper {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("REGISTER_USER", response.toString());
-                //callback.registerStatus(true);
+                try{
+                    String msg = response.getString("msg");
+                    if(msg.equals("Phone Already Exists")){
+                        callback.registerStatus(false);
+                    }
+                }catch (JSONException e){
+                    callback.registerStatus(true);
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("REGISTER_USER_ERROR", error.toString());
-//                callback.registerStatus(false);
+                callback.registerStatus(false);
             }
         });
 
@@ -198,11 +205,9 @@ public class ApiHelper {
             public void onResponse(JSONObject response) {
                 try{
                     String msg = response.getString("msg");
-                    if(msg.equals("No Email found")){
-                        callback.otpSent(true, false);
-                    }
+                    callback.otpSent(false, msg);
                 }catch (Exception e){
-                    callback.otpSent(true, true);
+                    callback.otpSent(true, null);
                 }
                 Log.d("LOGIN_RESPONSE",response.toString());
             }
@@ -210,7 +215,7 @@ public class ApiHelper {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                callback.otpSent(false, false);
+                callback.otpSent(false, null);
                 Log.d("LOGIN_ERROR",error.toString());
 
             }

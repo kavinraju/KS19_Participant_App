@@ -90,7 +90,7 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
                         ApiHelper.getInstance(mContext).getEventsForCluster(day, mContext.getString(R.string.tamil_sangam_query_text), holder, ClusterAdapter.this);
                     }else{
                         //use clusterName instead of "a"
-                        ApiHelper.getInstance(mContext).getEventsForCluster(day, "a", holder, ClusterAdapter.this);
+                        ApiHelper.getInstance(mContext).getEventsForCluster(day, clusterName, holder, ClusterAdapter.this);
                     }
 
                 }else{

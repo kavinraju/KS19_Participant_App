@@ -71,18 +71,13 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
     }
 
     @Override
-    public void otpSent(boolean isSuccess, boolean isRegistered) {
+    public void otpSent(boolean isSuccess, String msg) {
         Log.d("REACHED","OTP_SENT");
         progressDialog.cancel();
         if(isSuccess){
-            if(isRegistered){
-                //calling dialog to enter OTP
-                createOTPDialog();
-            }else{
-                Toast.makeText(getActivity(),"User not Registered",Toast.LENGTH_LONG).show();
-            }
+           createOTPDialog();
         }else{
-            Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),msg,Toast.LENGTH_LONG).show();
         }
     }
 
