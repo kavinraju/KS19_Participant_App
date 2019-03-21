@@ -52,7 +52,7 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
 
 
         clusterIcon.add(R.drawable.logo_ks);
-        clusterIcon.add(R.drawable.logo_ks);
+        clusterIcon.add(R.drawable.logo_informals);
         clusterIcon.add(R.drawable.logo_arts);
         clusterIcon.add(R.drawable.logo_studio);
         clusterIcon.add(R.drawable.logo_english_lits);

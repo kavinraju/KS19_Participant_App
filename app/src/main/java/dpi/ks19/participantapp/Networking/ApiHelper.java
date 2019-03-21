@@ -28,8 +28,8 @@ import java.util.HashMap;
 import dpi.ks19.participantapp.Adapter.ClusterAdapter;
 import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
 import dpi.ks19.participantapp.CallbackInterface.EventsByCluster;
-import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.CallbackInterface.OTPSent;
+import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.CallbackInterface.QrResponse;
 import dpi.ks19.participantapp.Model.EventClass;
 import dpi.ks19.participantapp.R;
@@ -72,14 +72,22 @@ public class ApiHelper {
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URL, json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                callback.otpSent(true);
                 Log.d("GENERATE_JSON_RESPONSE", response.toString());
+                try{
+                    String msg = response.getString("msg");
+                    if(msg.equals("Already Registered")){
+                        callback.otpSent(true, true);
+                    }
+                }catch (Exception e){
+                    callback.otpSent(true, false);
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                callback.otpSent(false);
+                callback.otpSent(false, false);
                 Log.d("GENERATE_JSON_ERROR",error.toString());
             }
         });
@@ -188,16 +196,21 @@ public class ApiHelper {
         JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
-                callback.otpSent(true);
+                try{
+                    String msg = response.getString("msg");
+                    if(msg.equals("No Email found")){
+                        callback.otpSent(true, false);
+                    }
+                }catch (Exception e){
+                    callback.otpSent(true, true);
+                }
                 Log.d("LOGIN_RESPONSE",response.toString());
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                callback.otpSent(false);
+                callback.otpSent(false, false);
                 Log.d("LOGIN_ERROR",error.toString());
 
             }

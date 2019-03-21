@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.constraint.ConstraintLayout
@@ -106,34 +107,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="8dp"
                     android:layout_marginStart="@dimen/margin_36dp"
+                    android:layout_marginTop="32dp"
                     android:layout_marginEnd="@dimen/margin_36dp"
-                    android:src="@drawable/white_border"
                     android:background="@drawable/ripple_effect_white"
                     android:elevation="@dimen/cardview_compat_inset_shadow"
-
                     android:fontFamily="@font/sniglet_regular"
+
                     android:onClick="onClickLogin"
                     android:padding="8dp"
+                    android:src="@drawable/white_border"
                     android:text="@string/login"
-                    android:textStyle="bold"
-
                     android:textColor="@android:color/white"
+
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toTopOf="@+id/guest"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/input_txt_layout_login_email"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintTop_toBottomOf="@+id/input_txt_layout_login_email" />
 
                 <Button
                     android:id="@+id/guest"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/ripple_effect_white"
                     android:elevation="@dimen/cardview_compat_inset_shadow"
                     android:fontFamily="@font/sniglet_regular"
@@ -142,10 +139,26 @@
                     android:text="Enter as guest"
                     android:textColor="@android:color/white"
                     android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+                <TextView
+                    android:id="@+id/privacy_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/sniglet_regular"
+                    android:onClick="privacyPolicyClicked"
+                    android:textColor="@color/white"
+                    android:text="@string/privacy_policy_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guest" />
             </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>

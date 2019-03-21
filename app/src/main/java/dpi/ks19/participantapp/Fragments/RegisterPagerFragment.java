@@ -2,7 +2,6 @@ package dpi.ks19.participantapp.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,22 +14,15 @@ import android.view.ViewGroup;
 
 import android.widget.CheckBox;
 
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dpi.ks19.participantapp.Activities.CollegeListActivity;
-import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
-import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.CallbackInterface.OTPSent;
-import dpi.ks19.participantapp.MainScreen;
+import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
@@ -110,14 +102,19 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     }
 
     @Override
-    public void otpSent(boolean isSuccess) {
+    public void otpSent(boolean isSuccess, boolean isRegistered) {
         progressDialog.cancel();
-        //only show otp dialog is otp is sent
+        //only show otp dialog if otp is sent
         if(isSuccess){
-            //create a OTP dialog to enter the otp
-            createOTPDialog();
+            if(!isRegistered){
+                //create a OTP dialog to enter the otp
+                createOTPDialog();
+            }else{
+                Toast.makeText(getActivity(),"Already Registered",Toast.LENGTH_LONG).show();
+            }
+
         }else{
-            Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_LONG).show();
         }
     }
 

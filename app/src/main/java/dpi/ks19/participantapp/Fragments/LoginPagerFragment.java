@@ -2,11 +2,13 @@ package dpi.ks19.participantapp.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +19,8 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import dpi.ks19.participantapp.Activities.ClusterCardsActivity;
-import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.CallbackInterface.OTPSent;
+import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
 import dpi.ks19.participantapp.MainScreen;
 import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
@@ -70,13 +71,18 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
     }
 
     @Override
-    public void otpSent(boolean isSuccess) {
+    public void otpSent(boolean isSuccess, boolean isRegistered) {
+        Log.d("REACHED","OTP_SENT");
         progressDialog.cancel();
         if(isSuccess){
-            //calling dialog to enter OTP
-            createOTPDialog();
+            if(isRegistered){
+                //calling dialog to enter OTP
+                createOTPDialog();
+            }else{
+                Toast.makeText(getActivity(),"User not Registered",Toast.LENGTH_LONG).show();
+            }
         }else{
-            Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_LONG).show();
         }
     }
 
@@ -116,4 +122,11 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
         startActivity(intent);
     }
 
+    @OnClick(R.id.privacy_text)
+    public void privacyPolicyClicked(View v){
+        String url = "https://github.com/droidLight/ks19_privacypolicy/blob/master/privacy_policy.md";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+    }
 }
