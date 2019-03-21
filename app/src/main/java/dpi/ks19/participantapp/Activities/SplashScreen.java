@@ -28,7 +28,7 @@ public class SplashScreen extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
 
         splashLogo = findViewById(R.id.splash_screen_logo);
-        Picasso.get().load(R.drawable.kslogo).into(splashLogo);
+        Picasso.with(this).load(R.drawable.kslogo).into(splashLogo);
     }
 
     @Override
