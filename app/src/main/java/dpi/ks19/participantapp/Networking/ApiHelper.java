@@ -292,7 +292,7 @@ public class ApiHelper {
 
     public void getEventsForCluster(final int day, String cluster, final ClusterAdapter.ClusterHolder holder, final EventsByCluster callback) {
 
-        String URL = baseUrl + "getEventsByCluster.php";
+        String URL = "https://protocolfest.co.in/ks/participants/getEventsByCluster.php";
 
         HashMap<String, String> params = new HashMap<>();
         params.put("cluster", cluster);

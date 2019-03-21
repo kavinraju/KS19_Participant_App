@@ -31,7 +31,8 @@
     <string name="no">No</string>
     <string name="ok">Ok</string>
     <string name="hostel_accomodation">Hostel accomodation needed</string>
-
+    <string name="tamil_sangam_display_text">சாஸ்த்ரா தமிழ்ச் சங்கம்</string>
+    <string name="tamil_sangam_query_text">Tamil Lits</string>
     <!--clusters-->
     <string-array name="cluster_list">
         <item>FlagShip Event</item>

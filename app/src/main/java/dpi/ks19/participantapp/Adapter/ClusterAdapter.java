@@ -69,7 +69,13 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
             public void onClick(View v) {
                 if(!holder.isExpanded){
                     progressDialog.show();
-                    ApiHelper.getInstance(mContext).getEventsForCluster(day, "a", holder, ClusterAdapter.this);
+                    if(clusterName.equals(mContext.getString(R.string.tamil_sangam_display_text))){
+                        ApiHelper.getInstance(mContext).getEventsForCluster(day, mContext.getString(R.string.tamil_sangam_query_text), holder, ClusterAdapter.this);
+                    }else{
+                        //use clusterName instead of "a"
+                        ApiHelper.getInstance(mContext).getEventsForCluster(day, "a", holder, ClusterAdapter.this);
+                    }
+
                 }else{
                     holder.hideRecyclerView();
                 }
