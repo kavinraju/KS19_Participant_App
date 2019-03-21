@@ -60,7 +60,7 @@ public class ClusterCardAdapter extends BaseAdapter {
         //display cluster logo
         //picasso for optimizing
         ImageView clusterLogo = v.findViewById(R.id.cluster_logos);
-        Picasso.get().load(icons.get(position)).into(clusterLogo);
+        Picasso.with(ctx).load(icons.get(position)).into(clusterLogo);
 
         v.setOnClickListener(new View.OnClickListener() {
             @Override

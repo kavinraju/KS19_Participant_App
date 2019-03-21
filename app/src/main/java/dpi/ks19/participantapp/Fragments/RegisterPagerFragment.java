@@ -145,7 +145,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     }
 
     @Override
-    public void registerStatus(boolean successful) {
+    public void registerStatus(boolean successful, String msg) {
         if(successful){
             Toast.makeText(getActivity(), "Registered Successfully Please Login to proceed.", Toast.LENGTH_SHORT).show();
             et_register_email.setText("");
@@ -154,7 +154,7 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
             et_register_ambassador_id.setText("");
             et_register_name.setText("");
         }else{
-            Toast.makeText(getActivity(), "Phone Number Exists Already", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
         }
     }
 

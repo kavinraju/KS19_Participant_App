@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -54,6 +57,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        //for in app messaging
+        //Log.d("Instance ID", FirebaseInstanceId.getInstance().getId());
+
+        //get crashlytics
 
         viewPager.setAdapter(new AuthenticationPagerAdapter(getSupportFragmentManager()));
         viewPager.setPageTransformer(true,new ZoomOutPageTransformer());

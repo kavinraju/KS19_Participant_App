@@ -166,10 +166,10 @@ public class ApiHelper {
                 try{
                     String msg = response.getString("msg");
                     if(msg.equals("Phone Already Exists")){
-                        callback.registerStatus(false);
+                        callback.registerStatus(false, msg);
                     }
                 }catch (JSONException e){
-                    callback.registerStatus(true);
+                    callback.registerStatus(true, null);
                 }
 
             }
@@ -177,7 +177,7 @@ public class ApiHelper {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("REGISTER_USER_ERROR", error.toString());
-                callback.registerStatus(false);
+                callback.registerStatus(false, "Try Again");
             }
         });
 

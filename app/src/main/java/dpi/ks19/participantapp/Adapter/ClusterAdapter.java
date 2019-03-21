@@ -144,8 +144,15 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
     @Override
     public void getEventsByCluster(ArrayList<EventClass> data, ClusterHolder holder, boolean success) {
         if(success) {
-            holder.setRecyclerView(data);
+            if(data.size() == 0){
+                progressDialog.cancel();
+                Toast.makeText(mContext, "No Events In This Cluster Today", Toast.LENGTH_SHORT).show();
+            }else{
+                holder.setRecyclerView(data);
+            }
+
         }else{
+            progressDialog.cancel();
             Toast.makeText(mContext, "Try Again", Toast.LENGTH_SHORT).show();
         }
 

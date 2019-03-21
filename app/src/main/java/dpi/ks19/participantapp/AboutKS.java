@@ -37,7 +37,7 @@ public class AboutKS extends AppCompatActivity {
         else if(this.heading.equals("KURUKSASTRA")){
             //ks.setImageDrawable(getDrawable(R.drawable.ks_circle));
             //added this to decrease load time
-            Picasso.get().load(R.drawable.ks_circle).into(ks);
+            Picasso.with(this).load(R.drawable.ks_circle).into(ks);
             content.setText(getText(R.string.about_ks));
         }
         else{
