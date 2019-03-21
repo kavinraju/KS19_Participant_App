@@ -16,49 +16,54 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
+import dpi.ks19.participantapp.CallbackInterface.EventsByCluster;
 import dpi.ks19.participantapp.CallbackInterface.ScheduleInterface;
 import dpi.ks19.participantapp.Fragments.DayOneFrag;
 import dpi.ks19.participantapp.Fragments.DayThreeFrag;
 import dpi.ks19.participantapp.Fragments.DayTwoFrag;
 import dpi.ks19.participantapp.Model.EventClass;
+import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
-public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterHolder> implements ScheduleInterface {
+public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterHolder> implements EventsByCluster {
+
     //Cluster Adapter for Cluster RecyclerView.
-    ArrayList<Drawable> clusterIcon = new ArrayList<>();
+    ArrayList<Integer> clusterIcon;
     Context mContext;
     ProgressDialog progressDialog;
     int day;
-    private ClusterAdapter callback;
     private String cluster[];
 
-    public ClusterAdapter(Context mContext, int d) {        //Constructor initializes mContext, callback and data for clusters as it is Static.
+    public ClusterAdapter(Context mContext, int d) {
         this.mContext = mContext;
-        this.callback = this;
         cluster = mContext.getResources().getStringArray(R.array.cluster_list);
-        day = d;
+        this.day = d;
 
-        progressDialog = new ProgressDialog(mContext);      //Initializes progress Dialog When loading for data.
-        progressDialog.setTitle("Loading...");
-        progressDialog.setMessage("Downloading Data.....Please Wait");
+        progressDialog = new ProgressDialog(mContext);
+        progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setIndeterminate(true);
 
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_ks));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_arts));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_studio));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_english_lits));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_hindi_lits));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_thandav));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_insiders));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_telugu_lits));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_sfh));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_tamil_sangam));
-        clusterIcon.add(mContext.getDrawable(R.drawable.logo_smt));
+
+        clusterIcon = new ArrayList<>();
+
+
+        clusterIcon.add(R.drawable.logo_ks);
+        clusterIcon.add(R.drawable.logo_ks);
+        clusterIcon.add(R.drawable.logo_arts);
+        clusterIcon.add(R.drawable.logo_studio);
+        clusterIcon.add(R.drawable.logo_english_lits);
+        clusterIcon.add(R.drawable.logo_hindi_lits);
+        clusterIcon.add(R.drawable.logo_thandav);
+        clusterIcon.add(R.drawable.logo_insiders);
+        clusterIcon.add(R.drawable.logo_telugu_lits);
+        clusterIcon.add(R.drawable.logo_sfh);
+        clusterIcon.add(R.drawable.logo_tamil_sangam);
+        clusterIcon.add(R.drawable.logo_smt);
+        clusterIcon.add(R.drawable.logo_dpi);
     }
 
     @NonNull
@@ -73,78 +78,36 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
         final String clusterName = cluster[listPosition];
 
         holder.clusterName.setText(clusterName);
-        holder.clusterIcon.setImageDrawable(clusterIcon.get(listPosition));
+        holder.clusterIcon.setImageDrawable(mContext.getDrawable(clusterIcon.get(listPosition)));
+        //Picasso.get().load(clusterIcon.get(listPosition)).into(holder.clusterIcon);
         holder.rootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.show();
-                if (day == 22)
-                    DayOneFrag.getInstance().getSchedule(getQueryWord(clusterName), callback, holder);
-                else if (day == 23)
-                    DayTwoFrag.getInstance().getSchedule(getQueryWord(clusterName), callback, holder);
-                else
-                    DayThreeFrag.getInstance().getSchedule(getQueryWord(clusterName), callback, holder);
+                if(!holder.isExpanded){
+                    holder.isExpanded = true;
+                    progressDialog.show();
+                    if(clusterName.equals(mContext.getString(R.string.tamil_sangam_display_text))){
+                        ApiHelper.getInstance(mContext).getEventsForCluster(day, mContext.getString(R.string.tamil_sangam_query_text), holder, ClusterAdapter.this);
+                    }else{
+                        //use clusterName instead of "a"
+                        ApiHelper.getInstance(mContext).getEventsForCluster(day, "a", holder, ClusterAdapter.this);
+                    }
+
+                }else{
+                    holder.isExpanded = false;
+                    holder.hideRecyclerView();
+                }
+
             }
         });
-    }
-
-    @Override
-    public void onViewDetachedFromWindow(@NonNull ClusterHolder holder) {
-        super.onViewDetachedFromWindow(holder);     //Hides the Schedule if the item is detached.
-        holder.hideRecyclerView();
-    }
-
-    private String getQueryWord(String clusterName) {
-        //Returns the query word.
-        if (clusterName.equals(cluster[0])) {
-            return cluster[0];
-        } else if (clusterName.equals(cluster[1])) {
-            return cluster[1];
-        } else if (clusterName.equals(cluster[2])) {
-            return cluster[2];
-        } else if (clusterName.equals(cluster[3])) {
-            return cluster[3];
-        } else if (clusterName.equals(cluster[4])) {
-            return cluster[4];
-        } else if (clusterName.equals(cluster[5])) {
-            return cluster[5];
-        } else if (clusterName.equals(cluster[6])) {
-            return cluster[6];
-        } else if (clusterName.equals(cluster[7])) {
-            return cluster[7];
-        } else if (clusterName.equals(cluster[8])) {
-            return cluster[8];
-        } else if (clusterName.equals(cluster[9])) {
-            return cluster[9];
-        } else if (clusterName.equals(cluster[10])) {
-            return cluster[10];
-        } else if (clusterName.equals(cluster[11])) {
-            return cluster[11];
-        } else {
-            return clusterName;
-        }
     }
 
 
     @Override
     public int getItemCount() {
-        return clusterIcon.size();
-    }       //Gets the total number of items.
-
-    @Override
-    public void callback(String querySchedule) {
-
+        return cluster.length;
     }
 
-    @Override
-    public void setScheduleData(ArrayList<EventClass> data, ClusterHolder clusterHolder, boolean isEmpty) {   //To set Schedule data
-        if (isEmpty) {
-            progressDialog.dismiss();
-            Toast.makeText(mContext, "Sorry! Unfortunate Error occurred.", Toast.LENGTH_SHORT).show();
-        } else {
-            clusterHolder.setRecyclerView(data);        //To set recycler view for schedule.
-        }
-    }
 
     public class ClusterHolder extends RecyclerView.ViewHolder {
         ConstraintLayout rootLayout;
@@ -152,6 +115,7 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
         ImageView clusterIcon;
         RecyclerView scheduleRecyclerView;
         ScheduleAdapter adapter;
+        boolean isExpanded;
 
         public ClusterHolder(@NonNull View itemView) {      //Holder for cluster item which holds the current recycler view in use.
             super(itemView);
@@ -162,6 +126,7 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
             adapter = new ScheduleAdapter(mContext);
             scheduleRecyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext()));
             scheduleRecyclerView.setAdapter(adapter);
+            isExpanded = false;
         }
 
         public void setRecyclerView(ArrayList<EventClass> data) {     //Sets the data, make the schedules visible and dismisses the AlertDialog.
@@ -172,6 +137,16 @@ public class ClusterAdapter extends RecyclerView.Adapter<ClusterAdapter.ClusterH
 
         public void hideRecyclerView() {        //Hides the recyclerView.
             scheduleRecyclerView.setVisibility(View.GONE);
+        }
+
+    }
+
+    @Override
+    public void getEventsByCluster(ArrayList<EventClass> data, ClusterHolder holder, boolean success) {
+        if(success) {
+            holder.setRecyclerView(data);
+        }else{
+            Toast.makeText(mContext, "Try Again", Toast.LENGTH_SHORT).show();
         }
 
     }

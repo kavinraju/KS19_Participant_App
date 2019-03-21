@@ -19,11 +19,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dpi.ks19.participantapp.Activities.ClusterCardsActivity;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.CallbackInterface.OTPSent;
 import dpi.ks19.participantapp.MainScreen;
 import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
-public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCustomDialog.CustomDialogInterface{
+public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCustomDialog.CustomDialogInterface, OTPSent {
 
     @BindView(R.id.et_login_email)
     EditText et_login_email;
@@ -47,6 +48,9 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.frag_login,container, false);
         ButterKnife.bind(this,view);
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
         return view;
 
     }
@@ -59,10 +63,20 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
                     .setAction("Action", null).show();
         }else {
             //Call the end point here
-            ApiHelper.getInstance(getActivity()).loginUser(et_login_email.getText().toString());
+            ApiHelper.getInstance(getActivity()).loginUser(et_login_email.getText().toString(), this);
+            progressDialog.setMessage("Waiting for OTP...");
+            progressDialog.show();
+        }
+    }
 
+    @Override
+    public void otpSent(boolean isSuccess) {
+        progressDialog.cancel();
+        if(isSuccess){
             //calling dialog to enter OTP
             createOTPDialog();
+        }else{
+            Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -90,10 +104,7 @@ public class LoginPagerFragment extends Fragment implements OTPInterface, OtpCus
 
     @Override
     public void getOTP(String otp) {
-
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Loading...");
+        progressDialog.setMessage("Verifying...");
         progressDialog.show();
         ApiHelper.getInstance(getActivity()).loginVerify(otp,this);
     }

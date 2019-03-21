@@ -12,21 +12,29 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import android.widget.CheckBox;
+
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dpi.ks19.participantapp.Activities.CollegeListActivity;
+import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.CallbackInterface.OTPSent;
 import dpi.ks19.participantapp.MainScreen;
 import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
-public class RegisterPagerFragment extends Fragment implements OTPInterface, OtpCustomDialog.CustomDialogInterface {
+public class RegisterPagerFragment extends Fragment implements OTPInterface, OtpCustomDialog.CustomDialogInterface, OTPSent {
 
     @BindView(R.id.et_register_name)
     EditText et_register_name;
@@ -38,13 +46,18 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
     EditText et_register_password;
     @BindView(R.id.et_register_ambassador_id)
     EditText et_register_ambassador_id;
-    @BindView(R.id.autoCompleteTextView)
-    AutoCompleteTextView autoCompleteTextView;
+    @BindView(R.id.et_register_clg)
+    EditText et_register_clg;
 
+    @BindView(R.id.hostel_checkbox)
+    CheckBox hostelCheckbox;
+
+    String aId = "0";
     View v;
     ProgressDialog progressDialog;
-    int COLLEGE_NAME =120;
-    String[] colleges ={"SASTRA","SRM","VIT","Saranathan","SRM TRP","SRM TRP","SRM TRP","SRM TRP","SRM TRP","SRM TRP","SRM TRP","SRM TRP"};
+    int COLLEGE_NAME =1200;
+
+    int  isHostel = 0;
 
     public RegisterPagerFragment() {
     }
@@ -58,35 +71,53 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
         v = inflater.inflate(R.layout.frag_register, container, false);
         ButterKnife.bind(this,v);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (getActivity(),android.R.layout.select_dialog_item,colleges);
-        //Getting the instance of AutoCompleteTextView
-        AutoCompleteTextView actv =  (AutoCompleteTextView)autoCompleteTextView;
-        actv.setThreshold(1);//will start working from first character
-        actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
-        actv.setTextColor(Color.WHITE);
-
-
-
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
         return v;
+    }
+
+
+    @OnClick(R.id.hostel_checkbox)
+    public void onHostelClicked(View v){
+        hostelCheckbox = (CheckBox)v;
+        if(hostelCheckbox.isChecked()){
+            isHostel = 1;
+            Log.d("HOSTEL","YES");
+        }else{
+            isHostel = 0;
+            Log.d("HOSTEL","NO");
+        }
     }
 
 
     @OnClick(R.id.btn_register)
     public void onClickRegister(View  view){
 
-        if (et_register_name.getText().toString().isEmpty() || et__register_phoneNumber.getText().toString().isEmpty() ||
-        autoCompleteTextView.getText().toString().isEmpty()){
+        if (et_register_name.getText().toString().isEmpty() ||
+                et_register_email.getText().toString().isEmpty() ||
+                et__register_phoneNumber.getText().toString().isEmpty() ||
+                et_register_clg.getText().toString().isEmpty()){
 
             Snackbar.make(view, "All the fields are required", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
 
         }else {
             //calling the endpoints for sending OTP to email
-            ApiHelper.getInstance(getActivity()).generateOTP(et_register_email.getText().toString().trim());
+            ApiHelper.getInstance(getActivity()).generateOTP(et_register_email.getText().toString().trim(), this);
+            progressDialog.show();
+        }
+    }
 
+    @Override
+    public void otpSent(boolean isSuccess) {
+        progressDialog.cancel();
+        //only show otp dialog is otp is sent
+        if(isSuccess){
             //create a OTP dialog to enter the otp
             createOTPDialog();
+        }else{
+            Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -98,17 +129,20 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
 
     }
 
+
     @Override
     public void isOTPVerified(boolean isVerified) {
         progressDialog.cancel();
         if(isVerified){
+
+            aId = (et_register_ambassador_id.getText().toString().trim().isEmpty())?"0": et_register_ambassador_id.getText().toString().trim();
             //OTP is verified proceed to user registration
             ApiHelper.getInstance(getActivity()).registerUser(et_register_name.getText().toString().trim(),
                     et_register_password.getText().toString().trim(),
                     et__register_phoneNumber.getText().toString().trim(),
-                    autoCompleteTextView.getText().toString().trim(),
-                    et_register_ambassador_id.getText().toString().trim(),
-                    true);
+                    et_register_clg.getText().toString().trim(),
+                    aId,
+                    isHostel);
             Toast.makeText(getActivity(), "Registered Successfully Please Login to proceed.", Toast.LENGTH_SHORT).show();
         }else{
             Snackbar.make(v, "Incorrect Otp", Snackbar.LENGTH_LONG)
@@ -116,26 +150,31 @@ public class RegisterPagerFragment extends Fragment implements OTPInterface, Otp
         }
     }
 
+
     //callback from the otp dialog
     @Override
     public void getOTP(String otp) {
         Log.d("GOT OTP",otp);
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Loading...");
         progressDialog.show();
         //verify the OTP entered
         ApiHelper.getInstance(getActivity()).verifyOTP(otp,this);
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == COLLEGE_NAME && data != null){
-            autoCompleteTextView.setText(data.getStringExtra(getString(R.string.college_name)));
+            et_register_clg.setText(data.getStringExtra(getString(R.string.college_name)));
         }else{
             Snackbar.make(v, "Choose your College", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         }
+    }
+
+
+    @OnClick(R.id.et_register_clg)
+    public void onCollegeClicked(View v){
+        startActivityForResult(new Intent(getActivity(), CollegeListActivity.class), COLLEGE_NAME);
     }
 }

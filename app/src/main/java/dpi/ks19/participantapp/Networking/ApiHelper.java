@@ -25,9 +25,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+import dpi.ks19.participantapp.Adapter.ClusterAdapter;
 import dpi.ks19.participantapp.CallbackInterface.CollegeInterface;
 import dpi.ks19.participantapp.CallbackInterface.EventsByCluster;
 import dpi.ks19.participantapp.CallbackInterface.OTPInterface;
+import dpi.ks19.participantapp.CallbackInterface.OTPSent;
 import dpi.ks19.participantapp.CallbackInterface.QrResponse;
 import dpi.ks19.participantapp.Model.EventClass;
 import dpi.ks19.participantapp.R;
@@ -44,8 +46,8 @@ public class ApiHelper {
         CookieManager manager = new CookieManager();
         CookieHandler.setDefault(manager);
         this.ctx = ctx;
-        //baseUrl = "http://www.kuruksastra.in/participants/";
-        baseUrl = "https://protocolfest.co.in/ks/participants/";
+        baseUrl = "http://www.kuruksastra.in/participants/";
+        //baseUrl = "https://protocolfest.co.in/ks/participants/";
         sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.cookie_shared), Context.MODE_PRIVATE);
 
     }
@@ -58,9 +60,10 @@ public class ApiHelper {
     }
 
 
-    public void generateOTP(String email) {
-        String URL = baseUrl + "generateOTP.php";
-        Log.d("EMAIL:", email);
+    public void generateOTP(String email, final OTPSent callback){
+        String URL = baseUrl+"generateOTP.php";
+        Log.d("EMAIL:",email);
+
         //create json object
         HashMap<String, String> params = new HashMap<>();
         params.put("email", email);
@@ -69,12 +72,15 @@ public class ApiHelper {
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, URL, json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                callback.otpSent(true);
                 Log.d("GENERATE_JSON_RESPONSE", response.toString());
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("GENERATE_JSON_ERROR", error.toString());
+
+                callback.otpSent(false);
+                Log.d("GENERATE_JSON_ERROR",error.toString());
             }
         });
 
@@ -112,16 +118,7 @@ public class ApiHelper {
             public void onErrorResponse(VolleyError error) {
                 Log.d("VERIFY_JSON ERROR", error.toString());
             }
-        })/*{
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String,String>headers = new HashMap<>();
-                String cookie = sharedPreferences.getString(ctx.getString(R.string.cookie_key),"NOT_FOUND");
-                Log.d("GET_COOKIE",cookie);
-                headers.put("cookie",cookie);
-                return headers;
-            }
-        }*/;
+        });
 
         jsonRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
@@ -131,21 +128,26 @@ public class ApiHelper {
     }
 
 
-    public void registerUser(String name, String password, String phone, String college, String aid, boolean accomadation) {
 
-        String newAid = aid.replace("KSCA19", "");
+    public void registerUser(String name, String password, String phone, String college, String aid, int accomadation){
+        String newAid = "0";
+        if(!aid.equals("0")){
+            newAid = aid.replace("KSCA19","");
+        }
         JSONObject params = new JSONObject();
-        try {
+        try{
 
-            params.put("name", name);
-            params.put("password", password);
-            Log.d("NEW_AID", newAid);
-            params.put("aid", newAid);//format KSCA19+ three digit // default zero
-            params.put("phone", phone);
-            params.put("college", college);
-            params.put("hostel", accomadation);
-        } catch (Exception e) {
-            Log.d("AID_ERROR", newAid);
+            params.put("name",name);
+            params.put("password",password);
+            Log.d("NEW_AID",newAid);
+            params.put("aid",newAid);//format KSCA19+ three digit // default 0
+            params.put("phone",phone);
+            params.put("college",college);
+            params.put("hostel",accomadation);
+
+            Log.d("REGISTER_USER",params.toString());
+        }catch (Exception e){
+            Log.d("AID_ERROR",newAid);
         }
 
         String url = baseUrl + "addParticipant.php";
@@ -160,7 +162,7 @@ public class ApiHelper {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("REGISTER_USER_ERROR", error.toString());
-                //callback.registerStatus(false);
+//                callback.registerStatus(false);
             }
         });
 
@@ -172,9 +174,11 @@ public class ApiHelper {
     }
 
 
-    public void loginUser(String email) {
-        String URL = baseUrl + "Mlogin.php";
-        JSONObject params = new JSONObject();
+
+    public void loginUser(String email, final OTPSent callback){
+        String URL = baseUrl+"Mlogin.php";
+        JSONObject params= new JSONObject();
+
 
         try {
             params.put("email", email);
@@ -184,12 +188,18 @@ public class ApiHelper {
         JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("LOGIN_RESPONSE", response.toString());
+
+                callback.otpSent(true);
+                Log.d("LOGIN_RESPONSE",response.toString());
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("LOGIN_ERROR", error.toString());
+
+                callback.otpSent(false);
+                Log.d("LOGIN_ERROR",error.toString());
+
             }
         });
 
@@ -213,8 +223,10 @@ public class ApiHelper {
         JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("LOGIN_VERIFY_RESPONSE", response.toString());
-                try {
+
+                Log.d("LOGIN_VERIFY_RESPONSE",response.toString());
+                try{
+                    saveUserData(response);
                     callback.isOTPVerified(response.getBoolean("valid"));
                 } catch (JSONException e) {
                 }
@@ -223,6 +235,7 @@ public class ApiHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                callback.isOTPVerified(false);
                 Log.d("LOGIN_VERIFY_ERROR", error.toString());
             }
         });
@@ -262,22 +275,24 @@ public class ApiHelper {
             @Override
             public void onResponse(JSONArray response) {
                 Log.d("CLG_JSON_RESPONSE", response.toString());
-                callback.getCollegeList(response);
+                callback.getCollegeList(response, true);
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("CLG_JSON_ERROR", error.toString());
+                callback.getCollegeList(null, false);
+                Log.d("CLG_JSON_ERROR",error.toString());
+
             }
         });
         CustomRequestQueue.getInstance(ctx).setRequest(collegeListRequest);
     }
 
 
-    public void getEventsForCluster(final int day, String cluster, final EventsByCluster callback) {
+    public void getEventsForCluster(final int day, String cluster, final ClusterAdapter.ClusterHolder holder, final EventsByCluster callback) {
 
-        String URL = baseUrl + "getEventsByCluster.php";
+        String URL = "https://protocolfest.co.in/ks/participants/getEventsByCluster.php";
 
         HashMap<String, String> params = new HashMap<>();
         params.put("cluster", cluster);
@@ -285,12 +300,14 @@ public class ApiHelper {
         JsonObjectRequest eventsRequest = new JsonObjectRequest(Request.Method.POST, URL, new JSONObject(params), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                callback.getEventsByCluster(parseData(day, response), true);
+                Log.d("EVENTS_RESPONSE_RAW", response.toString());
+                callback.getEventsByCluster(parseData(day, response), holder, true);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                callback.getEventsByCluster(null, false);
+                Log.d("EVENTS_RESPONSE_ERROR", error.toString());
+                callback.getEventsByCluster(null, holder, false);
             }
         });
 
@@ -320,10 +337,11 @@ public class ApiHelper {
                 Log.d("DATE", startDate.getDate() + "");
                 if (startDate.getDate() == day) {
                     temp.eventName = singleEvent.getString("ename");
-                    temp.startTimeHours = startDate.getHours() + "";
-                    temp.startTimeMin = startDate.getMinutes() + "";
-                    temp.endTimeHours = startDate.getHours() + "";
-                    temp.endTimeMin = endDate.getMinutes() + "";
+
+                    temp.startTimeHours = startDate.getHours()+"";
+                    temp.startTimeMin = startDate.getMinutes()+"";
+                    temp.endTimeMin = endDate.getMinutes()+"";
+                    temp.endTimeHours = endDate.getHours()+"";
                     temp.venue = singleEvent.getString("venue");
                     data.add(temp);
                 }
@@ -338,13 +356,21 @@ public class ApiHelper {
     }
 
 
-     /*try{
-        Date startDate;
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
-        String testDate = "2019-03-23T08:02:00";
-        startDate = dateformat.parse(testDate);
-        Log.d("DATE",startDate.getDate()+"");
-    }catch (Exception e){
-        Log.d("DATE",e.toString());
-    }*/
+    private void saveUserData(JSONObject object){
+        try{
+            sharedPreferences = ctx.getSharedPreferences(ctx.getString(R.string.shared_pref), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+             editor.putString(ctx.getString(R.string.name), object.getString("name"));
+            editor.putString(ctx.getString(R.string.email), object.getString("email"));
+             editor.putString(ctx.getString(R.string.college_name), object.getString("college"));
+             editor.putString(ctx.getString(R.string.phone_number), object.getString("phone"));
+             editor.putString(ctx.getString(R.string.hostel_accomodation), object.getString("accomodation"));
+             editor.apply();
+            editor.commit();
+            Log.d("JSON_USER","SAVE_SUCCESS");
+        }catch (JSONException e){
+            Log.d("JSON_USER","ERROR");
+        }
+    }
+
 }

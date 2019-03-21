@@ -36,18 +36,20 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListViewHolder> 
         eventListViewHolder.rootLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                eventListViewHolder.eventDesc.setVisibility(View.VISIBLE);
-                eventListViewHolder.eventRules.setVisibility(View.VISIBLE);
+                if(!eventListViewHolder.isExpanded){
+                    eventListViewHolder.eventDesc.setVisibility(View.VISIBLE);
+                    eventListViewHolder.eventRules.setVisibility(View.VISIBLE);
+                    eventListViewHolder.isExpanded = true;
+                }else{
+                    eventListViewHolder.eventDesc.setVisibility(View.GONE);
+                    eventListViewHolder.eventRules.setVisibility(View.GONE);
+                    eventListViewHolder.isExpanded = false;
+                }
+
             }
         });
     }
 
-    @Override
-    public void onViewDetachedFromWindow(@NonNull EventListViewHolder holder) {
-        super.onViewDetachedFromWindow(holder);
-        holder.eventRules.setVisibility(View.GONE);
-        holder.eventDesc.setVisibility(View.GONE);
-    }
 
     @Override
     public int getItemCount() {

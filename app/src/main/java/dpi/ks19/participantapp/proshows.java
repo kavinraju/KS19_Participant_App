@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 public class proshows extends AppCompatActivity {
 
     @Override
@@ -11,23 +13,27 @@ public class proshows extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_proshows);
 
-        ImageView musicteam = (ImageView) findViewById(R.id.musicteam);
-        musicteam.setImageResource(R.drawable.smt_final);
+        ImageView musicteam = findViewById(R.id.musicteam);
+        Picasso.get().load(R.drawable.smt_final).into(musicteam);
 
-        ImageView veena = (ImageView) findViewById(R.id.veenasrivani);
-        veena.setImageResource(R.drawable.veenasrivani);
 
-        ImageView crazy = (ImageView) findViewById(R.id.crazymohan);
-        crazy.setImageResource(R.drawable.crazymohan_final);
+        ImageView veena = findViewById(R.id.veenasrivani);
+        Picasso.get().load(R.drawable.veenasrivani).into(veena);
 
-        ImageView choreo = (ImageView) findViewById(R.id.choreonite);
-        choreo.setImageResource(R.drawable.choreo_final);
 
-        ImageView pattimandram = (ImageView) findViewById(R.id.pattimandram);
-        pattimandram.setImageResource(R.drawable.p_final);
+        ImageView crazy = findViewById(R.id.crazymohan);
+        Picasso.get().load(R.drawable.crazymohan_final).into(crazy);
 
-        ImageView navin = (ImageView) findViewById(R.id.navin);
-        navin.setImageResource(R.drawable.navin_final);
+
+        ImageView choreo = findViewById(R.id.choreonite);
+        Picasso.get().load(R.drawable.choreo_final).into(choreo);
+
+
+        ImageView pattimandram = findViewById(R.id.pattimandram);
+        Picasso.get().load(R.drawable.p_final).into(pattimandram);
+
+        ImageView navin = findViewById(R.id.navin);
+        Picasso.get().load(R.drawable.navin_final).into(navin);
 
 
     }

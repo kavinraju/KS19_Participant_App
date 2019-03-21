@@ -15,21 +15,18 @@ import dpi.ks19.participantapp.CallbackInterface.RecyclerViewCallback;
 import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
-public class CollegeListAdapter extends RecyclerView.Adapter<CollegeViewHolder> implements CollegeInterface {
+public class CollegeListAdapter extends RecyclerView.Adapter<CollegeViewHolder>{
 
-    JSONArray data;
+    String[] data;
     RecyclerViewCallback callback;
-    ProgressDialog progressDialog;
 
-    public CollegeListAdapter(Context ctx){
-        data = new JSONArray();
-        progressDialog = new ProgressDialog(ctx);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Loading...");
-        progressDialog.show();
+    public CollegeListAdapter( RecyclerViewCallback callback){
+        this.callback = callback;
+    }
 
-        ApiHelper.getInstance(ctx).getColleges(this);
-        callback = (RecyclerViewCallback) ctx;
+    public void setData(String data[]){
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -43,7 +40,7 @@ public class CollegeListAdapter extends RecyclerView.Adapter<CollegeViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull CollegeViewHolder collegeViewHolder, int i) {
         try{
-            final String clgName = data.getString(i);
+            final String clgName = data[i];
             collegeViewHolder.collegeName.setText(clgName);
             collegeViewHolder.collegeName.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -56,13 +53,12 @@ public class CollegeListAdapter extends RecyclerView.Adapter<CollegeViewHolder> 
 
     @Override
     public int getItemCount() {
-        return data.length();
+        if(data != null){
+            return data.length;
+        }else{
+            return 0;
+        }
+
     }
 
-    @Override
-    public void getCollegeList(JSONArray collegelist) {
-        progressDialog.cancel();
-        data = collegelist;
-        notifyDataSetChanged();
-    }
 }

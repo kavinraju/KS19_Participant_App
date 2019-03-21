@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -32,12 +33,22 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
     Button logOutBtn;
+    TextView nameText, phoneText, hostelText, emailText, clgText;
 
     String fileName = "qr.png";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
+
+        nameText = findViewById(R.id.name_value);
+        phoneText = findViewById(R.id.phone_value);
+        hostelText = findViewById(R.id.hostel_value);
+        emailText = findViewById(R.id.email_value);
+        clgText = findViewById(R.id.college_value);
+        showUserDetails();
 
         qrCode = findViewById(R.id.qr_code);
         logOutBtn = findViewById(R.id.log_out_btn);
@@ -49,7 +60,6 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
         });
 
         Log.d("FILE_PATH", getFilesDir().toString());
-        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
 
         if (!sharedPreferences.getBoolean(getString(R.string.is_qr_saved), false)) {
             progressDialog = new ProgressDialog(this);
@@ -73,6 +83,19 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
             progressDialog.cancel();
             Toast.makeText(this, "Please try again", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void showUserDetails(){
+        nameText.setText(sharedPreferences.getString(getString(R.string.name),""));
+        phoneText.setText(sharedPreferences.getString(getString(R.string.phone_number),""));
+        if(sharedPreferences.getString(getString(R.string.hostel_accomodation),"").equals("1")){
+            hostelText.setText(getString(R.string.yes));
+        }else{
+            hostelText.setText(getString(R.string.no));
+        }
+
+        emailText.setText(sharedPreferences.getString(getString(R.string.email),""));
+        clgText.setText(sharedPreferences.getString(getString(R.string.college_name),""));
     }
 
     private void saveQrCode(Bitmap bitmap) {
@@ -109,6 +132,7 @@ public class ProfileActivity extends AppCompatActivity implements QrResponse {
             Log.d("READ_BITMAP","FAILED");
         }
     }
+
     private void logOut() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 

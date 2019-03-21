@@ -9,32 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 
 import dpi.ks19.participantapp.Adapter.ClusterAdapter;
-import dpi.ks19.participantapp.CallbackInterface.EventsByCluster;
-import dpi.ks19.participantapp.CallbackInterface.ScheduleInterface;
-import dpi.ks19.participantapp.Model.EventClass;
-import dpi.ks19.participantapp.Networking.ApiHelper;
 import dpi.ks19.participantapp.R;
 
-public class DayOneFrag extends Fragment implements EventsByCluster {
+public class DayOneFrag extends Fragment {
 
-    public static DayOneFrag instance;
-    public ArrayList<EventClass> scheduleArrayList = new ArrayList<>();
     private RecyclerView clusterRecyclerView;
     private ClusterAdapter clusterAdapter;
     private View view;
-    private ScheduleInterface callbackInterface;
-    private ClusterAdapter.ClusterHolder clusterHolder;
+
     private Context context;
 
-    public static DayOneFrag getInstance() {  //Gets the instance of this fragment.
-        if (instance == null) {
-            instance = new DayOneFrag();
-        }
-        return instance;
-    }
 
     public DayOneFrag() {
         // Required empty public constructor
@@ -43,7 +29,7 @@ public class DayOneFrag extends Fragment implements EventsByCluster {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        instance = this;
+
         view = inflater.inflate(R.layout.fragment_day_one, container, false);
         // Inflate the layout for this fragment
 
@@ -54,34 +40,8 @@ public class DayOneFrag extends Fragment implements EventsByCluster {
         clusterAdapter = new ClusterAdapter(context, 22);
         clusterRecyclerView.setAdapter(clusterAdapter);
         clusterRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         return view;
 
     }
 
-    @Override
-    public void getEventsByCluster(ArrayList<EventClass> data, boolean success) {
-
-        if (success)
-            callbackInterface.setScheduleData(data, clusterHolder, false);
-        else
-            callbackInterface.setScheduleData(null, null, true);
-    }
-
-    public void getSchedule(String query, final ScheduleInterface callbackInterface, final ClusterAdapter.ClusterHolder clusterHolder) {
-        //Schedule data is set here.
-
-        ApiHelper.getInstance(context).getEventsForCluster(23, "a", this);
-
-        //API is to be called here.
-        //API returns JSONArray.
-        //Parse it here and return it in scheduleArrayList.
-        //It is to be queried with the 'query', which has the query word, and day.
-        //Name, venue in the format: "Venue: ________" and time in the format: "08.30 AM - 12.30 PM" is the data that is required.
-
-        scheduleArrayList.clear();          //Clears the previous data.
-
-        this.callbackInterface = callbackInterface;   //Saves data to class variable to be used by getEventsByCluster.
-        this.clusterHolder = clusterHolder;
-    }
 }
