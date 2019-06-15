@@ -1,4 +1,4 @@
-# KS19_Participant_App ## Made for Kuruksastra 2019
+# KS19_Participant_App | Made for Kuruksastra 2019
 To make it easy for all the participants to register themselves without standing in the long queue and get their IDs this app generates a QR code which can be at the venue to get their IDs. Both the participants & non-participants can view the events and schedules.
 
 ## About KS
